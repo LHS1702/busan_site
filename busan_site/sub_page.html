@@ -1,0 +1,3207 @@
+  <!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>부산광역시</title>
+  <script src="https://kit.fontawesome.com/eae775b921.js" crossorigin="anonymous"></script>
+  <script src="./js/jquery-3.6.1.min.js"></script>
+  <script src="./js/jquery.scrollTo.min.js"></script>
+  <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+    />
+  </head>
+
+  <style>
+
+  *{margin: 0; padding: 0;}
+  li{list-style: none;}
+  body{width: 100vw;
+  overflow-x: hidden;}
+  a {
+    text-decoration: none;
+    color: #4b4b4b;
+  }
+
+
+  header {
+    width: 100vw;
+    height: 60px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 10000;
+  }
+  .for_padding {
+    width: 96%; 
+    margin: 0 auto;
+    height: 100%;
+  }
+  .logo {
+    width: 100px;
+    height: 35px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 5px;
+  }
+  .logo img {
+    width: 100%; height: 100%;
+  }
+  .menu_bar {
+    width: 30px;
+    height: 100%;
+    float: right;
+    color: white;
+  }
+  .menu_bar i {
+    font-size: 40px;
+    float: right;
+    color: rgb(100, 100, 100)
+  }
+  .for_padding .menu_bar i:last-child {
+    display: none;
+  }
+
+  .language {
+    width: 60px;
+    height: 30px;
+    line-height: 45px;
+    float: right;
+    color: white;
+    margin-right: 5px;
+  }
+  .language img {
+    display: none;
+  }
+  .language p {
+    float: left;
+    margin-right: 7px;
+    color: rgb(100, 100, 100);
+  }
+  .language i {
+    margin-top: 8px;
+    color: rgb(100, 100, 100);
+  }
+  .mousewheelColor {
+    color: rgb(100, 100, 100)
+  }
+  .header_css {
+    background-color:white;
+  }
+
+
+
+
+
+  .for_shadow {
+    height: calc(100vh - 60px);
+    position: fixed;
+    left: 100vw;
+    top: 60px; 
+    background-color:rgb(245, 245, 245);
+    z-index: 10000;
+  }
+
+
+  .for_login-sign-up-background {
+    width: 100%;
+    height: 140px;
+    padding: 10px 10px;
+    background-color:white;
+    box-sizing: border-box;
+  }
+  .login-sign_up {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 162, 137
+    );
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 60px 5px 10px 5px;
+    box-sizing: border-box;
+  }
+  .login-sign_up div {
+    width: 48%; height: 27px;
+    font-weight: bold;
+    border-bottom: 2px solid white;
+    float: left;
+    color: white;
+  }
+  .login-sign_up div:first-child {
+    float: right;
+  }
+  .login-sign_up div i {
+    float: right;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  .menu_list {
+    width: 100vw;
+  }
+  .menu_list_left {
+    width: 120px; 
+    height: calc(100vh - 300px);
+    background-color: white;
+    float: left;
+    /* padding-top: 10px;
+    box-sizing: border-box; */
+  }
+  .menu_list_left ul li {
+    padding: 15px 10px;
+    font-size: 15px;
+  }
+  .menu_list_right {
+    width: calc(100vw - 135px);
+    height: calc(100vh - 300px);
+    float: right;
+     background-color:rgb(245, 245, 245);
+     box-sizing: border-box;
+    overflow-y: scroll;
+  }
+  .menu_list_right div>ul {
+    width: 95%;
+    margin: 0 auto; 
+  }
+  .menu_list_right div>ul>li {
+    padding: 15px 10px 12px 10px;
+    overflow: hidden;
+    border-bottom: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 18px;
+  }
+  .menu_list_right div>ul>li i {
+    float: right;
+    margin-top: 2px;
+    color: #ccc;
+  }
+  .menu_list_right div ul li ul {
+    width: 100%;
+    background-color: rgb(248, 248, 248);
+    margin-top: 10px;
+    display: none;
+  }
+  .menu_list_right div ul li ul li {
+    list-style: disc;
+    color: rgb(75, 75, 75);
+    margin-left: 30px;
+    padding: 10px 0px;
+  }
+  .menu_list_right div ul li ul li::marker {
+    color:rgb(163, 163, 163);
+  }
+  .list_first, 
+  .list_second, .list_third, .list_fourth, .list_fifth 
+  {
+    display: none;
+  }
+   #radio1, #radio2, #radio3, #radio4, #radio5 {
+    display: none;
+  }
+  #radio1:checked ~.menu_list .menu_list_right .list_first {
+    display: block;
+  }
+  #radio1:checked ~.menu_list .menu_list_left ul label:nth-child(1) li, 
+  #radio2:checked ~.menu_list .menu_list_left ul label:nth-child(2) li, 
+  #radio3:checked ~.menu_list .menu_list_left ul label:nth-child(3) li,
+  #radio4:checked ~.menu_list .menu_list_left ul label:nth-child(4) li,
+  #radio5:checked ~.menu_list .menu_list_left ul label:nth-child(5) li {
+    width: 135px;
+    background-color: rgb(229, 0, 72);
+    border-radius: 0 40px 40px 0;
+    color: white;
+    padding-left: 20px;
+    box-sizing: border-box;
+    transition: 0.6s;
+    overflow: visible;
+  }
+  #radio2:checked ~.menu_list .menu_list_right .list_second {
+    display: block;
+  }
+  #radio3:checked ~.menu_list .menu_list_right .list_third {
+    display: block;
+  }
+  #radio4:checked ~.menu_list .menu_list_right .list_fourth {
+    display: block;
+  }
+  #radio5:checked ~.menu_list .menu_list_right .list_fifth {
+    display: block;
+  }
+  .fa-minus {
+    display: none;
+  }
+
+
+
+
+
+  .footer {
+    margin-top: 100px;
+  }
+  .site_inform label>li {
+    width: 100%;
+    height: 50px;
+    position: relative;
+    border: 1px solid #ccc;
+  }
+  .site_inform label>li p {
+    float: left;
+    line-height: 50px;
+    margin-left: 10px;
+  }
+  .site_inform label>li i {
+    float: right;
+    line-height: 50px;
+    font-size: 30px;
+    margin-right: 10px;
+    color: #ccc;
+  }
+  .site_inform label>li ul {
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    top: 0;
+    left: 0;
+    margin-top: -200px;
+    overflow-y: scroll;
+    display: none;
+    z-index: 10;
+  }
+  .site_inform label li ul li {
+    width: 100%;
+    height: 30px;
+    background-color: rgb(241, 241, 241);
+    color: rgb(34, 34, 34);
+    padding: 10px 0px 10px 10px;
+    box-sizing: border-box;
+  }
+  #footer_checkbox1,
+  #footer_checkbox2 {
+    display: none;
+  }
+  
+
+  .footer_menu {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .footer_menu div {
+    border-right: 1px solid black;
+    padding: 0px 10px 0px 10px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+  }
+
+  .busan_logo {
+    width: 150px;
+    height: 50px;
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  .busan_logo img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .footer_address {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 40px;
+    font-size: 14px;
+  }
+  .footer_address div:first-child {
+    text-align: center;
+  }
+  .footer_address .address_inform {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 15px;
+  }
+  .footer_address div:nth-child(3) {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 15px;
+  }
+  .footer_address div:nth-child(4) {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .footer_sns_icon {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .calling {
+    width: 70%;
+    height: 200px;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+  .calling div:first-child{
+    width: 50%;
+    height: 60px;
+    float: left;
+    padding-right: 5px;
+    box-sizing: border-box;
+  }
+  .calling div:first-child p {
+    width: 100%;
+    text-align: right;
+  }
+  .calling div:nth-child(2){
+    width: 50%;
+    height: 60px;
+    float: left;
+    font-size: 35px;
+    line-height: 35px;
+    padding-left: 5px;
+    box-sizing: border-box;
+    font-weight: bold;
+    margin-bottom: 10px;
+    overflow: visible;
+  }
+  .calling div:nth-child(3),
+  .calling div:last-child {
+    text-align: center;
+  }
+  .calling div:nth-child(3) {
+    text-align: center;
+  }
+  .calling div:last-child {
+    margin-top: 20px;
+  }
+
+ .top_button {
+  position: fixed;
+  bottom: 40px;
+  right: 20px;
+  display: none;
+ }
+ .top_button div:first-child {
+  text-align: center;
+ }
+ .top_button div:last-child {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 60px;
+ }
+
+
+
+ .icon_menu_for_tablet {
+    display: none;
+  }
+  .dynamicBusan p:first-child {
+    display: none;
+  }
+  .reservation p:nth-child(2) {
+    display: none;
+  }
+  .visitBusan p {
+    display: none;
+  }
+  .communicate_list_picture_for_tablet {
+    display: none;
+  }
+    .today_show_slider_for_tablet {
+    display: none;
+  }
+   .banner_for_tablet {
+    display: none;
+  }
+
+.language img, .sign_up, .login {
+  display: none;
+}
+
+.for_fixed_place_hide {
+  height: 60px;
+}
+.category {
+  height: 80px;
+  border-bottom: 1px solid rgb(163, 163, 163);
+  box-sizing: border-box;
+}
+.category div:first-child {
+  width: 96%;
+  margin: 0 auto;
+  margin-top: 10px;
+  height: 30px;
+  float: left;
+}
+.category div:first-child i:first-child {
+  margin-left: 10px;
+}
+.category div:first-child i, .category div:first-child p {
+  float: left;
+  margin-right: 5px;
+}
+.category div:first-child i {
+  font-size: 20px;
+  color: rgb(163, 163, 163);
+}
+.category div:first-child i:first-child {
+  margin-top: -2px;
+}
+.category div:first-child p {
+  line-height: 18px;
+  font-weight: bold;
+  color: rgb(100, 100, 100);
+  font-size: 13px;
+}
+
+.category div:last-child {
+  width: 90%;
+  margin: 0 auto;
+  text-align: right;
+  font-size: 25px;
+  color: rgb(163, 163, 163);
+}
+.category div:last-child i {
+  margin-left: 8px;
+  font-size: 20px;
+}
+
+.choongsin {
+  width: 96%;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+.choongsin p {
+  font-size: 25px;
+}
+
+.character {
+  width: 96%;
+  margin: 0 auto;
+  margin-top: 15px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  box-sizing: border-box;
+}
+.character_information {
+  height: 50px;
+  width: 92%;
+  margin: 0 auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.character_information div:first-child {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  overflow: hidden;
+  float: left;
+}
+.character_information div:first-child img {
+  width: 100%; height: 100%;
+}
+.character_information p {
+  margin-left: 20px;
+  float: left;
+  line-height: 50px;
+  font-size: 23px;
+  color:rgb(100, 100, 100)
+}
+.character_information i {
+  font-size: 25px;
+  color: rgb(100, 100, 100);
+  float: right;
+  margin-top: 13px;
+  margin-right: 10px;
+}
+.character_information i:last-child {
+  display: none;
+}
+
+.character_information_toggle div:first-child {
+  width: 70%;
+  margin: 0 auto;
+}
+.character_information_toggle div:first-child img {
+  width: 100%;
+}
+.character_information_toggle div:last-child {
+  width: 96%;
+  margin: 0 auto;
+  background-color: rgb(246, 246, 246);
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+.character_information_toggle div:last-child p {
+  width: 94%;
+  margin: 0 auto;
+  line-height: 22px;
+}
+
+.e-book_text {
+  width: 94%;
+  margin: 0 auto;
+  margin-top: 20px;
+  overflow: hidden;
+}
+.e-book_text p {
+  line-height: 23px;
+  font-size: 15px;
+}
+.e-book_text div {
+  float: left;
+  padding: 5px 5px;
+  background-color: rgb(30, 78, 163);
+  color: white;
+  margin-top: 10px;
+}
+
+.data_management_manager {
+  width: 94%;
+  margin: 0 auto;
+  margin-top: 15px;
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+.data_management_manager>p {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 5px 0px 5px 5px;
+}
+.data_management_manager div:nth-child(2) {
+   border-top: 1px dashed rgb(163, 163, 163);
+   border-bottom: 1px dashed rgb(163, 163, 163);
+   box-sizing: border-box;
+}
+.data_management_manager div:nth-child(2) p:first-child, .data_management_manager div:nth-child(3) p:first-child {
+  font-weight: bold;
+  font-size: 17px;
+  padding: 10px 0px 5px 5px;
+  
+}
+.data_management_manager div:nth-child(2) p:last-child, .data_management_manager div:nth-child(3) p:last-child {
+  padding: 5px 0px 10px 5px;
+  color: rgb(100, 100, 100);
+  font-weight: bold;
+}
+
+.how_much_satisfy {
+  width: 94%;
+  margin: 0 auto;
+  background-color: rgb(30, 78, 163);
+  margin-top: 15px;
+}
+.how_much_satisfy p:first-child{
+  width: 96%;
+  color: white;
+  border-bottom: 1px solid white;
+  padding: 13px 0px 13px 5px;
+  margin: 0 auto;
+}
+.how_much_satisfy p:last-child{
+  padding: 13px 0px 13px 10px;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.satisfy_answer {
+  width: 94%;
+  margin: 0 auto;
+  border: 1px solid black;
+  margin-top: 15px;
+}
+.satisfy_answer ul {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.satisfy_answer>ul input {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+  float: left;
+}
+.satisfy_answer>ul li {
+  float: left;
+  padding: 5px 0px 5px 0px; 
+  margin-right: 20px;
+}
+.satisfy_answer>ul li p {
+  line-height: 30px;
+  font-size: 14px;
+  float: left;
+  font-weight: bold;
+  margin-top: -3px;
+}
+
+.give_point {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 20px;
+  background-color: wheat;
+  text-align: center;
+  padding: 15px 0px;
+  background-color: rgb(63, 64, 95);
+  color: white;
+  margin-bottom: 20px;
+}
+
+.minwon_120 {
+  width: 94%;
+  margin: 0 auto;
+  border: 1px solid black;
+  padding: 10px 0px;
+  box-sizing: border-box;
+  background-color: rgb(248, 248, 248);
+  margin-top: 20px;
+}
+.minwon_120 p {
+  width: 92%;
+  margin: 0 auto;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 24px;
+}
+.minwon_120 p:first-child {
+  margin-bottom: 20px;
+}
+
+.sns_icon_list {
+  width: 94%;
+  height: 50px;
+  margin: 0 auto;
+  margin-top: 80px;
+}
+.sns_icon_list div {
+  float: left;
+  border: 1px solid #ccc;
+  width: 30px;
+  height: 30px;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin-right: 5px;
+}
+.sns_icon_list div img {
+  width: 100%;
+  height: 100%
+}
+
+
+.comment_register {
+  width: 94%;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.comment_register p:first-child {
+  float: left;
+  margin-right: 20px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.comment_register input:nth-child(2) {
+  margin-top: 10px;
+  padding-left: 5px;
+  box-sizing: border-box;
+  height: 20px;
+  font-size: 15px;
+  height: 25px;
+  width: 100px;
+}
+.comment_register input:nth-child(3) {
+  width: 100%;
+  height: 50px;
+  margin-top: 10px;
+  padding-left: 10px;
+  border: none;
+  border-top: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+.comment_register>div:nth-child(2) {
+  width: 80%;
+  height: 40px;
+  float: left;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+.comment_register>div:nth-child(4) {
+  width: 100%;
+  height: 40px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.comment_register>div:nth-child(4) i {
+  font-size: 28px;
+  color: #ccc;
+  line-height: 39px;
+  float: left;
+  margin-left: 5px;
+}
+.comment_register>div:nth-child(4) input {
+  width: 22%;
+  float: right;
+  height: 38px;
+  font-size: 18px;
+  background-color: rgb(229, 0, 72);
+  color: white;
+  text-align: center;
+  margin: 0 0;
+}
+
+.comment_how_list {
+  margin: 0 auto;
+  margin-top: 50px;
+  width: 94%;
+  margin-bottom: 100px;
+}
+.comment_how_list>div:nth-last-child(2) .comment_delete_btn {
+  display: none;
+}
+.comment_how_list .comment_number {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.comment_how_list .comment_number p {
+  float: right;
+  margin-right: 5px;
+}
+.comment_how_list .comment_number p:first-child {
+  float: left;
+  margin-top: 0px;
+}
+.comment_list {
+  height: 200px;
+  padding-top: 20px;
+  border-bottom: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.comment_list>div:first-child {
+  width: 12%;
+  height: 100%;
+  float: left;
+}
+.comment_list>div:first-child p {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  line-height: 40px;
+  text-align: center;
+  background-color: orange;
+  color: white;
+  margin-left: 10px;
+  font-size: 18px;
+}
+.comment_list>div:last-child {
+  width: 80%;
+  height: 100%;
+  float: right;
+}
+.comment_list>div:last-child div:first-child {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  font-weight: bold;
+}
+.comment_list>div:last-child div:first-child img {
+  float: left;
+}
+.comment_list>div:last-child div:first-child p:nth-child(2) {
+  float: left;
+}
+.comment_list>div:last-child>p:nth-child(2) {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  margin-top: 10px;
+  color: rgb(100, 100, 100);
+  font-size: 15px;
+  font-weight: bold;
+}
+.comment_list>div:last-child div:last-child {
+  margin-top: 20px;
+  height: 40px;
+  width: 100%;
+}
+.comment_list>div:last-child div:last-child >p:nth-child(1) {
+  float: left;
+  padding: 5px 5px;
+  border: 1px solid rgb(100, 100, 100);
+  font-size: 14px;
+  color: rgb(100, 100, 100);
+}
+.comment_list>div:last-child div:last-child i {
+  float: right;
+  margin-right: 20px;
+  font-size: 20px;
+  margin-top: 10px;
+  color: rgb(100, 100, 100)
+}
+.comment_list>div:last-child div:last-child >p:nth-child(2) {
+  float: right;
+  color: rgb(100, 100, 100);
+  margin-right: 20px;
+  margin-top: 10px;
+}
+.comment_delete_btn {
+  float: right;
+  margin-right: 20px;
+  font-size: 22px;
+}
+
+
+
+
+
+
+
+
+
+.suggestion {
+  width: 90%;
+  margin: 0 auto;
+  font-size: 14px;
+  text-align: center;
+  line-height: 25px;
+  font-weight: bold;
+}
+
+
+.footer {
+    margin-top: 20px;
+  }
+  .site_inform {
+    width: 96%;
+    margin: 0 auto;
+  }
+  .site_inform li {
+    width: 100%;
+    height: 50px;
+    position: relative;
+    border: 1px solid #ccc;
+  }
+  .site_inform li p {
+    float: left;
+    line-height: 50px;
+    margin-left: 10px;
+  }
+  .site_inform li i {
+    float: right;
+    line-height: 50px;
+    font-size: 30px;
+    margin-right: 10px;
+    color: #ccc;
+  }
+  .site_inform li ul {
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    top: 0;
+    left: 0;
+    margin-top: 50px;
+    overflow-y: scroll;
+    display: none;
+    z-index: 10;
+    background-color: #ccc;
+  }
+  .site_inform label li ul li {
+    width: 100%;
+    height: 30px;
+    background-color: rgb(241, 241, 241);
+    color: rgb(34, 34, 34);
+    padding: 10px 0px 10px 10px;
+    box-sizing: border-box;
+  }
+  .for_footer_slide_menu_i_css {
+    display: none;
+  }
+  .for_footer_slide_menu_i2_css {
+    display: block;
+  }
+  .for_footer_slide_menu_i_rotate {
+    transform: rotate(180deg);
+  }
+
+
+  .footer_menu {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 30px;
+    display: flex;
+    justify-content: first baseline;
+    flex-wrap: wrap;
+  }
+  .footer_menu div {
+    border-right: 1px solid black;
+    padding: 0px 10px 0px 10px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+
+  .busan_logo {
+    width: 150px;
+    height: 50px;
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  .busan_logo img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .footer_address {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 40px;
+    font-size: 14px;
+  }
+  .footer_address div:first-child {
+    text-align: center;
+  }
+  .footer_address .address_inform {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 15px;
+  }
+  .footer_address div:nth-child(3) {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 15px;
+  }
+  .footer_address div:nth-child(4) {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .footer_sns_icon {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .calling {
+    width: 70%;
+    height: 200px;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+  .calling div:first-child{
+    width: 50%;
+    height: 60px;
+    float: left;
+    padding-right: 5px;
+    box-sizing: border-box;
+  }
+  .calling div:first-child p {
+    width: 100%;
+    text-align: right;
+  }
+  .calling div:nth-child(2){
+    width: 50%;
+    height: 60px;
+    float: left;
+    font-size: 35px;
+    line-height: 35px;
+    padding-left: 5px;
+    box-sizing: border-box;
+    font-weight: bold;
+    margin-bottom: 10px;
+    overflow: visible;
+  }
+  .calling div:nth-child(3),
+  .calling div:last-child {
+    text-align: center;
+  }
+  .calling div:nth-child(3) {
+    text-align: center;
+  }
+  .calling div:last-child {
+    margin-top: 20px;
+  }
+
+ .top_button {
+  position: fixed;
+  bottom: 40px;
+  right: 20px;
+  display: none;
+ }
+ .top_button div:first-child {
+  text-align: center;
+ }
+ .top_button div:last-child {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 60px;
+ }
+
+
+   .swiper {
+    width: 94%;
+    height: 600px;
+    margin: 0 auto;
+    margin-top: 30px;
+   }
+   .swiper-slide {
+    width: 100%;
+    height: 350px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0px;
+    border-radius: 20px;
+    border: 1px solid black;
+    box-sizing: border-box;
+   }
+   .swiper-slide div:first-child {
+    width: 35%;
+   }
+   .swiper-slide div:first-child img {
+    width: 100%;
+    height: 100%;
+   }
+   .swiper-slide div:last-child {
+    width: 60%;
+   }
+   .swiper-slide div:last-child p:nth-child(1){
+    font-size: 24px;
+   }
+   .swiper-slide div:last-child p:nth-child(2){
+    font-size: 22px;
+    margin-top: 5px;
+   }
+   .swiper-slide div:last-child p:nth-child(3){
+    margin-top: 40px;
+    font-size: 20px;
+    width: 90%;
+    line-height: 30px;
+   }
+   .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal {
+    width: 500px;
+    left: calc(50% - 250px);
+    top: 370px;
+    height: 200px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    box-sizing: border-box;
+    
+   }
+   span.swiper-pagination-bullet {
+    width: 60px;
+    height: 60px;
+    opacity: 0.4;
+   }
+   span.swiper-pagination-bullet-active {
+    opacity: 1;
+   }
+   .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+    margin: 0 var(--swiper-pagination-bullet-horizontal-gap,10px);
+}
+  .swiper-button-prev  {
+    top: 460px;
+    width: 60px;
+    height: 80px;
+    left: -10px;
+    background-image: url(./images_main/icon_arr_list_l_40_2x.png);
+  }
+  .swiper-button-next {
+    background-image: url(./images_main/icon_arr_list_r_40_2x.png);
+    top: 460px;
+    width: 60px;
+    height: 80px;
+    right: 10px;
+    background-image: url(./images_main/icon_arr_list_r_40_2x.png);
+  }
+  .swiper-button-prev::after, .swiper-button-next::after {
+    display: none;
+  }
+
+  span[aria-label="Go to slide 1"] {
+  background-image: url(./images_sub/송상현_s.jpg);}
+  span[aria-label="Go to slide 2"] {
+  background-image: url(./images_sub/노개방_s.jpg);}
+  span[aria-label="Go to slide 3"] {
+  background-image: url(./images_sub/조영규_s.jpg);}
+  span[aria-label="Go to slide 4"] {
+  background-image: url(./images_sub/정발_s.jpg);}
+  span[aria-label="Go to slide 5"] {
+  background-image: url(./images_sub/이정현_s.jpg);}
+  span[aria-label="Go to slide 6"] {
+  background-image: url(./images_sub/윤흥신_s.jpg);}
+  span[aria-label="Go to slide 7"] {
+  background-image: url(./images_sub/임란\ 동래\ 24공신_s.jpg);}
+  span[aria-label="Go to slide 8"] {
+  background-image: url(./images_sub/수영25의\ 용_s.jpg);}
+  span[aria-label="Go to slide 9"] {
+  background-image: url(./images_sub/사명대사_s.jpg);}
+  span[aria-label="Go to slide 10"] {
+  background-image: url(./images_sub/박인로_s.jpg);}
+  span[aria-label="Go to slide 11"] {
+  background-image: url(./images_sub/안용복_s.jpg);}
+  span[aria-label="Go to slide 12"] {
+  background-image: url(./images_sub/이안눌_s.jpg);}
+  span[aria-label="Go to slide 13"] {
+  background-image: url(./images_sub/조엄_s.jpg);}
+  span[aria-label="Go to slide 14"] {
+  background-image: url(./images_sub/강필리_s.jpg);}
+  span[aria-label="Go to slide 15"] {
+  background-image: url(./images_sub/정현덕_s.jpg);}
+
+
+
+  .for_pc_flex_left div:first-child {
+  width: 100%;
+  height: 120px;
+  background-color: rgb(246, 246, 246);
+  line-height: 120px;
+  font-size: 22px;
+  padding-left: 10px;
+  box-sizing: border-box;
+  font-weight: bold;
+}
+.for_pc_flex_left div:last-child > ul > li {
+  box-sizing: border-box;
+  line-height: 70px;
+  font-size: 20px;
+  box-sizing: border-box;
+}
+.for_pc_flex_left div:last-child > ul > li p {
+  margin-left: 10px;
+}
+.for_pc_flex_left div:last-child > ul > li p i {
+  float: right;
+  margin-top: 25px;
+  margin-right: 20px;
+  color: #ccc;
+}
+.for_pc_flex_left div:last-child > ul > li p i:last-child {
+ display: none;
+}
+.for_pc_flex_left div:last-child > ul > li ul {
+  border-top:1px solid #ccc ;
+  border-bottom: 1px solid #ccc;
+  box-sizing: border-box;
+  display: none;
+}
+.for_pc_flex_left div:last-child > ul > li ul li{
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 20px;
+  box-sizing: border-box;
+}
+
+.header_menu, .header_menu_hover {
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media all and (min-width:1281px) {
+  .for_1280px_header {
+    width: 100%;
+    border-bottom: 2px solid #ccc;
+    box-sizing: border-box;
+    height: 120px;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 100;
+  }
+  header {
+    width: 1280px;
+    margin: 0 auto;
+    background-color: white;
+    border-bottom: none;
+  }
+  .category {
+    width: 1280px;
+    margin: 0 auto;
+    margin-top: -120px;
+    border-bottom: no;
+  }
+  .for_category_1280px {
+    border-bottom: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  .sub_pc_flex {
+    width: 1280px;
+    margin: 0 auto;
+  }
+
+  div.swiper-pagination-bullets.swiper-pagination-horizontal {
+    width: 800px;
+  }
+
+}
+
+@media all and (min-width:1000px)  { 
+  div.swiper-pagination-bullets.swiper-pagination-horizontal {
+    width: 700px;
+  }
+}
+
+@media all and (min-width:769px) and (max-width:1000px) { 
+  div.swiper-pagination-bullets.swiper-pagination-horizontal {
+    width: 500px;
+  }
+}
+
+@media all and (min-width:769px) {
+
+  .swiper {
+    height: 700px;
+  }
+  .sub_pc_flex {
+    margin-top: 40px;
+  }
+  .for_pc_flex_left div:nth-child(2) ul li ul li:hover {
+    color: rgb(229, 0, 72);
+  }
+  .for_pc_flex_left {
+    width: 26%;
+    float: left;
+  }
+  .for_pc_flex_right {
+    display: block;
+    width: 74%;
+  }
+  .tablet_character {
+    height: 680px;
+  }
+  .choongsin p{
+    font-size: 40px;
+  }
+  .swiper-slide {
+    height: 450px;
+  }
+   .swiper-horizontal>.swiper-pagination-bullets, 
+   .swiper-pagination-bullets.swiper-pagination-horizontal {
+    width: 90%;
+    top: 470px;
+    padding-top: 10px;
+   }
+   span.swiper-pagination-bullet {
+    width: 60px;
+    height: 60px;
+    opacity: 0.4;
+   }
+   span.swiper-pagination-bullet-active {
+    opacity: 1;
+   }
+   .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+    margin: 0 var(--swiper-pagination-bullet-horizontal-gap,8px);
+}
+  .swiper-button-prev  {
+    top: 530px;
+    width: 60px;
+    height: 80px;
+    left: -20px;
+    background-image: url(./images_main/icon_arr_list_l_40_2x.png);
+  }
+  .swiper-button-next {
+    background-image: url(./images_main/icon_arr_list_r_40_2x.png);
+    top: 530px;
+    width: 60px;
+    height: 80px;
+    right: 0px;
+    background-image: url(./images_main/icon_arr_list_r_40_2x.png);
+  }
+
+  .character {
+    display: none;
+  }
+  .for_pc_flex_left {
+    width: 25%;
+  }
+
+  .sub_pc_flex {
+    display: flex;
+    justify-content: space-between;
+  }
+  .for_pc_flex_left_li_click_css {
+    color: rgb(229, 0, 72);
+  }
+
+
+  .for_fixed_place_hide {
+    height: 120px;
+  }
+
+  .logo {
+    height: 60px;
+    width: 140px;
+    margin-top: 20px;
+  }
+  .language {
+    width: 80px;
+    line-height: 30px;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  .language img {
+    float: left;
+    margin-top: 3px;
+    margin-right: 3px;
+    width: 25px;
+    height: 25px;
+  }
+  .language img:nth-child(1) {
+    display: none;
+  }
+  .sign_up {
+    width: 90px;
+    float: right;
+    margin-top: 5px;
+    color: rgb(100, 100, 100);
+    margin-top: 15px;
+    font-size: 14px;
+  }
+  .sign_up img {
+    float: left;
+    margin-right: 1px;
+    margin-top: -2px;
+  }
+  .sign_up img:nth-child(1){
+    display: none;
+  }
+  .login {
+    width: 70px;
+    float: right;
+    color: rgb(100, 100, 100);
+    margin-top: 15px;
+    font-size: 14px;
+  }
+  .login img {
+    float: left;
+    margin-right: 3px;
+    margin-top: -2px;
+  }
+  .login img:nth-child(1) {
+    display: none;
+  }
+
+  .language img, .sign_up, .login {
+  display: block;
+}
+
+.footer_menu div:last-child {
+  border: none;
+}
+
+.menu_bar {
+  display: none;
+}
+
+
+header {
+  border-bottom: 2px solid #ccc;
+  box-sizing: border-box;
+  height: 120px;
+}
+.header_menu {
+    width: 100%;
+    height: 30px;
+    margin-top: -23px;
+    display: block;
+  }
+  .header_menu ul {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .header_menu ul li {
+    width: 20%;
+    float: left;
+    border-right: 2px solid #ccc;
+    box-sizing: border-box;
+    text-align: center;
+    font-weight: bold;
+    color: black;
+  }
+  .header_menu ul li:last-child {
+    border: none;
+  }
+
+  .header_menu_hover {
+    width: 100%;
+    height: 520px;
+    /* border-top: 1px solid #ccc; */
+    border-bottom: 1px solid #ccc;
+    box-sizing: border-box;
+    display: none;
+    background-color: white;
+  }
+  .header_menu_hover > ul {
+    width: 80%;
+    height: 500px;
+    margin: 0 auto;
+  }
+  .header_menu_hover > ul > li {
+    width: 20%;
+    float: left;
+  }
+  .header_menu_hover > ul > li > ul {
+    border-left: 1px solid #ccc;
+    box-sizing: border-box;
+    height: 500px;
+  }
+  .header_menu_hover > ul > li > ul:last-child {
+    border-right: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  .header_menu_hover > ul > li > ul > li:first-child {
+    padding-top: 20px;
+    height: 50px;
+  }
+  .header_menu_hover > ul > li > ul > li {
+    padding-left: 20px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 30px;
+  }
+  .header_menu_hover > ul > li > ul > li:hover {
+    color: rgb(229, 0, 72);
+  }
+  .header_menu_hover > ul > li:nth-child(2) ul li {
+    padding-left: 10px;
+    font-size: 14px;
+  }
+  .header_menu_hover > ul > li:last-child > ul li {
+   padding-left: 5px;
+  }
+  .header_menu_hover > ul > li:last-child > ul li p {
+    line-height: 30px;
+  }
+  .header_menu_hover > ul > li:last-child > ul li img {
+    float: left;
+    width: 30px;
+    height: 30px;
+  }
+
+
+}  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media all and (min-width:601px) and (max-width:768px) { 
+
+
+  .character {
+    display: none;
+  }
+  .tablet_character {
+    display: block;
+  }
+  .for_pc_flex_left {
+    display: none;
+  }
+
+  .category {
+  height: 80px;
+  border-bottom: 1px solid rgb(163, 163, 163);
+  box-sizing: border-box;
+}
+.category div:first-child {
+  width: 480px;
+  height: 30px;
+  margin-top: 30px;
+  float: left;
+  margin-left: 20px;
+}
+.category div:first-child i, .category div:first-child p {
+  float: left;
+  margin-right: 12px;
+}
+.category div:first-child p:last-child {
+  margin-right: 0;
+}
+.category div:first-child i {
+  font-size: 20px;
+  color: rgb(163, 163, 163);
+}
+.category div:first-child i:first-child {
+  margin-top: -1px;
+}
+.category div:first-child p {
+  line-height: 18px;
+  font-weight: bold;
+  color: rgb(100, 100, 100);
+  font-size: 18px;
+}
+
+.category div:last-child {
+  float: right;
+  width: 75px;
+  font-size: 25px;
+  color: rgb(163, 163, 163);
+  margin-top: 30px;
+  margin-right: 10px;
+}
+.category div:last-child i {
+  font-size: 25px;
+  float: left;
+}
+.category div:last-child i:first-child {
+  margin-right: 10px;
+}
+
+
+
+.site_inform label>li {
+    width: 100%;
+    height: 50px;
+    position: relative;
+    border: 1px solid #ccc;
+  }
+  .site_inform label>li p {
+    float: left;
+    line-height: 50px;
+    margin-left: 10px;
+  }
+  .site_inform label>li i {
+    float: right;
+    line-height: 50px;
+    font-size: 30px;
+    margin-right: 10px;
+    color: #ccc;
+  }
+  .site_inform label>li ul {
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    top: 0;
+    left: 0;
+    margin-top: -200px;
+    overflow-y: scroll;
+    display: none;
+    z-index: 10;
+  }
+  .site_inform label li ul li {
+    width: 100%;
+    height: 40px;
+    background-color: rgb(241, 241, 241);
+    color: rgb(34, 34, 34);
+    padding: 10px 0px 10px 10px;
+    box-sizing: border-box;
+  }
+  .site_inform {
+    width: 75%;
+  }
+
+  .footer_menu div:last-child, .footer_menu div:nth-last-child(2) {
+    border: none;
+  }
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media all and (min-width:321px) and (max-width:600px) {
+  
+  .tablet_character {
+  display: none;
+}
+  .for_pc_flex_left {
+    display: none;
+  }
+
+  .footer_menu div:nth-child(2), 
+  .footer_menu div:nth-child(4),
+  .footer_menu div:nth-child(6) {
+    border: none;
+  }
+} 
+
+
+
+</style>
+
+
+
+  <script>
+
+    $(function(){
+
+       const btnOpen = $('.menu_list_right div ul li div')
+      btnOpen.click(function(){
+        // $(this).next().stop().animate(
+          $(this).find('.fa-plus').toggle();
+          $(this).find('.fa-minus').toggle();
+          $(this).next().toggle('300');
+          
+        });
+
+      const header = $('header');
+        let menu = $('.menu_bar');
+        let language = $('.language');
+        let header_click_menu = $('.for_shadow');
+        let header_click_menu_state = false
+        let top_btn = $('.top_button')
+
+        
+      
+        menu.click(function(){
+        if(!header_click_menu_state){
+        header_click_menu.animate({left:0},'slow')
+        // $('i.fa-bars').delay(10000).css('display','none')
+        // $('i.fa-xmark').delay(10000).css('display','block')
+         $('i.fa-bars').fadeOut();
+        $('i.fa-xmark').delay(500).fadeIn(500);
+        return header_click_menu_state = true;
+        }
+        if(header_click_menu_state) {
+        header_click_menu.animate({left:'100vw'},'slow')
+        // $('i.fa-bars').delay(10000).css('display','block')
+        // $('i.fa-xmark').delay(10000).css('display','none')
+        $('i.fa-bars').delay(500).fadeIn(500);
+        $('i.fa-xmark').fadeOut();
+        return header_click_menu_state = false;
+        }
+      })
+
+      $('.character_information').click(function(){
+        $(this).siblings('.character_information_toggle').slideToggle();
+        $(this).children('.fa-angle-up').toggle();
+        $(this).children('.fa-angle-down').toggle();
+      })
+
+
+
+
+
+
+       let slide_up_menu1 = $('.business_site ul')
+      let slide_up_menu2 = $('.related_site ul')
+      let checkbox_state1 = false;
+      let checkbox_state2 = false;
+      let slide_up_menu1_up_icon = $('.business_site .fa-chevron-up')
+      let slide_up_menu1_down_icon = $('.business_site .fa-chevron-down')
+      let slide_up_menu2_up_icon = $('.related_site .fa-chevron-up')
+      let slide_up_menu2_down_icon = $('.related_site .fa-chevron-down')
+
+
+      let footer_slide_menu = $('.site_inform>li')
+      slide_up_menu1_up_icon.addClass('for_footer_slide_menu_i_css')
+      slide_up_menu2_up_icon.addClass('for_footer_slide_menu_i_css')
+      footer_slide_menu.click(function(){
+        $(this).children('ul').slideToggle()
+        // $(this).children().find('.fa-chevron-up').toggleClass(for_footer_slide_menu_i_rotate)
+        $(this).children('.fa-chevron-down').toggleClass('for_footer_slide_menu_i_rotate')
+        $(this).siblings().children('.fa-chevron-down').removeClass('for_footer_slide_menu_i_rotate')
+
+        $(this).siblings().children('ul').slideUp()
+
+      })
+      
+      $(window).scroll(function(){
+
+        if($(window).scrollTop() >= 45) {
+          $('.top_button').fadeIn(1000)
+          $('header').addClass('header_css')
+        }
+        if($(window).scrollTop() < 45) {
+          $('.top_button').css('display','none')
+        }
+
+
+      })
+
+
+       var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+      
+      $('.for_pc_flex_left div ul>li').click(function(){
+        $(this).children('p').toggleClass('for_pc_flex_left_li_click_css')
+        $(this).children('ul').slideToggle(500);
+        $(this).siblings().children('ul').slideUp(500);
+        $(this).children().find('i.fa-chevron-down').toggle();
+        $(this).children().find('i.fa-chevron-right').toggle()
+        $(this).siblings().children().find('i.fa-chevron-down').css('display','none')
+        $(this).siblings().children().find('i.fa-chevron-right').css('display','block')
+      })
+      
+      
+      // 화면사이즈가 실시간으로 변화할 때 pagination 위치 설정
+      // $(window).resize(function(){
+        //   let pw = $('.swiper-pagination-bullets.swiper-pagination-horizontal').outerWidth()
+        //   let pw_2 = pw/2
+        //   $('.swiper-pagination-bullets.swiper-pagination-horizontal').css(`left`,`calc(50% - ${pw_2}px)`)
+        // })
+
+
+
+
+
+
+        
+          // 태블릿 
+        let pw = $('.swiper-pagination-bullets.swiper-pagination-horizontal').outerWidth()
+        let pw_3 = pw / 2
+      
+        if (window.matchMedia("all and (min-width: 1001px)").matches) {
+          document.querySelector('.swiper-pagination-bullets.swiper-pagination-horizontal').style.left = 'calc(50% - 350px)'
+        }
+
+        // document.querySelector('.swiper-pagination-bullets.swiper-pagination-horizontal').style.left = "calc(50%-${pw_3}px)"
+      //  $('.swiper-pagination-bullets.swiper-pagination-horizontal').css('width','500px') 
+      //  $('.swiper-pagination-bullets.swiper-pagination-horizontal').css('height','100px') 
+      // $('.swiper-pagination-bullets.swiper-pagination-horizontal').css('left','calc(50% - 200px)') 
+      // $('.swiper-pagination-bullets.swiper-pagination-horizontal').css('left','calc(50%-${pw_2}px') 
+        
+
+        // pc  flex가로길이 기준으로 간격맞추기
+        if (window.matchMedia("all and (min-width: 769px)").matches){}
+
+
+
+
+      document.querySelector('.register_comment').addEventListener('click',() => {
+        // let CommentBox = document.querySelector('.comment_register') 
+
+        let human_name = document.querySelector('.user_name_input').value // 이름 입력값
+        let human_comment = document.querySelector('.user_comment_input').value // 댓글 입력값
+        let NewCommentBox = document.querySelector('.comment_list').cloneNode(true); // 기존에 있던 댓글 구조 복사
+        let CommentHowList = document.querySelector('.comment_how_list')  // 댓글이 추가될 틀
+
+        let comment_two_name = NewCommentBox.querySelectorAll('.new_make_name')
+        // NewCommentBox.querySelectorAll('.new_make_name').innerHTML = human_name // 복사한 구조에 이름 입력값으로 수정
+        
+        for (let i=0; i<comment_two_name.length; i++) {
+          comment_two_name[i].innerHTML = human_name
+        } //댓글에 나타내지는 이름이 2개여서 for문 돌리기
+
+
+        // NewCommentBox.querySelector('.new_make_name').style.color = "black"
+        NewCommentBox.querySelector('.new_make_name').style.border = "1px solid #ccc"
+
+
+        NewCommentBox.querySelector('.new_make_comment').innerHTML = human_comment
+        //복사한 구조에 댓글 입력값으로 수정
+
+        let randomColor =  "#" + Math.round(Math.random() * 0xffffff).toString(16)
+        NewCommentBox.querySelector('.name_background').style.backgroundColor = randomColor
+        
+        NewCommentBox.querySelector('img').style.display = "none"
+        
+        if(human_name && human_comment) {
+        CommentHowList.insertBefore(NewCommentBox, CommentHowList.childNodes[2])
+        }
+        document.querySelector('.user_name_input').value = ''
+        document.querySelector('.user_name_input').focus()
+        document.querySelector('.user_comment_input').value = ''
+        
+        let CommentDeleteBtn = document.querySelectorAll('.comment_delete_btn')
+        for(let i=0; i<CommentDeleteBtn.length; i++) {
+        
+          CommentDeleteBtn[i].addEventListener('click', function() {
+            if(this.parentNode) {
+              this.parentNode.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode.parentNode)
+            }
+          })
+        }
+        
+      })
+
+
+      $('.header_menu > ul > li').mouseover
+      (function(){
+       
+        $('.header_menu_hover').delay(100).slideDown()
+
+          if (window.matchMedia("all and (min-width: 1281px)").matches) {
+            $('.for_1280px_header_background').css('backgroundColor','white')
+          }
+
+          header.addClass('header_css');
+          menu.addClass('mousewheelColor');
+          // language.addClass('mousewheelColor');
+          $('.header_menu ul li').css('color','rgb(51,51,51)')
+
+          $('.login img:nth-child(1)').css('display','none')
+          $('.login img:nth-child(2)').css('display','block')
+          $('.login p').css('color','rgb(51,51,51)')
+
+          $('.sign_up img:nth-child(1)').css('display','none')
+          $('.sign_up img:nth-child(2)').css('display','block')
+          $('.sign_up p').css('color','rgb(51,51,51')
+
+          $('.language img:nth-child(1)').css('display','none')
+          $('.language img:nth-child(2)').css('display','block')
+          $('.language p').css('color','rgb(51,51,51)')
+          $('.language i').css('color','rgb(51,51,51)')
+
+      })
+
+      $('.header_menu_hover > ul').mouseleave(function(){
+        $('.header_menu_hover').slideUp()
+
+          // header.removeClass('header_css');
+          // menu.removeClass('mousewheelColor');
+          // $('.header_menu ul li').css('color','white')
+          
+          // $('.login img:nth-child(1)').css('display','block')
+          // $('.login img:nth-child(2)').css('display','none')
+          // $('.login p').css('color','white')
+
+          // $('.sign_up img:nth-child(1)').css('display','block')
+          // $('.sign_up img:nth-child(2)').css('display','none')
+          // $('.sign_up p').css('color','white')
+
+          // //  $('.language img:nth-child(1)').css('display','block')
+          // // $('.language img:nth-child(2)').css('display','none')
+
+          //  $('.language img:nth-child(1)').css('display','block')
+          // $('.language img:nth-child(2)').css('display','none')
+          // $('.language p').css('color','white')
+          // $('.language i').css('color','white')
+      })
+
+
+
+    })
+
+    
+    
+
+
+    
+
+
+
+
+  </script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+<body>
+  <section class="for_1280px_header">
+  <header>
+
+    <div class="for_padding">
+
+      <div class="logo">
+        <a href="index.html">
+        <img src="./images_main/logo01 (1).png">
+        </a>
+      </div>
+
+        <div class="menu_bar">
+          <i class="fa-solid fa-bars"></i>
+          <i class="fa-solid fa-xmark"></i>
+        </div>
+ 
+      <div class="language">
+        <img src="./images_main/ico_global_w.png" class="language_circle_white">
+        <img src="./images_main/ico_global_b.png"
+class="language_circle_black">
+        <p>Kor</p>
+        <i class="fa-solid fa-angle-down"></i>
+      </div>
+
+      <div class="sign_up">
+        <img src="./images_main/ico_join_w.png"><img src="./images_main/ico_join_b.png"><p>회원가입</p>
+      </div>
+
+      <div class="login">
+        <img src="./images_main/ico_login_w.png"><img src="./images_main/ico_login_b.png"><p>로그인</p>
+      </div>
+
+    </div>
+
+    <section class="header_menu">
+      <ul>
+        <li>부산민원120</li>
+        <li>부산소식</li>
+        <li>정보공개</li>
+        <li>부산소개</li>
+        <li>분야별정보</li>
+      </ul>
+    </section>
+
+    <section class="header_menu_hover">
+      <ul>
+        <li>
+          <ul>
+            <li>- 민원신청</li>
+            <li>- 제안신청</li>
+            <li>- 시민참여</li>
+            <li>- 민원안내</li>
+            <li>- 120콜센터</li>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <li>- 새소식</li>
+            <li>- 부산시보(다이내믹 부산)</li>
+            <li>- 보도자료</li>
+            <li>- 공고</li>
+            <li>- 부산시 공식 SNS</li>
+            <li>- 시정사진</li>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <li>- 주요시책</li>
+            <li>- 정보공개</li>
+            <li>- 예산</li>
+            <li>- 감사정보</li>
+            <li>- 지방공기업</li>
+            <li>- 계약정보</li>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <li>- 부산의 인물</li>
+            <li>- 부산의 오늘</li>
+            <li>- 부산의 상징</li>
+            <li>- 부산시청 안내</li>
+            <li>- 부산의 역사</li>
+            <li>- 부산통계</li>
+            <li>- 시민행복지표</li>
+            <li>- 도시브랜드</li>
+            <li>- 주민자치회</li>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <li><img src="./images_main/ico_depart12.png"><p>경제</p></li>
+            <li><img src="./images_main/ico_depart02.png"><p>일자리, 교육</p></li>
+            <li><img src="./images_main/ico_depart03.png"><p>사회복지</p></li>
+            <li><img src="./images_main/ico_depart04.png"><p>보건, 건강</p></li>
+            <li><img src="./images_main/ico_depart05.png"><p>도시, 건축</p></li>
+            <li><img src="./images_main/ico_depart06.png"><p>안전</p></li>
+            <li><img src="./images_main/ico_depart07.png"><p>환경보호</p></li>
+            <li><img src="./images_main/ico_depart08.png"><p>교통, 물류</p></li>
+            <li><img src="./images_main/ico_depart13.png"><p>해양농수산</p></li>
+            <li><img src="./images_main/ico_depart10.png"><p>행정</p></li>
+            <li><img src="./images_main/ico_depart14.png"><p>문화체육관광</p></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+  </header>
+
+  </section>
+  
+    <div class="for_shadow">
+      <div class="btn_menu_animation">
+
+        <div class="for_login-sign-up-background">
+        <div class="login-sign_up">
+          <div>로그인<i class="fa-solid fa-plus"></i></div>
+          <div>회원가입<i class="fa-solid fa-plus"></i></div>
+        </div>
+        </div>
+
+        <input type="radio" id="radio1" name="for_menu_rad" checked>
+        <input type="radio" id="radio2" name="for_menu_rad">
+        <input type="radio" id="radio3" name="for_menu_rad">
+        <input type="radio" id="radio4" name="for_menu_rad">
+        <input type="radio" id="radio5" name="for_menu_rad">
+
+        <div class="menu_list">
+
+        <div class="menu_list_left">
+          <ul>
+            <label for="radio1"><li>부산민원120</li></label>
+            <label for="radio2"><li>부산소식</li></label>
+            <label for="radio3"><li>정보공개</li></label>
+            <label for="radio4"><li>부산소개</li></label>
+            <label for="radio5"><li>분야별정보</li></label>
+          </ul>
+        </div>
+
+        <div class="menu_list_right">
+
+          <div class="list_first">
+            <ul>
+
+              <li>
+                <div>민원신청
+                <i class="fa-solid fa-plus"></i>
+                <i class="fa-solid fa-minus"></i>
+                </div>
+                <ul class="invisible_menu">
+                  <li>민원신청</li>
+                  <li>부산민원120 이용안내</li>
+                  <li>이달의 주요민원</li>
+                  <li>교통불편 민원신청</li>
+                  <li>민원사례</li>
+                  <li>스마트 현장사진신고</li>
+                  <li>신고센터</li>
+                  <li>공익제보센터</li>
+                  <li>정부24</li>
+                </ul>
+              </li>
+
+              <li><div>제안신청<i class="fa-solid fa-plus plus"></i><i class="fa-solid fa-minus"></i></div>
+                <ul class="invisible_menu">
+                  <li>일반제안</li>
+                  <li>공모제안</li>
+                  <li>나의 제안</li>
+                </ul>
+              </li>
+
+              <li><div>시민참여<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i>
+                </div>
+                <ul class="invisible_menu">
+                  <li>설문조사</li>
+                  <li>나눔장터</li>
+                  <li>국민생각함</li>
+                  <li>모니터</li>
+                  <li>이벤트 통합안내</li>
+                  <li>행사/모집 신청</li>
+                  <li>시민게시판</li>
+                  <li>주민참여예산</li>
+                  <li>민생규제혁신과제</li>
+                  <li>칭찬합시다</li>
+                  <li>시민열린마루</li>
+                  <li>협치부산</li>
+                </ul>
+              </li>
+
+              <li><div>민원안내<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i>
+                </div>
+                <ul class="invisible_menu">
+                  <li>민원편람</li>
+                  <li>민원목록</li>
+                  <li>민원처리 안내</li>
+                  <li>여권안내</li>
+                  <li>편리한 민원서비스</li>
+                  <li>민원정보</li>
+                  <li>민원시책</li>
+                  <li>행정서비스현장</li>
+                </ul>
+              </li>
+
+              <li><div>120콜센터<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i>
+                </div>
+                <ul class="invisible_menu">
+                  <li>이용안내</li>
+                  <li>콜센터 소개</li>
+                </ul>
+              </li>
+
+            </ul>
+          </div>
+
+          <div class="list_second">
+            <ul class="invisible_menu">
+              <li><div>새소식<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i>
+                </div>
+                <ul class="invisible_menu">
+                  <li>통합 공지사항</li>
+                  <li>홍보게시판</li>
+                  <li>시저영상뉴스</li>
+                  <li>전자책</li>
+                  <li>공공앱</li>
+                </ul>
+              </li>
+              <li>부산시보</li>
+              <li><div>보도자료<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i>
+                </div><ul class="invisible_menu">
+                  <li>보도자료</li>
+                  <li>해명/설명 자료</li>
+                </ul></li>
+              <li><div>공고<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i>
+                </div>
+                <ul class="invisible_menu">
+                  <li>채용공고</li>
+                  <li>공무원 시험공고</li>
+                  <li>입찰공고</li>
+                  <li>부산시보 고시공고</li>
+                  <li>고시공고</li>
+                  <li>입법예고</li>
+                  <li>분묘개장공고</li>
+                </ul></li>
+              <li>부산시 공식SNS</li>
+              <li>
+                <div>시정사진<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i>
+                </div>
+                <ul class="invisible_menu">
+                  <li>시정관련 자료</li>
+                  <li>테마 갤러리</li>
+                  <li>상징</li>
+                </ul></li>
+            </ul>
+          </div>
+
+          <div class="list_third">
+            <ul>
+              <li>
+                <div>주요시책<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i>
+                </div>
+                <ul class="invisible_menu">
+                  <li>주요업무계획</li>
+                  <li>핵심정책</li>
+                  <li>2022년 달라지는 제도</li>
+                  <li>인구정책 브리핑</li>
+                </ul>
+              </li>
+              <li><div>정보공개<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i></div>
+                <ul class="invisible_menu">
+                  <li>정보공개제도</li>
+                  <li>결제문서</li>
+                  <li>정보공개 청구</li>
+                  <li>사전정보공표</li>
+                  <li>이 달의 정보공개</li>
+                  <li>공유재산</li>
+                  <li>용역보고서</li>
+                  <li>용역실명제</li>
+                  <li>참여정책사전공시</li>
+                  <li>인사통계/조직정보</li>
+                  <li>마을세무사</li>
+                </ul>
+              </li>
+              <li><div>예산<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i></div>
+              <ul class="invisible_menu">
+                  <li>세입세출예산서</li>
+                  <li>기금운용계획</li>
+                  <li>재정공시</li>
+                  <li>세입세출 운용</li>
+                  <li>신고 및 조회</li>
+                  <li>예산절감(낭비)사례</li>
+                  <li>보조금 내역 공개</li>
+                  <li>민간위탁</li>
+                  <li>공공기관 위탁/대행</li>
+                </ul></li>
+              <li><div>감사정보<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i></div>
+              <ul class="invisible_menu">
+                  <li>감사실시안내</li>
+                  <li>감사실시 결과</li>
+                  <li>감사반복 지적사례</li>
+                  <li>감사 제도</li>
+                  <li>공직윤리제도</li>
+                  <li>청렴게시판</li>
+                  <li>부패공직자 제재현황</li>
+                </ul>
+              </li>
+              <li><div>지방공기업<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i></div>
+              <ul class="invisible_menu">
+                  <li>지방공기업이란</li>
+                  <li>지방공기업 현황</li>
+                  <li>지방공기업 경영정보</li>
+                  <li>지방공기업 성별 임금공시</li>
+                </ul>
+              </li>
+              <li><div>계약정보<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i></div>
+              <ul class="invisible_menu">
+                  <li>계약현황</li>
+                  <li>수의계약현황</li>
+                  <li>하도급현황</li>
+                  <li>대가지급</li>
+                  <li>상수도사업본부 계약정보</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="list_fourth">
+            <ul>
+              <li><div>부산의 오늘<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i></div>
+              <ul class="invisible_menu">
+                  <li>도시비전과 목표</li>
+                  <li>기본현황</li>
+                  <li>행정구역/지도</li>
+                  <li>대가지급</li>
+                  <li>국제교류 및 자매도시</li>
+                </ul>
+              </li>
+              <li><div>부산의 상징<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i></div>
+              <ul class="invisible_menu">
+                  <li>지역상징</li>
+                  <li>기관상징</li>
+                  <li>부산체</li>
+                  <li>부산시민현장</li>
+                  <li>부산찬가</li>
+                  <li>부산시민의 날</li>
+                </ul>
+              </li>
+              <li><div>부산시청 안내<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i></div>
+               <ul class="invisible_menu">
+                  <li>시청사 안내</li>
+                  <li>전화번호 안내</li>
+                  <li>조직도</li>
+                  <li>시설운영 안내</li>
+                  <li>시청사 견학</li>
+                  <li>시청 전시실 대관</li>
+                  <li>공기업/출자/출연기관</li>
+                </ul>
+              </li>
+              <li><div>부산의 인물<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i></div>
+              <ul class="invisible_menu">
+                  <li><a href='./sub_page.html'>향토수호(충신)</a></li>
+                  <li>독립운동가</li>
+                  <li>학자 및 교육자</li>
+                  <li>사회운동가</li>
+                  <li>기업인</li>
+                  <li>문화예술인</li>
+                  <li>부산광역시 문화상</li>
+                  <li>자랑스러운 시민상</li>
+                  <li>부산광역시 명예시민</li>
+                </ul>
+              </li>
+              <li><div>부산의 역사<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i></div>
+              <ul class="invisible_menu">
+                  <li>명칭유래</li>
+                  <li>시대별 부산역사</li>
+                  <li>문화재</li>
+                  <li>부산의 주요 경승지</li>
+                  <li>시정역사</li>
+                  <li>역대시장</li>
+                  <li>연혁</li>
+                  <li>향토사도서관</li>
+                  <li>부산역사문화대전</li>
+                  <li>항공사진으로 본 역사</li>
+                </ul>
+              </li>
+              <li><div>부산통계<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i></div>
+              <ul class="invisible_menu">
+                <li>통계로 보는 부산</li>
+                <li>시민공감지도</li>
+                <li>통계소식</li>
+                <li>통계자료실</li>
+                <li>통계의 이해</li>
+              </ul>
+              </li>
+              <li><div>시민행복지표<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i></div>
+              <ul class="invisible_menu">
+                <li>시민행복지표란?</li>                
+                <li>시민행복지표 소개</li>                
+                <li>시민행복지표 현황</li>                               
+              </ul>
+              </li>
+              <li><div>도시브랜드<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i></div>
+              <ul class="invisible_menu">
+                <li>도시브랜드</li>
+                <li>부산브랜드웹툰</li>
+                <li>부산기네스125선</li>
+                <li>소통 캐릭터</li>
+                <li>부산관광브랜드</li>
+              </ul>
+              </li>
+              <li><div>주민자치회<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i></div>
+              <ul class="invisible_menu">
+                <li>추진배경 및 방향</li>
+                <li>설치/운영 및 체계도</li>
+                <li>주민자치회 현황</li>
+                <li>주민자치회 소식</li>
+                <li>우수사례</li>
+                <li>활동갤러리</li>
+                <li>주민자치위원회 구성</li>
+                <li>회의록</li>
+                <li>주민자치위원회 활동</li>
+                <li>운영프로그램</li>
+              </ul>
+              </li>
+            </ul>
+          </div>
+
+          <div class="list_fifth">
+            <ul>
+              <li>경제</li>
+              <li>일자리</li>
+              <li>사회복지</li>
+              <li>보건</li>
+              <li>안전</li>
+              <li>환경보호</li>
+              <li>해양농수산</li>
+              <li>문화체육관광</li>
+            </ul>
+          </div>
+
+        
+        </div> <!-- menu_list_right -->
+
+      </div> <!-- menu_list-->
+
+  </div> <!-- btn_menu_animation -->
+
+</div> <!-- for_shadow -->
+
+<section class="for_fixed_place_hide" id="top_button_teleport">
+
+</section>
+
+<section class="for_category_1280px">
+  <section class="category">
+    <div>
+    <i class="fa-solid fa-house"></i>
+    <i class="fa-solid fa-angle-right"></i>
+    <p>부산소개</p>
+    <i class="fa-solid fa-angle-right"></i>
+    <p>부산의 인물</p>
+    <i class="fa-solid fa-angle-right"></i>
+    <p>향토수호(충신)</p>
+    </div>
+
+    <div>
+      <i class="fa-solid fa-share-nodes"></i>
+      <i class="fa-solid fa-heart"></i>
+    </div>
+  </section>
+</section>
+
+  <section class="sub_pc_flex">
+
+  <section class="for_pc_flex_left">
+    <div>부산 소개</div>
+    <div>
+      <ul>
+        <li><p>부산의 인물 <i class="fa-solid fa-chevron-right"></i><i class="fa-solid fa-chevron-down"></i></p>
+          <ul>
+            <li>향토수호(충신)</li>
+            <li>독립운동가</li>
+            <li>학자 및 교육자</li>
+            <li>사회운동가</li>
+            <li>기업인</li>
+            <li>문화예술인</li>
+            <li>부산광역시 문화상</li>
+            <li>자랑스러운 시민상</li>
+          </ul>
+        </li>
+        <li><p>부산의 오늘 <i class="fa-solid fa-chevron-right"></i><i class="fa-solid fa-chevron-down"></i></p>
+          <ul>
+            <li>도시비전과 목표</li>
+            <li>기본현황</li>
+            <li>행정구역/지도</li>
+            <li>국제교류 및 자매도시</li>
+          </ul>
+        </li>
+        <li><p>부산의 상징 <i class="fa-solid fa-chevron-right"></i><i class="fa-solid fa-chevron-down"></i></p>
+          <ul>
+            <li>지역상징</li>
+            <li>기관상징</li>
+            <li>부산체</li>
+            <li>부산시민헌장</li>
+            <li>부산찬가</li>
+            <li>부산시민의 날</li>
+          </ul>
+        </li>
+        <li><p>부산시청 안내 <i class="fa-solid fa-chevron-right"></i><i class="fa-solid fa-chevron-down"></i></p>
+          <ul>
+            <li>시청사 안내</li>
+            <li>전화번호 안내</li>
+            <li>조직도</li>
+            <li>시설운영 안내</li>
+            <li>시청사 견학</li>
+            <li>시청 전시실 대관</li>
+          </ul>
+        </li>
+        <li><p>부산의 역사 <i class="fa-solid fa-chevron-right"></i><i class="fa-solid fa-chevron-down"></i></p>
+          <ul>
+            <li>명칭유래</li>
+            <li>시대별 부산역사</li>
+            <li>문화재</li>
+            <li>부산의 주요 경승지</li>
+            <li>시정역사</li>
+            <li>역대시장</li>
+            <li>연혁</li>
+            <li>향토사도서관</li>
+            <li>부산역사문화대전</li>
+            <li>항공사진으로 본 역사</li>
+          </ul>
+        </li>
+        <li><p>부산 통계 <i class="fa-solid fa-chevron-right"></i><i class="fa-solid fa-chevron-down"></i></p>
+          <ul>
+            <li>통계로 보는 부산</li>
+            <li>시민공감지도</li>
+            <li>통계소식</li>
+            <li>통계자료실</li>
+            <li>통계의 이해</li>
+          </ul>
+        </li>
+        <li><p>시민행복지표 <i class="fa-solid fa-chevron-right"></i><i class="fa-solid fa-chevron-down"></i></p>
+          <ul>
+            <li>시민행복지표란?</li>
+            <li>시민행복지표 소개</li>
+            <li>시민행복지표 현황</li>
+          </ul>
+        </li>
+        <li>
+          <p>도시브랜드 <i class="fa-solid fa-chevron-right"></i><i class="fa-solid fa-chevron-down"></i>
+          </p>
+          <ul>
+            <li>도시브랜드</li>
+            <li>부산브랜드웹툰</li>
+            <li>부산기네스125선</li>
+            <li>소통 캐릭터</li>
+            <li>부산관광브랜드</li>
+          </ul>
+        </li>
+        <li><p>주민자치회 <i class="fa-solid fa-chevron-right"></i><i class="fa-solid fa-chevron-down"></i></p>
+          <ul>
+            <li>추진배경 및 방향</li>
+            <li>설치/운영 및 체계도</li>
+            <li>주민자치회 현황</li>
+            <li>주민자치회 소식</li>
+            <li>우수사례</li>
+            <li>활동사진첩</li>
+            <li>주민자치위원회 구성</li>
+            <li>회의록</li>
+            <li>주민자치위원회 활동</li>
+            <li>운영프로그램</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </section> <!-- flex-left-->
+
+
+
+  <section class="for_pc_flex_right">
+  <div class="choongsin">
+    <p>향토수호(충신)</p>
+  </div>
+
+
+  <section class="tablet_character">
+
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+          <div><img src="./images_sub/송상현.jpg">
+          </div>
+          <div>
+            <p>송상현</p>
+            <p>1551 ~ 1592년</p>
+            <p>임진왜란 때 동래읍성 전투에서 순절한 문신. 임진왜란 8개월 전인 1591년 8월 동래부사로 임명됨. 임진왜란 당시 동래읍성에서 왜군의 공격에 끝까지 항전하다가 순절함.</p>
+          </div>
+        </div>
+
+        <div class="swiper-slide"><div><img src="./images_sub/노개방.jpg"></div>
+          <div>
+            <p>노개방</p>
+            <p>1563 ~ 1592년</p>
+            <p>임진왜란 때 동래읍성 전투에서 순절한 문신. 1588년 과거 급제 후 동래부 교수(敎授) 근무함. 임진왜란 당시 동래읍성 정원루에서 왜군과 항거하다가 동래부사 송상현 등과 함께 순절함.</p>
+          </div></div>
+
+        <div class="swiper-slide"><div><img src="./images_sub/조영규.jpg">
+          </div>
+          <div>
+            <p>조영규</p>
+            <p>1535 ~ 1592년</p>
+            <p>임진왜란 때 동래읍성 전투에서 순절한 무신. 1592년 양산군수로 있을 때 왜군이 부산을 진격한다는 소식을 듣고 곧장 달려가 동래부사 송상현과 동래읍성에서 항전하다가 순절함.</p>
+          </div></div>
+        <div class="swiper-slide"><div><img src="./images_sub/정발.jpg">
+          </div>
+          <div>
+            <p>정발</p>
+            <p>1553 ~ 1592년</p>
+            <p>임진왜란 때 부산진성 전투에서 순절한 무신. 1577년 무과에 급제하였고, 1592년 부산진성의 사령관격인 부산진첨절제사로 임명됨. 왜군이 부산진성을 공격하자 군‧관‧민을 독려하여 끝까지 싸우다 순절함.</p>
+          </div></div>
+           <div class="swiper-slide"><div><img src="./images_sub/이정현.jpg">
+          </div>
+          <div>
+            <p>이정헌</p>
+            <p>? ~ 1592년</p>
+            <p>임진왜란 때 부산진성 전투에서 순절한 무신. 1591년 무과에 급한 후 정발을 도와 적의 침입을 방어하는 장수(조방장)가 됨. 왜군이 부산진성을 공격하자 정발과 함께 항전하다가 순절함.</p>
+          </div></div>
+          <div class="swiper-slide">
+          <div><img src="./images_sub/윤흥신.jpg">
+          </div>
+          <div>
+            <p>윤흥신</p>
+            <p>? ~ 1592년</p>
+            <p>임진왜란 때 다대진성 전투에서 순절한 문신. 1592년 다대진 첨절제사에 임명됨. 왜군이 부산진성 함락 후 다대진성을 공격하자, 동생 윤흥제와 함께 싸우다 순절함.</p>
+          </div></div>
+        <div class="swiper-slide"><div><img src="./images_sub/임란 동래 24공신.jpg">
+          </div>
+          <div>
+            <p>임산 동래 24공신</p>
+            <p>? ~ 임란이후</p>
+            <p>임진왜란 때 전국에서 왜군과 싸우다가 전사한 동래부민 24명. 임진왜란 때 동래읍성이 함락된 후 동래부민들은 고향을 떠나 전국 각지에서 봉기하고 있던 의병에 참가하여 항전함.</p>
+          </div></div>
+        <div class="swiper-slide"><div><img src="./images_sub/수영25의용.jpg">
+          </div>
+          <div>
+            <p>수영25의 용</p>
+            <p>? ~ 임란이후</p>
+            <p>임진왜란 때 좌수영성에서 왜군에 저항한 25인. 임진왜란 때 좌수영의 수군과 성민 25인은 죽기를 각오하고 유격전으로 왜군에 대항하다가 순절함.</p>
+          </div></div>
+        <div class="swiper-slide"><div><img src="./images_sub/사명대사.jpg">
+          </div>
+          <div>
+            <p>사명대사</p>
+            <p>1554 ~ 1610년</p>
+            <p>조선 중기 승려로 법명은 유정(惟政)임. 임진왜란 당시 부산에서 활동하였는데, 부산진성을 수축하는데 일조함. 1604년 일본과의 외교 담판으로 3,000여명의 포로와 함께 귀국함.</p>
+          </div></div>
+        <div class="swiper-slide"><div><img src="./images_sub/박인로.jpg">
+          </div>
+          <div>
+            <p>박인로</p>
+            <p>1561 ~ 1642년</p>
+            <p>조선 후기 경상좌수영 통주사를 지낸 무신. 임진왜란 때 의병 활동 전개함. 정유재란이 끝난 뒤에도 우리나라 바다에서 철수하지 않은 왜군을 격퇴함.</p>
+          </div></div>
+        <div class="swiper-slide"><div><img src="./images_sub/안용복.jpg">
+          </div>
+          <div>
+            <p>안용복</p>
+            <p>? ~ ?</p>
+            <p>조선 후기에 울릉도와 독도를 수호한 어부. 1693년과 1696년 두 차례에 걸쳐 일본으로 건너가 울릉도와 독도가 조선 땅임을 자인하도록 활약함.</p>
+          </div></div>
+          <div class="swiper-slide"><div><img src="./images_sub/이안눌.jpg">
+          </div>
+          <div>
+            <p>이안눌</p>
+            <p>1571 ~ 1637년</p>
+            <p>조선 후기 동래부사를 지낸 문신. 1608년에 동래부사로 임명됨. 동래부사 재임 시 임진왜란으로 폐허가 된 부산지역을 복구하고 민심을 다독이는 데 힘씀.</p>
+          </div></div>
+        <div class="swiper-slide"><div><img src="./images_sub/조엄.jpg">
+          </div>
+          <div>
+            <p>조엄</p>
+            <p>1719 ~ 1777년</p>
+            <p>조선 후기 동래부사를 지낸 문신. 1757년에 동래부사로 부임하여 대일 외교와 무역 과정에서 발생한 폐단을 바로잡음. 1763년 통신사로 일본에 다녀오면서 고구마를 가져와 재배토록 함.</p>
+          </div></div>
+        <div class="swiper-slide"><div><img src="./images_sub/강필리.jpg">
+          </div>
+          <div>
+            <p>강필리</p>
+            <p>1713 ~ 1767년</p>
+            <p>조선 후기 동래부사를 지낸 문신. 1764년 동래부사로 부임하여 처음으로 고구마 재배에 성공하고 고구마 재배를 권장하기 위해 『감저보』를 저술함. 동래온천을 대대적으로 개축‧증축함.</p>
+          </div></div>
+        <div class="swiper-slide"><div><img src="./images_sub/정현덕.jpg">
+          </div>
+          <div>
+            <p>정현덕</p>
+            <p>1551 ~ 1592년</p>
+            <p>조선 후기 동래부사를 지낸 문신. 1867년에 동래부사로 부임하여 동래읍성을 개축하고 관아의 대문인 독진대아문을 중수함. 군사 훈련 등 유사시를 위한 대비도 철저히 함.</p>
+          </div></div>
+   
+        
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+  </section> <!-- tablet_character -->
+
+  <section class="character">
+
+    <div class="character_information">
+      <div><img src="./images_sub/송상현_s.jpg"></div>
+      <p><span style="font-weight:bold; font-size: 21px;">송상현</span>&nbsp;&nbsp;&nbsp;1551~1592</p>
+      <i class="fa-solid fa-angle-up"></i>
+      <i class="fa-solid fa-angle-down"></i>
+    </div>
+
+    <div class="character_information_toggle">
+      <div><img src="./images_sub/송상현.jpg"></div>
+      <div><p>임진왜란 때 동래읍성 전투에서 순절한 문신. 임진왜란 8개월 전인 1591년 8월 동래부사로 임명됨. 임진왜란 당시 동래읍성에서 왜군의 공격에 끝까지 항전하다가 순절함.</p></div>
+    </div>
+
+  </section>
+
+  <!-- <section class="character">
+
+    <div class="character_information">
+      <div><img src="./images_sub/노개방_s.jpg"></div>
+      <p><span style="font-weight:bold; font-size: 21px;">노개방</span>&nbsp;&nbsp;&nbsp;1563~1592</p>
+      <i class="fa-solid fa-angle-up"></i>
+      <i class="fa-solid fa-angle-down"></i>
+    </div>
+
+    <div class="character_information_toggle">
+      <div><img src="./images_sub/노개방.jpg"></div>
+      <div><p>임진왜란 때 동래읍성 전투에서 순절한 문신. 1588년 과거 급제 후 동래부 교수(敎授) 근무함. 임진왜란 당시 동래읍성 정원루에서 왜군과 항거하다가 동래부사 송상현 등과 함께 순절함.</p></div>
+    </div>
+
+  </section>
+  
+  <section class="character">
+
+    <div class="character_information">
+      <div><img src="./images_sub/조영규_s.jpg"></div>
+      <p><span style="font-weight:bold; font-size: 21px;">조영규</span>&nbsp;&nbsp;&nbsp;1535~1592</p>
+      <i class="fa-solid fa-angle-up"></i>
+      <i class="fa-solid fa-angle-down"></i>
+    </div>
+
+    <div class="character_information_toggle">
+      <div><img src="./images_sub/조영규.jpg"></div>
+      <div><p>임진왜란 때 동래읍성 전투에서 순절한 무신. 1592년 양산군수로 있을 때 왜군이 부산을 진격한다는 소식을 듣고 곧장 달려가 동래부사 송상현과 동래읍성에서 항전하다가 순절함. </p></div>
+    </div>
+
+  </section>
+
+  <section class="character">
+
+    <div class="character_information">
+      <div><img src="./images_sub/정발_s.jpg"></div>
+      <p><span style="font-weight:bold; font-size: 21px;">정발</span>&nbsp;&nbsp;&nbsp;1553~1592</p>
+      <i class="fa-solid fa-angle-up"></i>
+      <i class="fa-solid fa-angle-down"></i>
+    </div>
+
+    <div class="character_information_toggle">
+      <div><img src="./images_sub/정발.jpg"></div>
+      <div><p>임진왜란 때 부산진성 전투에서 순절한 무신. 1577년 무과에 급제하였고, 1592년 부산진성의 사령관격인 부산진첨절제사로 임명됨. 왜군이 부산진성을 공격하자 군‧관‧민을 독려하여 끝까지 싸우다 순절함.</p></div>
+    </div>
+
+  </section>
+
+  <section class="character">
+
+    <div class="character_information">
+      <div><img src="./images_sub/이정현_s.jpg"></div>
+      <p><span style="font-weight:bold; font-size: 21px;"> 이정헌</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;? ~ 1592</p>
+      <i class="fa-solid fa-angle-up"></i>
+      <i class="fa-solid fa-angle-down"></i>
+    </div>
+
+    <div class="character_information_toggle">
+      <div><img src="./images_sub/이정현.jpg"></div>
+      <div><p>임진왜란 때 부산진성 전투에서 순절한 무신. 1591년 무과에 급한 후 정발을 도와 적의 침입을 방어하는 장수(조방장)가 됨. 왜군이 부산진성을 공격하자 정발과 함께 항전하다가 순절함.</p></div>
+    </div>
+
+  </section>
+
+  <section class="character">
+
+    <div class="character_information">
+      <div><img src="./images_sub/윤흥신_s.jpg"></div>
+      <p><span style="font-weight:bold; font-size: 21px;">윤흥신</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;? ~ 1592</p>
+      <i class="fa-solid fa-angle-up"></i>
+      <i class="fa-solid fa-angle-down"></i>
+    </div>
+
+    <div class="character_information_toggle">
+      <div><img src="./images_sub/윤흥신.jpg"></div>
+      <div><p>임진왜란 때 다대진성 전투에서 순절한 문신. 1592년 다대진 첨절제사에 임명됨. 왜군이 부산진성 함락 후 다대진성을 공격하자, 동생 윤흥제와 함께 싸우다 순절함.</p></div>
+    </div>
+
+  </section>
+
+  <section class="character">
+
+    <div class="character_information">
+      <div style="margin-right: -10px;"><img src="./images_sub/임란 동래 24공신_s.jpg"></div>
+      <p><span style="font-weight:bold; font-size: 18px;margin-right: -18px; float: left; line-height: 25px; text-align: center; margin-left: 30px;">임란 동래<br>
+24공신</span>&nbsp;&nbsp;&nbsp;<span style="font-size: 20px; margin-left: 20px;">?~임란이후</span></p>
+      <i class="fa-solid fa-angle-up"></i>
+      <i class="fa-solid fa-angle-down"></i>
+    </div>
+
+    <div class="character_information_toggle">
+      <div><img src="./images_sub/임란 동래 24공신.jpg"></div>
+      <div><p>	임진왜란 때 전국에서 왜군과 싸우다가 전사한 동래부민 24명. 임진왜란 때 동래읍성이 함락된 후 동래부민들은 고향을 떠나 전국 각지에서 봉기하고 있던 의병에 참가하여 항전함.</p></div>
+    </div>
+
+  </section>
+
+  <section class="character">
+
+    <div class="character_information">
+      <div><img src="./images_sub/수영25의 용_s.jpg"></div>
+      <p><span style="font-weight:bold; font-size: 24px;margin-right: -10px;">수영25의 용</span>&nbsp;&nbsp;&nbsp;<span style="font-size: 18px;">?~임란이후</span></p>
+      <i class="fa-solid fa-angle-up"></i>
+      <i class="fa-solid fa-angle-down"></i>
+    </div>
+
+    <div class="character_information_toggle">
+      <div><img src="./images_sub/수영25의용.jpg"></div>
+      <div><p>임진왜란 때 좌수영성에서 왜군에 저항한 25인. 임진왜란 때 좌수영의 수군과 성민 25인은 죽기를 각오하고 유격전으로 왜군에 대항하다가 순절함.</p></div>
+    </div>
+
+  </section>
+  
+  <section class="character">
+
+    <div class="character_information">
+      <div><img src="./images_sub/사명대사_s.jpg"></div>
+      <p><span style="font-weight:bold; font-size: 21px;margin-right: -10px;">사명대사</span>&nbsp;&nbsp;&nbsp;1544~1610</p>
+      <i class="fa-solid fa-angle-up"></i>
+      <i class="fa-solid fa-angle-down"></i>
+    </div>
+
+    <div class="character_information_toggle">
+      <div><img src="./images_sub/사명대사.jpg"></div>
+      <div><p>조선 중기 승려로 법명은 유정(惟政)임. 임진왜란 당시 부산에서 활동하였는데, 부산진성을 수축하는데 일조함. 1604년 일본과의 외교 담판으로 3,000여명의 포로와 함께 귀국함.</p></div>
+    </div>
+
+  </section>
+  
+  <section class="character">
+
+    <div class="character_information">
+      <div><img src="./images_sub/박인로_s.jpg"></div>
+      <p><span style="font-weight:bold; font-size: 21px;margin-right: -10px;">박인로</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1561~1642</p>
+      <i class="fa-solid fa-angle-up"></i>
+      <i class="fa-solid fa-angle-down"></i>
+    </div>
+
+    <div class="character_information_toggle">
+      <div><img src="./images_sub/박인로.jpg"></div>
+      <div><p>조선 후기 경상좌수영 통주사를 지낸 무신. 임진왜란 때 의병 활동 전개함. 정유재란이 끝난 뒤에도 우리나라 바다에서 철수하지 않은 왜군을 격퇴함.</p></div>
+    </div>
+
+  </section>
+  
+  <section class="character">
+
+    <div class="character_information">
+      <div><img src="./images_sub/안용복_s.jpg"></div>
+      <p><span style="font-weight:bold; font-size: 21px;margin-right:30px;">안용복</span>&nbsp;&nbsp;&nbsp;?~?</p>
+      <i class="fa-solid fa-angle-up"></i>
+      <i class="fa-solid fa-angle-down"></i>
+    </div>
+
+    <div class="character_information_toggle">
+      <div><img src="./images_sub/안용복.jpg"></div>
+      <div><p>조선 후기에 울릉도와 독도를 수호한 어부. 1693년과 1696년 두 차례에 걸쳐 일본으로 건너가 울릉도와 독도가 조선 땅임을 자인하도록 활약함.</p></div>
+    </div>
+
+  </section>
+  
+  <section class="character">
+
+    <div class="character_information">
+      <div><img src="./images_sub/이안눌_s.jpg"></div>
+      <p><span style="font-weight:bold; font-size: 21px;margin-right:20px;margin-left: 10px;">이안눌</span>&nbsp;&nbsp;1571~1637</p>
+      <i class="fa-solid fa-angle-up"></i>
+      <i class="fa-solid fa-angle-down"></i>
+    </div>
+
+    <div class="character_information_toggle">
+      <div><img src="./images_sub/이안눌.jpg"></div>
+      <div><p>조선 후기 동래부사를 지낸 문신. 1608년에 동래부사로 임명됨. 동래부사 재임 시 임진왜란으로 폐허가 된 부산지역을 복구하고 민심을 다독이는 데 힘씀.</p></div>
+    </div>
+
+  </section>
+  
+  <section class="character">
+
+    <div class="character_information">
+      <div><img src="./images_sub/조엄_s.jpg"></div>
+      <p><span style="font-weight:bold; font-size: 21px;margin-right:30px;">조엄</span>&nbsp;&nbsp;&nbsp;1719~1777</p>
+      <i class="fa-solid fa-angle-up"></i>
+      <i class="fa-solid fa-angle-down"></i>
+    </div>
+
+    <div class="character_information_toggle">
+      <div><img src="./images_sub/조엄.jpg"></div>
+      <div><p>조선 후기 동래부사를 지낸 문신. 1757년에 동래부사로 부임하여 대일 외교와 무역 과정에서 발생한 폐단을 바로잡음. 1763년 통신사로 일본에 다녀오면서 고구마를 가져와 재배토록 함.</p></div>
+    </div>
+
+  </section>
+  
+  <section class="character">
+
+    <div class="character_information">
+      <div><img src="./images_sub/강필리_s.jpg"></div>
+      <p><span style="font-weight:bold; font-size: 21px;margin-right:30px;">강필리</span>&nbsp;&nbsp;&nbsp;1713~1767</p>
+      <i class="fa-solid fa-angle-up"></i>
+      <i class="fa-solid fa-angle-down"></i>
+    </div>
+
+    <div class="character_information_toggle">
+      <div><img src="./images_sub/강필리.jpg"></div>
+      <div><p>조선 후기 동래부사를 지낸 문신. 1764년 동래부사로 부임하여 처음으로 고구마 재배에 성공하고 고구마 재배를 권장하기 위해 『감저보』를 저술함. 동래온천을 대대적으로 개축‧증축함. </p></div>
+    </div>
+
+  
+  
+  <section class="character">
+
+    <div class="character_information">
+      <div><img src="./images_sub/정현덕_s.jpg"></div>
+      <p><span style="font-weight:bold; font-size: 21px;margin-right:20px;">정현덕</span>&nbsp;&nbsp;&nbsp;1810~1883</p>
+      <i class="fa-solid fa-angle-up"></i>
+      <i class="fa-solid fa-angle-down"></i>
+    </div>
+
+    <div class="character_information_toggle">
+      <div><img src="./images_sub/정현덕.jpg"></div>
+      <div><p>조선 후기 동래부사를 지낸 문신. 1867년에 동래부사로 부임하여 동래읍성을 개축하고 관아의 대문인 독진대아문을 중수함. 군사 훈련 등 유사시를 위한 대비도 철저히 함.</p></div>
+    </div>
+
+  </section> -->
+
+  <section class="e-book_text">
+    <p>* 부산의 인물은 『부산을 빛낸 인물』 (전3권, 2001년~2003년) 수록 인물을 분야별로 재정리함.</p>
+    <p>** 부산의 인물에 관한 자세한 것은 부산소개 > 부산의 역사 > 향토사도서관을 이용하세요.</p>
+    <div>부산을 빛낸 인물 E-book 보기</div>
+  </section>
+
+  <section class="data_management_manager">
+    <p>자료관리 담당</p>
+
+    <div>
+    <p>문화유산과</p>
+    <p>이연심 (051-888-5058)</p>
+    </div>
+
+    <div>
+    <p>최근 업데이트</p>
+    <p>2021-08-20</p>
+    </div>
+
+  </section>
+
+  <section class="how_much_satisfy">
+    <p>이 페이지에서 제공하는 정보에 만족하십니까?</p>
+    <p>평균:5점 참여:2명</p>
+  </section>
+
+  <section class="satisfy_answer">
+
+      <ul>
+        <li><input type="radio" id="answer1" name="satisfy"><p>매우만족</p></li>
+        <li><input type="radio" id="answer1" name="satisfy"><p>만족</p></li>
+        <li> <input type="radio" id="answer1" name="satisfy"><p>보통</p></li>
+        <li> <input type="radio" id="answer1" name="satisfy"><p>불만</p></li>
+        <li> <input type="radio" id="answer1" name="satisfy"><p>매우불만</p></li>
+      </ul>
+
+      <div class="give_point">평점주기</div>
+  </section>
+
+  <section class="minwon_120">
+    <p>댓글은 자유로운 의견 공유를 위한 장이므로 부산시에 대한 신고, 제안, 건의 등 답변이나 개선이 필요한 사항에 대해서는
+부산민원 120 - 민원신청새창열림 아이콘 을 이용해 주시고, 내용 입력시 주민등록번호, 연락처 등 개인정보가 노출되지 않도록 주의하여 주시기 바랍니다.</p>
+    <p>상업광고, 저속한 표현, 정치적 내용, 개인정보 노출 등은 별도의 통보없이 삭제될 수 있습니다.</p>
+
+  </section>
+
+  <section class="sns_icon_list">
+    <div><img src="./images_main/sns01.png"></div>
+    <div><img src="./images_main/sns02.png"></div>
+    <div><img src="./images_main/sns03.png"></div>
+    <div><img src="./images_main/sns04.png"></div>
+    <div><img src="./images_main/sns07.jpg"></div>
+  </section>
+
+  <section class="comment_register">
+    <p>이름 : </p>
+    <input type="text" placeholder="홍길동" class="user_name_input">
+    <input type="text" placeholder="댓글을 입력해 주세요." class="user_comment_input">
+    <div>
+
+      <i class="fa-regular fa-face-smile"></i>
+      <input type="button" class="register_comment" value="등록">
+
+    </div>
+  
+
+  <section class="comment_how_list">
+    <div class="comment_number">
+      <p>댓글 2</p>
+      <p>최신순</p>
+      <p>과거순</p>
+      <p>공감순</p>
+    </div>
+
+    <div class="comment_list copy_comment">
+
+      <div>
+        <p class="new_make_name name_background">철수</p>
+      </div>
+
+      <div>
+
+        <div>
+          <img src="./images_main/sns03.png">
+          <p class="new_make_name">김철수</p>
+          <p class="comment_delete_btn">X</p>
+        </div>
+
+        <p class="new_make_comment">자료 감사합니다.</p>
+        
+        <div>
+
+        <p>답글</p>
+        <p>0</p>
+        <i class="fa-regular fa-heart"></i>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="comment_list">
+
+      <div>
+        <p style="background-color: deepskyblue;">준서</p>
+      </div>
+
+      <div>
+
+        <div>
+          <img src="./images_main/sns02.png">
+          <p>이준서</p>
+        </div>
+
+        <p>제가 찾던 정보예요</p>
+        
+        <div>
+
+        <p>답글</p>
+        <p>0</p>
+        <i class="fa-regular fa-heart"></i>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>  <!-- comment_how_list -->
+
+</section> <!-- comment_register -->
+  
+
+</section>
+
+  </section>
+
+
+  <p class="suggestion">
+    시청관련 건의사항 또는 답변을 원하는 사항은 <span style="text-decoration: underline;">부산민원 120 민원신청</span> 을 이용하여 주세요.
+  </p>
+
+  <section class="footer">
+
+    <ul class="site_inform">
+
+     
+     
+        <li class="business_site">
+          <p>사업소 사이트</p>
+          <i class="fa-solid fa-chevron-up"></i><i class="fa-solid fa-chevron-down"></i>
+          <ul>
+            <li>건설본부</li>
+            <li>건설안전시험사업소</li>
+            <li>국제수산물유통시설관리사업소</li>
+            <li>금련산청소년수련원</li>
+            <li>교통서비스센터</li>
+            <li>낙동강관리본부</li>
+            <li>낙동강하구에코센터</li>
+            <li>남항관리사업소</li>
+            <li>농업기술센터</li>
+            <li>반여농산물도매시장관리사업소</li>
+            <li>보건환경연구원</li>
+            <li>부산근현대역사관</li>
+            <li>부산도서관</li>
+            <li>부산시립박물관</li>
+          </ul>
+        </li>
+      
+
+      
+        <li class="related_site">
+          <p>관련 사이트</p>
+          <i class="fa-solid fa-chevron-up"></i><i class="fa-solid fa-chevron-down"></i>
+          <ul>
+            <li>국제자매도시</li>
+            <li>부산소재 공공기관</li>
+            <li>부산광역시의회</li>
+            <li>시 관련 홈페이지</li>
+            <li>시·도 홈페이지</li>
+            <li>유관기관 및 타기관</li>
+            <li>자치구·군</li>
+            <li>자치구·군 의회</li>
+            <li>지방공기업</li>
+            <li>출자·출연기관</li>
+          </ul>
+        </li>
+    </ul> <!-- site_inform-->
+
+    <section class="footer_menu">
+      <div>약관</div>
+      <div>홈페이지 저작권 보호정책</div>
+      <div>개인정보 처리방침</div>
+      <div>행정서비스현장</div>
+      <div>뷰어다운로드</div>
+      <div>홈페이지 모니터</div>
+    </section>
+  </section>
+
+  <section class="busan_logo">
+    <img src="./images_main/부산광역시.png">
+  </section>
+
+  <section class="footer_address">
+    <div>(우 47545) 부산광역시 연제구 중앙대로 1001(연산동)</div>
+    <div class="address_inform">
+      <p>시청 찾아오시는길</p>
+      <p>주차안내</p>
+      <p>이용안내</p>
+    </div>
+    <div>본 홈페이지에 게시된 이메일 주소가 자동 수집되는 것을 거부하며,이를 위반시 개인정보 보호법에 의해 처벌됨을 유념하시기 바랍니다.</div>
+    <div>Copyright © Busan Metropolitan City. All rights reserved.</div>
+  </section>
+
+  <section class="footer_sns_icon">
+    <img src="./images_main/sns01.png">
+    <img src="./images_main/sns02.png">
+    <img src="./images_main/sns03.png">
+    <img src="./images_main/sns04.png">
+    <img src="./images_main/sns05.jpg">
+    <img src="./images_main/sns06.png">
+    <img src="./images_main/sns07.jpg">
+    <img src="./images_main/sns08.png">
+  </section>
+
+  <section class="calling">
+    <div>
+      <p>부산시 120 콜센터</p>
+      <p>(지역번호 051)</p>
+    </div>
+    <div>051-120</div>
+    <div>평일 08:30 ~ 18:30 야간․공휴일 당직실 전환</div>
+    <div><img src="./images_main/footer_wa.png"></div>
+  </section>
+
+  <div class="top_button">
+    <a href="#top_button_teleport">
+    <div><img src="./images_main/top_btn_line.png"></div>
+    <div>TOP</div>
+    </a>
+  </div>
+
+</body>

@@ -1,0 +1,3923 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>부산광역시</title>
+  <script src="https://kit.fontawesome.com/eae775b921.js"></script>
+  <script src="./js/jquery-3.6.1.min.js"></script>
+  
+  <script src="./js/slick.min.js"></script> 
+  <script src="./js/slick.js"></script>
+  <link rel="stylesheet" href="./css/slick-theme.css">
+  <link rel="stylesheet" href="./css/slick.css">
+  <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  
+  
+  <script src="./js/jquery.scrollTo.min.js"></script>
+
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+</head>
+<script>
+
+    $(function(){
+  
+       var swiper = new Swiper(".mySwiper", {
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+          601: {
+            slidesPerView : 2,
+            spaceBetween: 30
+          },
+          769: {
+            slidesPerView : 3,
+            spaceBetween: 20
+          }
+        }
+      });
+        
+      $('.icon_menu_slider_list').slick();
+      $('.icon_menu_slider_list_for_tablet').slick();
+
+      
+      const btnOpen = $('.menu_list_right div ul li div')
+      btnOpen.click(function(){
+          $(this).find('.fa-plus').toggle();
+          $(this).find('.fa-minus').toggle();
+          $(this).next().toggle('300');
+          
+        });
+      
+        const header = $('header');
+        let menu = $('.menu_bar');
+        let language = $('.language');
+        let language_p = $('.language p');
+        let language_i = $('.language i');
+        let header_click_menu = $('.for_shadow');
+        let header_click_menu_state = false;
+        let top_btn = $('.top_button')
+
+        
+      $(window).scroll(function(){
+
+        if($(window).scrollTop() >= 45) {
+          if (window.matchMedia("all and (min-width: 321px) and (max-width: 768px)").matches) 
+           {
+           header.addClass('header_css');
+           menu.addClass('mousewheelColor');
+           language_p.addClass('mousewheelColor');
+           language_i.addClass('mousewheelColor');
+          top_btn.css('display','block');
+           }
+          if(window.matchMedia("all and (min-width: 769px)").matches) {
+          
+            language_p.addClass('mousewheelColor');
+            language_i.addClass('mousewheelColor');
+            $('.language_circle_black').css('display','block')
+            $('.language_circle_white').css('display','none')
+
+          }
+        }
+      
+        else if($(window).scrollTop() < 45 || $(window).scrollTop() == 0) {
+          if (window.matchMedia("all and (min-width: 321px) and (max-width: 768px)").matches) {
+          header.removeClass('header_css');
+          menu.removeClass('mousewheelColor');
+          language_p.removeClass('mousewheelColor');
+          language_i.removeClass('mousewheelColor');
+          top_btn.css('display','none');
+          }
+
+           if(window.matchMedia("all and (min-width: 769px)").matches) {
+            language_p.removeClass('mousewheelColor');
+           language_i.removeClass('mousewheelColor');
+            $('.language_circle_black').css('display','none')
+            $('.language_circle_white').css('display','block')
+
+          }
+      }
+      })
+    
+      menu.click(function(){
+        if(!header_click_menu_state){
+        header_click_menu.animate({left:0},'slow')
+        header.addClass('header_css');
+        menu.addClass('mousewheelColor');
+        language.addClass('mousewheelColor');
+        $('i.fa-bars').fadeOut();
+        $('i.fa-xmark').delay(500).fadeIn(500);
+        return header_click_menu_state = true;
+        }
+
+        if(header_click_menu_state) {
+        header_click_menu.animate({left:'100vw'},'slow')
+
+        if($(window).scrollTop() < 45)
+        {
+          header.removeClass('header_css');
+          menu.removeClass('mousewheelColor');
+          language.removeClass('mousewheelColor');
+        }
+
+        $('i.fa-bars').delay(500).fadeIn(500);
+        $('i.fa-xmark').fadeOut();
+        return header_click_menu_state = false;
+        }
+      })
+
+    
+      let inform_menu = $('.inform_menu ul li'); //주요서비스 메뉴
+      // let fade_list = $('.inform_menu_icon div.inform_slide_down_menu') //주요서비스 하단 메뉴
+      let fade_list = $('.inform_menu_icon > div') //주요서비스 하단 메뉴
+      let state = false;
+
+      let AA = false;
+      let BB = false;
+      let CC = false;
+      let slide_down_first = fade_list.eq(0);
+      let slide_down_second = fade_list.eq(1);
+      let slide_down_third = fade_list.eq(2);
+
+      let inform_menu_a = inform_menu.eq(0);
+      let inform_menu_b = inform_menu.eq(1);
+      let inform_menu_c = inform_menu.eq(2);
+
+      let AAA = function() {
+        AA = true;
+        BB = false;
+        CC = false;
+      }
+      let BBB = function() {
+        AA = false;
+        BB = true;
+        CC = false;
+      }
+      let CCC = function() {
+        AA = false;
+        BB = false;
+        CC = true;
+      }
+      
+      inform_menu_a.click(function(){
+        if( (!AA && !BB && !CC)||(!AA && BB && !CC)||(!AA && !BB && CC) )
+        {
+        inform_menu_a.addClass('inform_menu_click_css')
+        inform_menu_b.removeClass('inform_menu_click_css')
+        inform_menu_c.removeClass('inform_menu_click_css')
+        slide_down_first.addClass('for_border_bottom_css');
+        slide_down_second.removeClass('for_border_bottom_css');
+        slide_down_third.removeClass('for_border_bottom_css');
+        slide_down_second.animate({height:0},300)
+        slide_down_third.animate({height:0},300)
+
+        if (window.matchMedia("all and (min-width: 321px) and (max-width: 600px)").matches) {
+          slide_down_first.delay(200).animate({height:400},300)
+        }
+        if (window.matchMedia("all and (min-width: 601px) and (max-width: 768px)").matches) {
+          slide_down_first.animate({height:230},300)
+        }
+        if (window.matchMedia("all and (min-width: 769px)").matches) {
+          slide_down_first.animate({height:120},300)
+        }
+        return AAA()
+        }
+        if( (AA && !BB && !CC) ) {
+        inform_menu_a.removeClass('inform_menu_click_css')
+        slide_down_first.removeClass('for_border_bottom_css');
+        slide_down_first.animate({height:0},300)
+        return AA = false;
+        }
+      })
+
+      inform_menu_b.click(function(){
+        if((!AA && !BB && !CC)||(AA && !BB && !CC)||(!AA && !BB && CC)){
+          inform_menu_b.addClass('inform_menu_click_css')
+          inform_menu_a.removeClass('inform_menu_click_css')
+          inform_menu_c.removeClass('inform_menu_click_css')
+          slide_down_second.addClass('for_border_bottom_css');
+
+
+          // slide_down_second.delay(200).animate
+          // ({height:400},300)
+          slide_down_first.removeClass('for_border_bottom_css');
+          slide_down_third.removeClass('for_border_bottom_css');
+          slide_down_first.animate({height:0},300)
+          slide_down_third.animate({height:0},300)
+          if (window.matchMedia("all and (min-width: 321px) and (max-width: 600px)").matches) {
+          slide_down_second.delay(200).animate({height:400},300)
+        }
+        if (window.matchMedia("all and (min-width: 601px) and (max-width: 768px)").matches) {
+          slide_down_second.animate({height:230},300)
+        }
+        if (window.matchMedia("all and (min-width: 769px)").matches) {
+          slide_down_second.animate({height:120},300)
+        }
+          return BBB()
+          // slide_down_second.delay(200).animate
+          // ({height:230},300)
+        }
+        if(!AA && BB && !CC) {
+        inform_menu_b.removeClass('inform_menu_click_css')
+        slide_down_second.removeClass('for_border_bottom_css');
+        slide_down_second.animate({height:0},300)
+        return BB = false;
+        }
+      })
+      inform_menu_c.click(function(){
+        if((!AA && !BB && !CC)||(AA && !BB && !CC)||(!AA && BB && !CC)){
+          inform_menu_c.addClass('inform_menu_click_css')
+          inform_menu_a.removeClass('inform_menu_click_css')
+          inform_menu_b.removeClass('inform_menu_click_css')
+
+          slide_down_third.addClass('for_border_bottom_css');
+          // slide_down_third.delay(200).animate({height:400},300)
+          // slide_down_third.delay(200).animate({height:230},300) 
+          slide_down_first.removeClass('for_border_bottom_css');
+          slide_down_second.removeClass('for_border_bottom_css');
+          slide_down_first.animate({height:0},300)
+          slide_down_second.animate({height:0},300)
+          if (window.matchMedia("all and (min-width: 321px) and (max-width: 600px)").matches) {
+          slide_down_third.delay(200).animate({height:400},300)
+        }
+        if (window.matchMedia("all and (min-width: 601px) and (max-width: 768px)").matches) {
+          slide_down_third.animate({height:230},300)
+        }
+        if (window.matchMedia("all and (min-width: 769px)").matches) {
+          slide_down_third.animate({height:120},300)
+        }
+        return CCC()
+        }
+        if(!AA && !BB && CC) {
+        inform_menu_c.removeClass('inform_menu_click_css')
+        slide_down_third.removeClass('for_border_bottom_css');
+        slide_down_third.animate({height:0},300)
+        return CC = false;
+        }
+      })
+
+      
+       var swiper = new Swiper(".mySwiper2", {
+        pagination: {
+          el: ".swiper-pagination",
+          type: "fraction",
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+         breakpoints: {
+          601: {
+            slidesPerView : 2,
+            spaceBetween: 30
+          }
+        }
+    
+      });
+
+       var swiper = new Swiper(".mySwiper6", {
+        pagination: {
+          el: ".swiper-pagination",
+          type: "fraction",
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: "auto",
+        coverflowEffect: {
+        rotate: 50,
+          stretch: -50,
+          depth: 100,
+          modifier: 1,
+          slideShadows: true,
+        },
+    
+      });
+
+
+
+      var swiper = new Swiper(".mySwiper3", {
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+          renderBullet: function (index, className) {
+            return '<span class="' + className + '">' + (index + 1) + "</span>";
+          },
+        },
+        breakpoints: {
+          601: {
+            slidesPerView : 2,
+            spaceBetween: 30
+          },
+          769: {
+            slidesPerView : 3,
+            spaceBetween: 30
+          }
+        }
+      });
+
+
+
+       if (window.matchMedia("all and (min-width: 321px) and (max-width: 600px)").matches){
+
+
+          var swiper = new Swiper(".mySwiper4", {
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+
+    }
+
+
+
+
+
+
+       var swiper = new Swiper(".mySwiper5", {
+        pagination: {
+          el: ".swiper-pagination",
+        },
+        breakpoints: {
+          601: {
+            slidesPerView : 2,
+            spaceBetween: 30
+          }
+        }
+      
+      });
+
+       
+        if (window.matchMedia("all and (min-width: 321px) and (max-width: 768px)").matches) {
+          
+          var swiper = new Swiper(".mySwiper7", {
+           pagination: {
+             el: ".swiper-pagination",
+             clickable : true,
+             type : 'bullets'
+           },
+           spaceBetween : 30,
+           breakpoints: {
+             601: {
+               slidesPerView : 2,
+               spaceBetween : 30
+             }
+           }
+         });
+
+        }
+
+
+
+
+
+        if (window.matchMedia("all and (min-width: 601px) and (max-width: 1280px)").matches) {
+          document.querySelector('.banner_slider .swiper').classList.remove('swiper','mySwiper4')
+          document.querySelector('.banner_slider .swiper-wrapper').classList.remove('swiper-wrapper')
+        }
+  
+    
+
+
+      $('.header_menu > ul > li').mouseover
+      (function(){
+       
+        $('.header_menu_hover').delay(100).slideDown()
+
+          if (window.matchMedia("all and (min-width: 1281px)").matches) {
+            $('.for_1280px_header_background').css('backgroundColor','white')
+          }
+
+          header.addClass('header_css');
+          menu.addClass('mousewheelColor');
+          // language.addClass('mousewheelColor');
+          $('.header_menu ul li').css('color','rgb(51,51,51)')
+
+          $('.login img:nth-child(1)').css('display','none')
+          $('.login img:nth-child(2)').css('display','block')
+          $('.login p').css('color','rgb(51,51,51)')
+
+          $('.sign_up img:nth-child(1)').css('display','none')
+          $('.sign_up img:nth-child(2)').css('display','block')
+          $('.sign_up p').css('color','rgb(51,51,51')
+
+          $('.language img:nth-child(1)').css('display','none')
+          $('.language img:nth-child(2)').css('display','block')
+          $('.language p').css('color','rgb(51,51,51)')
+          $('.language i').css('color','rgb(51,51,51)')
+
+      })
+
+      $('.header_menu_hover > ul').mouseleave(function(){
+        $('.header_menu_hover').slideUp()
+
+          header.removeClass('header_css');
+          menu.removeClass('mousewheelColor');
+          // language.removeClass('mousewheelColor');
+          $('.header_menu ul li').css('color','white')
+          
+          $('.login img:nth-child(1)').css('display','block')
+          $('.login img:nth-child(2)').css('display','none')
+          $('.login p').css('color','white')
+
+          $('.sign_up img:nth-child(1)').css('display','block')
+          $('.sign_up img:nth-child(2)').css('display','none')
+          $('.sign_up p').css('color','white')
+
+          //  $('.language img:nth-child(1)').css('display','block')
+          // $('.language img:nth-child(2)').css('display','none')
+
+           $('.language img:nth-child(1)').css('display','block')
+          $('.language img:nth-child(2)').css('display','none')
+          $('.language p').css('color','white')
+          $('.language i').css('color','white')
+      })
+    
+    
+
+       $(window).scroll(function(){
+
+        if($(window).scrollTop() >= 45) {
+          // header.addClass('header_css');
+          $('.for_1280px_header_background').css('backgroundColor','white')
+          menu.addClass('mousewheelColor');
+          top_btn.css('display','block');
+          $('.header_menu ul li').css('color','rgb(51,51,51)')
+
+          $('.login img:nth-child(1)').css('display','none')
+          $('.login img:nth-child(2)').css('display','block')
+          $('.login p').css('color','rgb(51,51,51')
+
+          $('.sign_up img:nth-child(1)').css('display','none')
+          $('.sign_up img:nth-child(2)').css('display','block')
+          $('.sign_up p').css('color','rgb(51,51,51')
+
+        }
+      
+        else if($(window).scrollTop() < 45) 
+          // if (window.matchMedia("all and (min-width: 321px) and (max-width: 600px)").matches) 
+          {
+          // header.removeClass('header_css');
+          $('.for_1280px_header_background').css('backgroundColor','')
+          menu.removeClass('mousewheelColor');
+          top_btn.css('display','none');
+          $('.header_menu ul li').css('color','white')
+          
+          $('.login img:nth-child(1)').css('display','block')
+          $('.login img:nth-child(2)').css('display','none')
+          $('.login p').css('color','white')
+
+          $('.sign_up img:nth-child(1)').css('display','block')
+          $('.sign_up img:nth-child(2)').css('display','none')
+          $('.sign_up p').css('color','white')
+
+          }
+      
+      })
+
+      if (window.matchMedia("all and (min-width: 769px) ").matches) 
+          {
+
+
+        $('.communicate_list div:first-child').addClass('communicate_list_click_css').children('li').children('img').addClass('communicate_list_img_click_css')
+         $('.communicate_list div:first-child')
+        $('.communicate_list div').click(function(){
+          let number = $(this).index()+1
+       
+          $(this).toggleClass('communicate_list_click_css')
+          $(this).siblings().removeClass('communicate_list_click_css')
+
+          $(this).children('li').children('img').toggleClass('communicate_list_img_click_css')
+          $(this).siblings().children('li').children('img').removeClass('communicate_list_img_click_css')
+
+
+
+          $('.communicate_list_link').html(`<img src="./images_main/communicate_img_0${number}.jpg">`)
+        
+        })
+
+      }
+
+
+      $('.site_inform>li').click(function(){
+        $(this).children('ul').slideToggle()
+        $(this).children('i').toggleClass('footer_slide_menu_i_rotate')
+
+
+        $(this).siblings().children('ul').slideUp()
+        $(this).siblings().children('i').removeClass('footer_slide_menu_i_rotate')
+      })
+
+    });
+
+</script>
+
+<style>
+  .communicate_list_click_css {
+    background-color: rgb(229, 0, 72);
+    color: white;
+  }
+  .communicate_list_img_click_css {
+    display: none;
+  }
+
+  .footer_slide_menu_i_rotate {
+    transform: rotate(180deg);
+  }
+  *{margin: 0; padding: 0;}
+  li{list-style: none;}
+  body{width: 100vw;
+  overflow-x: hidden;}
+  a {
+    text-decoration: none;
+    color: #4b4b4b;
+  }
+
+  header {
+    width: 100vw;
+    height: 60px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 10000;
+  }
+  .for_padding {
+    width: 96%; 
+    margin: 0 auto;
+    height: 100%;
+  }
+  .logo {
+    width: 100px;
+    height: 35px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 5px;
+  }
+  .logo img {
+    width: 100%; height: 100%;
+  }
+  .menu_bar {
+    width: 30px;
+    height: 100%;
+    float: right;
+    color: white;
+  }
+  .menu_bar i {
+    font-size: 40px;
+    float: right;
+  }
+  .for_padding .menu_bar i:last-child {
+    display: none;
+  }
+
+  .language {
+    width: 60px;
+    height: 30px;
+    line-height: 45px;
+    float: right;
+    color: white;
+    margin-right: 5px;
+  }
+  .language img {
+    display: none;
+  }
+  .language p {
+    float: left;
+    margin-right: 7px;
+  }
+  .language i {
+    margin-top: 8px;
+  }
+  .mousewheelColor {
+    color: rgb(100, 100, 100)
+  }
+  .header_css {
+    background-color:white;
+  }
+ 
+
+
+  .search_icon {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 450px;
+    left: calc(50vw - 25px);
+    text-align: center;
+    line-height: 70px;
+    border-radius: 25px 25px;
+    background-color: white;
+    z-index: -1;
+  }
+  .for_shadow {
+    height: calc(100vh - 60px);
+    position: fixed;
+    left: 100vw;
+    top: 60px; 
+    background-color:rgb(245, 245, 245);
+    z-index: 1000;
+  }
+
+  .scroll_down_text {
+    width: 100px; height: 100px;
+    position: absolute;
+    top: 550px;
+    left: calc(50vw - 50px);
+    text-align: center;
+    color: white;
+  }
+  .scroll_down_animation { 
+     width: 2px;
+    height: 50px;
+    background-color: #ccc;
+    position: absolute;
+    left: calc(50vw - 1px);
+    animation-name: scroll;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    opacity: 1;
+    z-index: 1; 
+   }
+  @keyframes scroll {
+    0%{top:570px; opacity: 0;}
+    10%{top:570px; opacity: 0.2;}
+    15%{top:570px; opacity: 0.7;}
+    50%{opacity: 1;}
+    100%{top:630px; opacity: 0;}
+  }
+
+  .for_login-sign-up-background {
+    width: 100%;
+    height: 140px;
+    padding: 10px 10px;
+    background-color:white;
+    box-sizing: border-box;
+  }
+  .login-sign_up {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 162, 137
+    );
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 60px 5px 10px 5px;
+    box-sizing: border-box;
+  }
+  .login-sign_up div {
+    width: 48%; height: 27px;
+    font-weight: bold;
+    border-bottom: 2px solid white;
+    float: left;
+    color: white;
+  }
+  .login-sign_up div:first-child {
+    float: right;
+  }
+  .login-sign_up div i {
+    float: right;
+    font-size: 12px;
+    /* color: white; */
+    margin-top: 5px;
+  }
+  .menu_list {
+    width: 100vw;
+  }
+  .menu_list_left {
+    width: 120px; 
+    height: calc(100vh - 300px);
+    background-color: white;
+    float: left;
+    /* padding-top: 10px;
+    box-sizing: border-box; */
+    overflow: visible;
+    position: relative;
+    z-index: 100;
+  }
+  .menu_list_left ul li {
+    padding: 15px 10px;
+    font-size: 15px;
+  }
+  .menu_list_right {
+    width: calc(100vw - 120px);
+    height: calc(100vh - 300px);
+    float: right;
+    background-color: rgb(245, 245, 245);
+    box-sizing: border-box;
+    overflow-y: scroll;
+    z-index: 50;
+    position: relative;
+  }
+  .menu_list_right div>ul {
+    width: 95%;
+    margin: 0 auto;
+  }
+  .menu_list_right div>ul>li {
+    padding: 15px 10px 12px 10px;
+    overflow: hidden;
+    border-bottom: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 18px;
+  }
+  .menu_list_right div>ul>li i {
+    float: right;
+    margin-top: 2px;
+    color: #ccc;
+  }
+  .menu_list_right div ul li ul {
+    width: 100%;
+    background-color: rgb(248, 248, 248);
+    margin-top: 10px;
+    display: none;
+  }
+  .menu_list_right div ul li ul li {
+    list-style: disc;
+    color: rgb(75, 75, 75);
+    margin-left: 30px;
+    padding: 10px 0px;
+  }
+  .menu_list_right div ul li ul li::marker {
+    color:rgb(163, 163, 163);
+  }
+  .list_first, 
+  .list_second, .list_third, .list_fourth, .list_fifth 
+  {
+    display: none;
+  }
+   #radio1, #radio2, #radio3, #radio4, #radio5 {
+    display: none;
+  }
+  #radio1:checked ~.menu_list .menu_list_right .list_first {
+    display: block;
+  }
+  #radio1:checked ~.menu_list .menu_list_left ul label:nth-child(1) li, 
+  #radio2:checked ~.menu_list .menu_list_left ul label:nth-child(2) li, 
+  #radio3:checked ~.menu_list .menu_list_left ul label:nth-child(3) li,
+  #radio4:checked ~.menu_list .menu_list_left ul label:nth-child(4) li,
+  #radio5:checked ~.menu_list .menu_list_left ul label:nth-child(5) li {
+    width: 130px;
+    background-color: rgb(229, 0, 72);
+    border-radius: 0 40px 40px 0;
+    color: white;
+    padding-left: 20px;
+    box-sizing: border-box;
+    transition: 0.6s;
+  }
+  #radio2:checked ~.menu_list .menu_list_right .list_second {
+    display: block;
+  }
+  #radio3:checked ~.menu_list .menu_list_right .list_third {
+    display: block;
+  }
+  #radio4:checked ~.menu_list .menu_list_right .list_fourth {
+    display: block;
+  }
+  #radio5:checked ~.menu_list .menu_list_right .list_fifth {
+    display: block;
+  }
+  .fa-minus {
+    display: none;
+  }
+  video {
+  position: absolute;
+  top: 0px; left: 0px;
+  width: 100vw; height: 100vh;
+  min-height: 100vh;
+  z-index: -10;
+  object-fit: cover; 
+}
+  
+  .icon_menu .slider {
+    /* width: 90%; */
+    margin: 0 auto;
+    margin-top: calc(100vh + 30px);
+    height: 100px;
+    overflow: hidden;
+    /* background-color: yellow; */
+  }
+  .icon_menu_slider_list div {
+    /* border: 1px solid black; */
+    box-sizing: border-box;
+    height: 120px;
+    /* background-color: yellow; */
+    width: 78%;
+    margin: 0 auto;
+  }
+  .icon_menu_slider_list div img {
+    margin: 0 auto;
+  }
+  .icon_menu_slider_list div p {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .icon_menu .slider .slick-prev {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    margin-left: 8%;
+    margin-top: -10px;
+  }
+  .icon_menu .slider .slick-next {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    margin-right: 8%;
+    margin-top: -10px;
+  }
+  .icon_menu .slider .slick-prev:hover, .icon_menu .slider .slick-next:hover {
+    background-color: white
+  }
+  .icon_menu .slider .slick-arrow::before {
+    color: rgb(75, 75, 75);
+  }
+
+  .guide {
+    width: 100%;
+    height: 50px;
+    /* background-color: yellow; */
+    margin-top: 50px;
+  }
+  .guide div {
+    width: 100px;
+    height: 30px;
+    /* background-color: wheat; */
+    margin: 0 auto;
+    position: relative;
+  }
+  .guide div p {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+  }
+  .guide div img {
+    position: absolute;
+    top: -20px;
+    left: 30px;
+    width: 50px;
+    height: 30px;
+  }
+
+  .inform_menu {
+    width: 96%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+  }
+  .inform_menu ul {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+  .inform_menu ul li {
+    width: 32%;
+    height: 40px;
+    border-radius: 25px;
+    float: left;
+    font-size: 14px;
+    line-height: 40px;
+    padding-left: 20px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    overflow: hidden;
+    z-index: 10;
+    margin-bottom: 10px;
+  }
+  .inform_menu ul li:last-child {
+    width: 40%;
+  }
+  .inform_menu ul li i {
+    float: right;
+    margin-right: 5px;
+    line-height: 40px;
+    /* color: #ccc; */
+  }
+  .inform_menu_icon>div {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    background-color:white;
+    position: absolute;
+    top:41px;
+    z-index: 10;
+  }
+  .inform_menu_icon>div div {
+    width: 28%;
+    height: 100px;
+    /* background-color: tomato; */
+    text-align: center;
+    font-size: 12px;
+    margin-top: 10px;
+  }
+   .inform_menu_icon div div img {
+    width: 60px;
+    height: 60px;
+    transition: all 1s;
+    background-color:white;
+  } 
+   .inform_menu_icon div div img:hover {
+    transform: rotateY(360deg);
+  } 
+  .inform_menu_icon div div li img {
+    width: 100%;
+    height: 100%;
+  }
+  .inform_slide_down_menu {
+    height: 0;
+    overflow: hidden;
+  }
+  .for_border_bottom_css {
+  border-bottom: 2px solid black;
+  box-sizing: border-box;
+  }
+  .inform_menu_click_css {
+    background-color:rgb(229, 0, 72);
+    color: white;
+  }
+
+  .dynamicBusan {
+    width: 96%;
+    margin: 0 auto;
+    height: 100px;
+    margin-top: 30px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  .dynamicBusan .dynamicBusan_flex {
+    display: flex;
+    justify-content: space-between;
+  }
+  .dynamicBusan .dynamicBusan_flex>div{
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+  }
+  .dynamicBusan .dynamicBusan_flex>div div {
+    border: 1px solid #ccc;
+    width: 70px;
+    height: 70px;
+    border-radius: 40px;
+    margin-top: 15px;
+    box-sizing: border-box;
+  }
+  .dynamicBusan .dynamicBusan_flex>div div img {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+  }
+
+  .reservation {
+    width: 96%;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    height: 100px;
+    margin-top: 30px;
+    border-radius: 20px;
+  }
+  .reservation p:first-child {
+    font-size: 25px;
+    float: left;
+    margin-left: 20px;
+    line-height: 100px;
+  }
+  .reservation i {
+    float: left;
+    font-size: 50px;
+    color: #ccc;
+    line-height: 100px;
+    margin-left: 10px;
+  }
+  .reservation img {
+    width: 50px;
+    height: 50px;
+    float: right;
+    margin-top: 25px;
+    margin-right: 10px;
+  }
+
+  .visitBusan {
+    width: 96%;
+    margin: 0 auto;
+    height: 100px;
+    margin-top: 30px;
+    border-radius: 20px;
+    justify-content: space-evenly;
+    background-image: url(./images_main/info_bg01.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .visitBusan .visitBusan_flex {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .visitBusan .visitBusan_flex>div {
+    width: 50%;
+    height: 70px;
+    border-radius: 40px;
+    margin-top:15px;
+    display: flex;
+    justify-content: space-around;
+  }
+  .visitBusan .visitBusan_flex>div>div {
+    width: 70px;
+    height: 70px;
+    border-radius: 40px;
+    background-color: white;
+  }
+  .visitBusan div img {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+  }
+
+  .Park {
+    width: 96%;
+    margin: 0 auto;
+    height: 150px;
+    background-color: turquoise;
+    margin-top: 20px;
+    border-radius: 20px;
+    overflow: hidden;
+    background-image: url(./images_main/info_bg02.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+  .Park p {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-weight: bold;
+  }
+  .Park p span {
+    font-size: 20px;
+  }
+  .Park ul {
+    width: 80%;
+    margin-top: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    float: right;
+    margin-right: 10px;
+  }
+  .Park ul>div {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .Park ul li {
+     width: 48%;
+    height: 25px;
+    font-size: 12px;
+    margin-bottom: 10px;
+    line-height: 23px;
+    border: 1px solid white;
+    padding-left: 6px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+  }
+  .Park ul li i {
+    float: right;
+    margin-right: 5px;
+    margin-top: 5px;
+  }
+
+
+
+  .announce {
+    width: 50px;
+    margin: 0 auto;
+    margin-top: 80px;
+    text-align: center;
+    position: relative;
+    font-size: 25px;
+    color: rgb(100, 100, 100);
+  }
+  .announce img {
+    position: absolute;
+    top: -16px;
+    left: 10px;
+    width: 50px;
+    height: 30px;
+  }
+
+  .notice {
+    width: 96%;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 70px;
+    background-color: yellow;
+  }
+  .notice p:first-child {
+    font-size: 20px;
+    float: left;
+  }
+  .notice p:last-child {
+    float: right;
+    border: 1px solid black;
+    padding: 3px 5px;
+    box-sizing: border-box;
+    border-radius: 13px;
+  }
+
+
+
+  .announce_slider .swiper {
+    width: 90%;
+    height: 200px;
+    margin: 0 auto;
+    overflow: hidden;
+    box-shadow: 15px 15px 50px 1px rgb(51 51 51 / 50%);
+    border-radius: 20px;
+    background: none;
+      }
+  .announce_slider .swiper-slide {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* border: 1px solid black;
+    box-sizing: border-box; */
+  }
+  .announce_slider .swiper-slide p {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .announce_slider .swiper-slide p:nth-child(1) {
+    margin-top: 30px;
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .announce_slider .swiper-slide p:nth-child(2) {
+    width: 80%;
+    height: 61px;
+    /* background-color: turquoise; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+  .announce_slider .swiper-slide p:nth-child(3) {
+    margin-top: 15px;
+    text-align: right;
+    font-size: 14px;
+  }
+  .announce_slider .for_color_left, 
+  .announce_slider .for_color_right {
+    color: black;
+  }
+  .announce_slider .for_color_left {
+    margin-left: -5px;
+    color: rgb(80, 80, 80);
+  }
+  .announce_slider .for_color_right {
+    margin-right: -5px;
+    color: rgb(80, 80, 80)
+  }
+
+  .gosi {
+    width: 96%;
+    margin: 0 auto;
+    /* background-color: turquoise; */
+    margin-top: 50px;
+  }
+  .gosi div div {
+    height: 60px;
+    /* background-color: tomato; */
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    border-radius: 25px;
+  }
+  .gosi div p:first-child {
+    float: left;
+    line-height: 60px;
+    margin-left: 10px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .gosi div p:last-child {
+    float: right;
+    margin-top: 15px;
+    margin-right: 10px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    height: 30px;
+    line-height: 23px;
+    border-radius: 20px;
+    padding: 3px 5px;
+  }
+
+  .communicate {
+    width: 50px;
+    margin: 0 auto;
+    margin-top: 100px;
+    /* background-color: wheat; */
+    text-align: center;
+    position: relative;
+    font-size: 25px;
+    color: rgb(100, 100, 100);
+  }
+  .communicate img {
+    position: absolute;
+    top: -16px;
+    left: 10px;
+    width: 50px;
+    height: 30px;
+  }
+
+  .communicate_list {
+    width: 96%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-top: 40px;
+  }
+  .communicate_list div {
+    width: 32%;
+    /* background-color: yellow; */
+    margin-right: 1%;
+    margin-bottom: 10px;
+    padding: 15px 5px;
+    border-radius: 25px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    font-size: 16px;
+    text-align: center;
+    line-height: 10px;
+    height: 40px;
+  }
+  .communicate_list div:nth-child(6),
+  .communicate_list div:nth-child(7) {
+    width: 48%;
+  }
+  /* .communicate_list div img {
+    float: left;
+    width: 20px;
+    height: 20px;
+    margin-right: 5%;
+  } */
+  .communicate_list div li {
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin-top: -5px;
+    /* background-color: chartreuse; */
+  }
+  .communicate_list div li img {
+    width: 100%;
+    height: 100%;
+  }
+  .communicate_list div i {
+    float: right;
+    font-size: 16px;
+    /* background-color: yellow; */
+    margin-top: -3px;
+  }
+
+  .communicate_list_picture {
+    width: 96%;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    height: 600px;
+  }
+  .communicate_list_picture .swiper-wrapper {
+    overflow: visible;
+    height: 500px;
+  }
+  .communicate_list_picture .swiper-slide {
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 400px;
+  }
+  .communicate_list_picture .swiper-slide div:nth-child(1){
+    width: 100%;
+    height: 120px;
+    margin: 0 auto;
+  }
+  .communicate_list_picture .swiper-slide div:nth-child(1) p:first-child {
+    font-size: 20px;
+    font-weight: bold;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+  .communicate_list_picture .swiper-slide div:nth-child(1) p:nth-child(2) {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 10px;
+  }
+  .communicate_list_picture .swiper-slide  li {
+    height: 280px;
+    border-radius: 0px 0px 20px 20px;
+    overflow: hidden;
+    background-color: yellow;
+  }
+  .communicate_list_picture .swiper-slide li img {
+    width: 100%;
+    height: 100%;
+  }
+  .communicate_list_picture .swiper-slide>p {
+    width: 60px;
+    height: 60px;
+    background-color:white;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 30px;
+    text-align: center;
+    padding-top: 8px;
+    box-sizing: border-box;
+  }
+  .communicate_list_picture .swiper-slide>p img {
+    width: 80%;
+    height: 80%;
+  }
+  .communicate_list_picture .swiper-slide:nth-child(3) {
+    background-image: url(./images_main/card_img03.jpg);
+    background-size: 100% 100%;
+  }
+  .communicate_list_picture .swiper-slide:nth-child(4) {
+    background-image: url(./images_main/card_img04.jpg);
+    background-size: 100% 100%;
+  }
+  .communicate_list_picture .swiper-slide:nth-child(4) p {
+    font-weight: bold;
+  }
+  .communicate_list_picture .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
+    bottom: 40px;
+  }
+  .communicate_list_picture .swiper-pagination-bullet {
+    width: 35px;height: 25px;
+    border-radius: 20px;
+  }
+  .communicate_list_picture .swiper-pagination-bullet-active {
+    width: 45px;
+    background-color: rgb(229, 0, 72);
+  }
+
+
+  
+   /* .best_world , .winner {
+    width: 90%;
+    height: 400px;
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .best_world img, .winner img {
+    width: 100%;
+    height: 100%;
+  } */
+
+  .culture_art {
+    margin-top: -50px;
+    text-align: center;
+  }
+  .culture_art div {
+    width: 100px;
+    height: 30px;
+    margin: 0 auto;
+    position: relative;
+    /* background-color: wheat; */
+  }
+  .culture_art div img {
+    position: absolute;
+    left: 45px;
+    top: -17px;
+    width: 50px;
+    height: 30px;
+  }
+
+  .today_show {
+    margin-top: 30px;
+    text-align: left;
+    padding-left: 20px;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+
+  .mySwiper2 {
+    /* margin-top: 20px; */
+    height: 672px;
+  }
+  .today_show_slider .swiper-slide {
+    overflow: hidden;
+  }
+  .today_show_slider .swiper-slide img {
+    width: 100%;
+    height: 100%;
+  }
+  .today_show_slider div.swiper-button-next::after,
+  .today_show_slider div.swiper-button-prev::after {
+      color: yellow;
+  }
+  .today_show_slider div.swiper-pagination.swiper-pagination-fraction.swiper-pagination-horizontal {
+  color: yellow;
+  }
+
+
+.today_exhibition {
+  margin-top: 30px;
+  text-align: left;
+}
+
+.exhibition_slider .swiper-pagination-bullet {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 25px;
+  font-size: 20px;
+  color: #000;
+  /* color: lightgoldenrodyellow; */
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.2);
+  /* border: 1px solid black; */
+  box-sizing: border-box;
+  background-color: lightgoldenrodyellow;
+}
+
+.exhibition_slider .swiper-pagination-bullet-active {
+  color: #fff;
+  background: #007aff;
+  background-color: rgb(229, 0, 72);
+}
+.exhibition_slider .mySwiper3 {
+  margin-top: 20px;
+  height: 600px;
+}
+.exhibition_slider img {
+  width: 100%;
+  height: 100%;
+}
+
+ .banner {
+    margin-top: 100px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .banner div {
+    width: 100px;
+    height: 30px;
+    margin: 0 auto;
+    position: relative;
+    /* background-color: wheat; */
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .banner div img {
+    position: absolute;
+    left: 35px;
+    top: -17px;
+    width: 50px;
+    height: 30px;
+  }
+
+
+  .banner_slider .swiper {
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .banner_slider img {
+    width: 100%;
+    height: 100%;
+  }
+  .banner_slider div.swiper-button-next::after ,
+  .banner_slider div.swiper-button-prev::after {
+    color: ivory;
+  }
+  .banner_slider span.swiper-pagination-bullet.swiper-pagination-bullet-active{
+    background-color: aqua;
+    opacity: 1;
+  }
+  .banner_slider .swiper-pagination {
+    bottom: 10px;
+  }
+  .banner_slider span.swiper-pagination-bullet {
+    background-color: #000;
+    opacity: 0.3;
+    width: 15px;
+    height: 15px;
+    }
+
+
+  .footer {
+    margin-top: 100px;
+  }
+  .site_inform>li {
+    width: 100%;
+    height: 50px;
+    position: relative;
+    border: 1px solid #ccc;
+  }
+  .site_inform>li p {
+    float: left;
+    line-height: 50px;
+    margin-left: 10px;
+  }
+  .site_inform>li i {
+    float: right;
+    line-height: 50px;
+    font-size: 30px;
+    margin-right: 10px;
+    color: #ccc;
+  }
+  .site_inform>li ul {
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    top: 50px;
+    left: 0;
+    overflow-y: scroll;
+    z-index: 10;
+    display: none;
+  }
+  .site_inform li ul li {
+    width: 100%;
+    height: 30px;
+    background-color: rgb(241, 241, 241);
+    color: rgb(34, 34, 34);
+    padding: 10px 0px 10px 10px;
+    box-sizing: border-box;
+  }
+
+
+  .footer_menu {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 50px;
+    /* background-color: violet; */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .footer_menu div {
+    border-right: 1px solid black;
+    padding: 0px 10px 0px 10px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+  }
+
+  .busan_logo {
+    width: 150px;
+    height: 50px;
+    margin: 0 auto;
+    /* background-color: yellow; */
+    margin-top: 30px;
+  }
+  .busan_logo img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .footer_address {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 40px;
+    font-size: 14px;
+  }
+  .footer_address div:first-child {
+    text-align: center;
+  }
+  .footer_address .address_inform {
+    display: flex;
+    /* background-color: turquoise; */
+    justify-content: space-evenly;
+    margin-top: 15px;
+  }
+  .footer_address div:nth-child(3) {
+    /* background-color: orange; */
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 15px;
+  }
+  .footer_address div:nth-child(4) {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .footer_sns_icon {
+    width: 90%;
+    margin: 0 auto;
+    /* background-color: yellow; */
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .calling {
+    width: 70%;
+    height: 200px;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+  .calling div:first-child{
+    width: 50%;
+    height: 60px;
+    float: left;
+    /* background-color: darkseagreen; */
+    padding-right: 5px;
+    box-sizing: border-box;
+  }
+  .calling div:first-child p {
+    width: 100%;
+    text-align: right;
+  }
+  .calling div:nth-child(2){
+    width: 50%;
+    height: 60px;
+    float: left;
+    /* background-color: lightgreen; */
+    font-size: 35px;
+    line-height: 35px;
+    padding-left: 5px;
+    box-sizing: border-box;
+    font-weight: bold;
+    margin-bottom: 10px;
+    overflow: visible;
+  }
+  .calling div:nth-child(3),
+  .calling div:last-child {
+    text-align: center;
+  }
+  .calling div:nth-child(3) {
+    text-align: center;
+  }
+  .calling div:last-child {
+    margin-top: 20px;
+  }
+
+ .top_button {
+  position: fixed;
+  bottom: 40px;
+  right: 20px;
+  display: none;
+  z-index: 100;
+ }
+ .top_button div:first-child {
+  text-align: center;
+ }
+ .top_button div:last-child {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 60px;
+ }
+
+
+
+ .icon_menu_for_tablet {
+    display: none;
+  }
+  .dynamicBusan p:first-child {
+    display: none;
+  }
+  .reservation p:nth-child(2) {
+    display: none;
+  }
+  .visitBusan p {
+    display: none;
+  }
+    .today_show_slider_for_tablet {
+    display: none;
+  }
+   .banner_for_tablet {
+    display: none;
+  }
+
+.sign_up, .login {
+  display: none;
+}
+.banner_text {
+  display: none;
+}
+
+
+.header_menu, .header_menu_hover {
+    display: none;
+  }
+
+.icon_menu_for_pc {
+  display: none;
+}
+
+
+.communicate_list_link {
+    display: none;
+  }
+
+
+
+
+
+
+
+
+@media all and (min-width:1281px) {
+
+  .for_1280px_size, header {
+    width: 1280px;
+    margin: 0 auto;
+    z-index: 1000;
+  }
+  .for_1280px_header_background {
+    width: 100%;
+    height: 111px;
+    z-index: 900;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  
+}
+
+
+
+
+
+
+
+@media all and (min-width:769px) and (max-width:1280px) {
+
+   .for_1280px_size, header {
+    width: 100%;
+    margin: 0 auto;
+    z-index: 1000;
+  }
+  .for_1280px_header_background {
+    width: 100%;
+    height: 111px;
+    z-index: 900;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+}
+@media all and (min-width:769px)  {
+
+  .header_menu, .header_menu_hover {
+    display: block;
+  }
+  header {
+    height: 110px;
+  }
+  .menu_bar {
+    display: none;
+  }
+  .logo {
+    height: 60px;
+    width: 140px;
+  }
+  .language {
+    width: 80px;
+    line-height: 30px;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  .language img {
+    float: left;
+    margin-top: 3px;
+    margin-right: 3px;
+    width: 25px;
+    height: 25px;
+  }
+  .sign_up {
+    width: 90px;
+    float: right;
+    margin-top: 5px;
+    color: white;
+    margin-top: 15px;
+    font-size: 14px;
+  }
+  .sign_up img {
+    float: left;
+    margin-right: 1px;
+    margin-top: -2px;
+  }
+  .login {
+    width: 70px;
+    float: right;
+    color: white;
+    margin-top: 15px;
+    font-size: 14px;
+  }
+  .login img {
+    float: left;
+    margin-right: 3px;
+    margin-top: -2px;
+  }
+  .language img, .sign_up, .login {
+  display: block;
+}
+
+  .header_menu {
+    width: 100%;
+    height: 30px;
+    margin-top: -25px;
+  }
+  .header_menu ul {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .header_menu ul li {
+    width: 20%;
+    float: left;
+    border-right: 2px solid #ccc;
+    box-sizing: border-box;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+  }
+  .header_menu ul li:last-child {
+    border: none;
+  }
+
+  .header_menu_hover {
+    width: 100%;
+    height: 520px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    box-sizing: border-box;
+    display: none;
+    background-color: white;
+  }
+  .header_menu_hover > ul {
+    width: 80%;
+    height: 500px;
+    margin: 0 auto;
+  }
+  .header_menu_hover > ul > li {
+    width: 20%;
+    float: left;
+  }
+  .header_menu_hover > ul > li > ul {
+    border-left: 1px solid #ccc;
+    box-sizing: border-box;
+    height: 500px;
+  }
+  .header_menu_hover > ul > li > ul:last-child {
+    border-right: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  .header_menu_hover > ul > li > ul > li:first-child {
+    padding-top: 20px;
+    height: 50px;
+  }
+  .header_menu_hover > ul > li > ul > li {
+    padding-left: 20px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 30px;
+  }
+  .header_menu_hover > ul > li > ul > li:hover {
+    color: rgb(229, 0, 72);
+  }
+  .header_menu_hover > ul > li:nth-child(2) ul li {
+    padding-left: 10px;
+    font-size: 14px;
+  }
+  .header_menu_hover > ul > li:last-child > ul li {
+   padding-left: 5px;
+  }
+  .header_menu_hover > ul > li:last-child > ul li p {
+    line-height: 30px;
+  }
+  .header_menu_hover > ul > li:last-child > ul li img {
+    float: left;
+    width: 30px;
+    height: 30px;
+  }
+
+
+
+
+
+
+  .icon_menu_for_pc {
+  display: block;
+}
+
+
+  .icon_menu_slider_list {
+    display: none;
+  }
+  .icon_menu_for_pc > div{
+    width: 90%;
+    height: 100px;
+    margin: 0 auto;
+    margin-top: -80px;
+    /* background-color: yellow; */
+    display: flex;
+    justify-content: space-between;
+  }
+  .icon_menu_for_pc > div div {
+    text-align: center;
+  }
+  .icon_menu_for_pc > div div p {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .inform_menu ul {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+  }
+  .inform_menu ul li {
+    width: 16%;
+    font-size: 18px;
+    text-align: center;
+    padding-left: 10px;
+    box-sizing: border-box;
+    line-height: 40px;
+  }
+  .inform_menu ul li:last-child {
+    width: 20%;
+  }
+  .inform_menu_icon>div {
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+  }
+
+
+
+  .flex_box {
+    display: flex;
+    justify-content: space-between;
+    height: 200px;
+    margin-top: 50px;
+  }
+  .flex_up, .flex_down {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    box-sizing: border-box;
+  }
+ .flex_up section, .flex_down section {
+    width:49%;
+    height: 100%;
+    border: 1px solid black;
+    box-sizing: border-box;
+  }
+  .dynamicBusan, .reservation, .visitBusan, .Park {
+    width: 50%;
+    height: 100%;
+  }
+
+  .dynamicBusan {
+    margin-top: 0px;
+    border-radius: 20px;
+    display: block;
+    justify-content: space-evenly;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  .dynamicBusan p:first-child {
+    display: block;
+    font-weight: bold;
+    float: left;
+    width: 40px;
+    margin-left: 10px;
+    height: 100%;
+    padding-top: 15px;
+    box-sizing: border-box;
+    font-size: 20px;
+  }
+  .dynamicBusan .dynamicBusan_flex {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 73%;
+    height: 100%;
+    float: right;
+  }
+  .dynamicBusan .dynamicBusan_flex>div {
+    width:100%;
+    height: 50%;
+    border-radius: 30px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-around;
+  }
+  .dynamicBusan .dynamicBusan_flex div div img {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+  }
+
+  
+  .reservation {
+    margin-top: 0px;
+    border-radius: 20px;
+  }
+  .reservation p:first-child {
+    font-size: 25px;
+    line-height: 30px;
+    /* background-color: yellow; */
+    width: 100%;
+    height: 30px;
+    margin-top: 20px;
+    margin-left: 10px;
+  }
+  .reservation i {
+    float: left;
+    font-size: 50px;
+    color: #ccc;
+    line-height: 100px;
+    margin-left: 10px;
+  }
+  .reservation img {
+    width: 50px;
+    height: 50px;
+    float: right;
+    margin-top: 25px;
+    margin-right: 10px;
+  }
+  .reservation p:nth-child(2) {
+    display: block;
+    margin-left: 10px;
+    font-size: 14px;
+    width: 100%;
+    height: 20px;
+    height: 30px;
+    /* background-color: wheat; */
+    margin-top: 70px;
+  }
+
+  .visitBusan {
+    margin-top: 0px;
+    border-radius: 20px;
+    background-image: url(./images_main/info_bg01.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .visitBusan p:first-child {
+    display: block;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    float: left;
+    height: 100%;
+    padding-top: 10px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    /* background-color: violet; */
+  }
+  .visitBusan .visitBusan_flex {
+    width: 73%;
+    height: 100%;
+    float: right;
+    display: flex;
+    flex-direction: column;
+  }
+  .visitBusan .visitBusan_flex>div {
+    width: 100%;
+    height: 50%;
+  }
+  .visitBusan .visitBusan_flex>div div  {
+    background-color: white;
+    width: 75px;
+    height: 75px;
+  }
+  .visitBusan div img {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+  }
+
+  .Park {
+    margin-top: 0px;
+  }
+  .Park ul {
+    margin-top: 120px;
+  }
+    .Park ul li {
+    overflow: hidden;
+  }
+
+  .announce_slider .swiper {
+    box-shadow: none;
+    overflow: visible;
+  }
+  .announce_slider {
+    overflow: hidden;
+  }
+  .announce_slider div.swiper-slide.swiper-slide-active,
+  .announce_slider div.swiper-slide.swiper-slide-next, 
+  .announce_slider div.swiper-slide.swiper-slide {
+    box-shadow: 5px 5px 5px 5px rgb(51 51 51 / 50%);
+    box-sizing: border-box;
+    border-radius: 20px;
+    height: 180px;
+  }
+   .announce_slider .for_color_left {
+    margin-left: -40px;
+  }
+  .announce_slider .for_color_right {
+    margin-right: -40px;
+  }
+  .announce_slider .swiper-slide p:nth-child(2) {
+    height: 55px;
+  }
+  .announce_slider .swiper-slide p:nth-child(1) {
+    font-size: 16px;
+  }
+  .announce_slider .swiper-slide p:nth-child(2) {
+    font-size: 14px;
+  }
+
+
+  .gosi {
+    margin-top: 30px;
+  }
+  .gosi>div {
+    display: flex;
+    justify-content: space-between;
+  }
+  .gosi>div div {
+    width: 31%;
+    border-radius: 40px;
+  }
+  .gosi div p:first-child {
+    font-size: 16px;
+  }
+  .gosi div p:last-child {
+    font-size: 14px;
+    padding: 10px 10px;
+    box-sizing: border-box;
+    line-height: 1px;
+  }
+
+
+  .culture_art {
+    margin-top: 100px;
+  }
+
+
+
+    .communicate_list_picture {
+    width: 96%;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    height: 600px;
+  }
+  .communicate_list_picture .swiper-wrapper {
+    overflow: visible;
+    height: 500px;
+    /* background-color: yellow; */
+  }
+  .communicate_list_picture .swiper-slide {
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 400px;
+  }
+  .communicate_list_picture .swiper-slide div:nth-child(1){
+    width: 100%;
+    height: 120px;
+    margin: 0 auto;
+  }
+  .communicate_list_picture .swiper-slide div:nth-child(1) p:first-child {
+    font-size: 20px;
+    font-weight: bold;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+  .communicate_list_picture .swiper-slide div:nth-child(1) p:nth-child(2) {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 10px;
+  }
+  .communicate_list_picture .swiper-slide  li {
+    /* width: 100%; */
+    /* margin-top: 20px; */
+    height: 280px;
+    border-radius: 0px 0px 20px 20px;
+    overflow: hidden;
+    background-color: yellow;
+  }
+  .communicate_list_picture .swiper-slide li img {
+    width: 100%;
+    height: 100%;
+  }
+  .communicate_list_picture .swiper-slide>p {
+    width: 60px;
+    height: 60px;
+    background-color:white;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 30px;
+    text-align: center;
+    padding-top: 8px;
+    box-sizing: border-box;
+  }
+  .communicate_list_picture .swiper-slide>p img {
+    width: 80%;
+    height: 80%;
+  }
+  .communicate_list_picture .swiper-slide:nth-child(3) {
+    background-image: url(./images_main/card_img03.jpg);
+    background-size: 100% 100%;
+  }
+  .communicate_list_picture .swiper-slide:nth-child(4) {
+    background-image: url(./images_main/card_img04.jpg);
+    background-size: 100% 100%;
+  }
+  .communicate_list_picture .swiper-slide:nth-child(4) p {
+    font-weight: bold;
+  }
+  .communicate_list_picture .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
+    bottom: 40px;
+  }
+  .communicate_list_picture .swiper-pagination-bullet {
+    width: 35px;height: 25px;
+    border-radius: 20px;
+  }
+  .communicate_list_picture .swiper-pagination-bullet-active {
+    width: 45px;
+    background-color: rgb(229, 0, 72);
+  }
+
+  .communicate_flex {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+  }
+  .communicate_flex_left {
+    width: 46%;
+  }
+  .communicate_flex_left p:first-child {
+    font-size: 25px;
+    padding-left: 20px;
+    box-sizing: border-box;
+  }
+  .communicate_flex_right {
+    width: 50%;
+  }
+  .communicate_list_picture {
+    width: 100%;
+    height: 1000px;
+    overflow: visible;
+  }
+  .communicate_list_picture .swiper-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: visible;
+    height: 1000px;
+    justify-content: space-between;
+  }
+  .communicate_list_picture .swiper-slide {
+    width: 48%;
+    overflow: visible;
+  }
+  .communicate_list_picture .swiper-slide div:first-child p:last-child {
+    margin-top: 5px;
+  }
+  .communicate_list_picture .swiper-slide div:first-child p {
+    font-size: 15px;
+  }
+  .communicate_list_picture .swiper-slide:nth-child(2n) {
+   margin-top: 100px;
+  }
+  .communicate_list_link {
+    height: 600px;
+    margin-top: 40px;
+    background-color: violet;
+    overflow: hidden;
+  }
+  .communicate_list_link img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .communicate_list_link {
+    display: block
+  }
+
+  .exhibition_slider .swiper-wrapper .swiper-slide {
+    border-radius: 50px 50px 0px 0px;
+    overflow: hidden;
+  }
+
+
+
+
+
+  .banner_slider>div>div:first-child {
+    display: flex;
+    justify-content: space-around;
+    height: 700px;
+    flex-wrap: wrap;
+  }
+  .banner_slider>div>div:first-child div {
+    width: 45%;
+    height: 200px;
+    background-color: yellow;
+    margin-bottom: 0px;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .banner_slider div.swiper-button-next, 
+  .banner_slider div.swiper-button-prev {
+    display: none;
+  }
+
+
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media all and (min-width:601px) and (max-width:768px) { 
+
+  .icon_menu_for_tablet {
+    display: block;
+  }
+  .icon_menu_slider_list {
+    display: none;
+  }
+    .today_show_slider {
+    display: none;
+  }
+  .today_show_slider_for_tablet {
+    display: block;
+  }
+
+  .icon_menu .slider {
+    margin-top: calc(100vh - 50px)
+  }
+  .icon_menu_slider_list_for_tablet div {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .icon_menu_slider_list_for_tablet div div {
+   box-sizing: border-box;
+  }
+  .icon_menu_slider_list_for_tablet div div img{
+    margin: 0 auto;
+  }
+  .icon_menu_slider_list_for_tablet div div p {
+    text-align: center;
+  }
+  .icon_menu_for_tablet .slider .slick-prev{
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    margin-left: 25px;
+    z-index: 1;
+  }
+  .icon_menu_for_tablet .slider .slick-next {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    margin-right: 25px;
+    z-index: 1;
+  }
+  .icon_menu_for_tablet button.slick-arrow::before {
+    color: rgb(75, 75, 75);
+  }
+
+  .guide {
+    margin-top: 80px;
+  }
+  .inform_menu ul {
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+  .inform_menu ul li {
+    width: 17%;
+    padding-left: 8px;
+    margin-right: 10px;
+  }
+  .inform_menu ul li:first-child {
+    padding-left: 5px;
+    font-size: 13px;
+  }
+  .inform_menu ul li:last-child {
+    width: 25%;
+  }
+  .inform_menu ul li i {
+    margin-right: 8px;
+  }
+  .inform_menu_icon>div {
+    top: 50px;
+  }
+  .inform_menu_icon>div div {
+    width: 25%;
+  }
+
+  .flex_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 400px;
+    margin-top: 30px;
+  }
+  .flex_up, .flex_down {
+    height: 48%;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+  .flex_up section, .flex_down section {
+    width: 48%;
+    height: 100%
+  }
+  
+  .dynamicBusan {
+    width: 100%;
+    margin-top: 0px;
+    display: block;
+  }
+  .dynamicBusan .dynamicBusan_flex {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 70px;
+    margin: 0 auto;
+    border-radius: 0px;
+    height: 100px;
+  }
+  .dynamicBusan .dynamicBusan_flex>div div {
+    width: 70px;
+    height: 70px;
+    border-radius: 40px;
+    margin-top: 30px;
+  }
+  .dynamicBusan p {
+    width: 90%;
+    height: 30px;
+    float: left;
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 25px;
+    font-weight: bold;
+  }
+  .dynamicBusan p:first-child {
+    display: block;
+  }
+
+  .reservation {
+    margin-top: 0px;
+  }
+  .reservation p:first-child {
+    width: 100%;
+    height: 30px;
+    margin-left: 15px;
+    line-height: 30px;
+    margin-top: 10px;
+  }
+  .reservation p:nth-child(2) {
+    float: left;
+    width: 90%;
+    font-size: 18px;
+    margin-top: 15px;
+    margin-left: 10px;
+    display: block;
+  }
+  .reservation i {
+    margin-left: 20px;
+  }
+
+  .visitBusan {
+    margin-top: 0px;
+  }
+  .visitBusan p {
+    display: block;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-top: 15px;
+    float: left;
+    width: 90%;
+    height: 10px;
+  }
+  .visitBusan_flex {
+    margin-top: 60px;
+  }
+
+  .Park {
+    margin-top: 0px;
+  }
+
+  .culture_art {
+    margin-top: -40px;
+  }
+
+
+  .announce_slider .swiper {
+    box-shadow: none;
+    overflow: visible;
+  }
+  .announce_slider {
+    overflow: hidden;
+  }
+  .announce_slider div.swiper-slide.swiper-slide-active,
+  .announce_slider div.swiper-slide.swiper-slide-next {
+    box-shadow: 5px 5px 5px 5px rgb(51 51 51 / 50%);
+    box-sizing: border-box;
+    border-radius: 20px;
+    height: 180px;
+  }
+   .announce_slider .for_color_left {
+    margin-left: -40px;
+  }
+  .announce_slider .for_color_right {
+    margin-right: -40px;
+  }
+
+
+  .today_show_slider_for_tablet {
+    width: 100%;
+    margin-bottom: 100px;
+    position: relative;
+  }
+  .today_show_slider_for_tablet .swiper-slide img {
+    width: 100%;
+    height: 100%;
+  }
+  .today_show_slider_for_tablet .swiper-slide{   
+        width: 400px;
+        height: 500px;
+  }
+  .today_show_slider_for_tablet div.swiper-button-next::after{
+    position: absolute;  
+    color: red;
+      top: 0px;
+      right: 100px;
+      width: 30px;
+      height: 30px;
+  }
+  .today_show_slider_for_tablet div.swiper-button-prev::after {
+      position: absolute;
+      top: 0px;
+      left: 100px;
+      color: red;
+      width: 30px;
+      height: 30px;
+  }
+  .today_show_slider_for_tablet div.swiper-pagination.swiper-pagination-fraction.swiper-pagination-horizontal {
+  color: cornsilk;
+  font-size: 20px;
+  }
+  
+
+  .exhibition_slider ,.today_exhibition {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .banner_text {
+    width: 250px;
+    height: 50px;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 25px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    display: block;
+  }
+  .banner_text div {
+    width: 70%;
+    margin: 0 auto;
+    line-height: 50px;
+    font-weight: bold;
+  }
+  .banner_text div img {
+    width: 45px;
+    height: 30px;
+    float: left;
+    margin-top: 10px;
+    margin-right: 7px;
+  }
+
+  .footer_menu {
+    width: 96%;
+    background-color: yellow;
+  }
+
+
+  .exhibition_slider .swiper-wrapper .swiper-slide {
+    border-radius: 50px 50px 0px 0px;
+    overflow: hidden;
+  }
+
+
+
+  .banner_slider>div>div:first-child {
+    display: flex;
+    justify-content: space-evenly;
+    height: 500px;
+    /* background-color: turquoise; */
+    flex-wrap: wrap;
+  }
+  .banner_slider>div>div:first-child div {
+    width: 48%;
+    height: 160px;
+    background-color: yellow;
+    margin-bottom: 0px;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .banner_slider div.swiper-button-next, 
+  .banner_slider div.swiper-button-prev {
+    display: none;
+  }
+
+
+}
+
+
+</style>
+
+
+<body>
+  
+  <section class="for_1280px_header_background">
+
+  <header>
+
+    <div class="for_padding">
+
+      <div class="logo" >
+        <a href="./index.html">
+        <img src="./images_main/logo01 (1).png">
+        </a>
+      </div>
+
+        <div class="menu_bar">
+          <i class="fa-solid fa-bars"></i>
+          <i class="fa-solid fa-xmark"></i>
+        </div>
+ 
+      <div class="language">
+        <img src="./images_main/ico_global_w.png" class="language_circle_white">
+        <img src="./images_main/ico_global_b.png"
+class="language_circle_black" style="display:none;">
+        <p>Kor</p>
+        <i class="fa-solid fa-angle-down"></i>
+      </div>
+
+      <div class="sign_up">
+        <img src="./images_main/ico_join_w.png"><img src="./images_main/ico_join_b.png" style="display: none;"><p>회원가입</p>
+      </div>
+
+      <div class="login">
+        <img src="./images_main/ico_login_w.png"><img src="./images_main/ico_login_b.png" style="display: none;" ><p>로그인</p>
+      </div>
+    </div>
+
+    <section class="header_menu">
+      <ul>
+        <li>부산민원120</li>
+        <li>부산소식</li>
+        <li>정보공개</li>
+        <li>부산소개</li>
+        <li>분야별정보</li>
+      </ul>
+    </section>
+
+    <section class="header_menu_hover">
+      <ul>
+        <li>
+          <ul>
+            <li>- 민원신청</li>
+            <li>- 제안신청</li>
+            <li>- 시민참여</li>
+            <li>- 민원안내</li>
+            <li>- 120콜센터</li>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <li>- 새소식</li>
+            <li>- 부산시보(다이내믹 부산)</li>
+            <li>- 보도자료</li>
+            <li>- 공고</li>
+            <li>- 부산시 공식 SNS</li>
+            <li>- 시정사진</li>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <li>- 주요시책</li>
+            <li>- 정보공개</li>
+            <li>- 예산</li>
+            <li>- 감사정보</li>
+            <li>- 지방공기업</li>
+            <li>- 계약정보</li>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <li>- 부산의 인물</li>
+            <li>- 부산의 오늘</li>
+            <li>- 부산의 상징</li>
+            <li>- 부산시청 안내</li>
+            <li>- 부산의 역사</li>
+            <li>- 부산통계</li>
+            <li>- 시민행복지표</li>
+            <li>- 도시브랜드</li>
+            <li>- 주민자치회</li>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <li><img src="./images_main/ico_depart12.png"><p>경제</p></li>
+            <li><img src="./images_main/ico_depart02.png"><p>일자리, 교육</p></li>
+            <li><img src="./images_main/ico_depart03.png"><p>사회복지</p></li>
+            <li><img src="./images_main/ico_depart04.png"><p>보건, 건강</p></li>
+            <li><img src="./images_main/ico_depart05.png"><p>도시, 건축</p></li>
+            <li><img src="./images_main/ico_depart06.png"><p>안전</p></li>
+            <li><img src="./images_main/ico_depart07.png"><p>환경보호</p></li>
+            <li><img src="./images_main/ico_depart08.png"><p>교통, 물류</p></li>
+            <li><img src="./images_main/ico_depart13.png"><p>해양농수산</p></li>
+            <li><img src="./images_main/ico_depart10.png"><p>행정</p></li>
+            <li><img src="./images_main/ico_depart14.png"><p>문화체육관광</p></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+  </header>
+
+  </section>
+
+
+  
+   
+    <div class="for_shadow">
+      <div class="btn_menu_animation">
+
+        <div class="for_login-sign-up-background">
+        <div class="login-sign_up">
+          <div>로그인<i class="fa-solid fa-plus"></i></div>
+          <div>회원가입<i class="fa-solid fa-plus"></i></div>
+        </div>
+        </div>
+
+        <input type="radio" id="radio1" name="for_menu_rad" checked>
+        <input type="radio" id="radio2" name="for_menu_rad">
+        <input type="radio" id="radio3" name="for_menu_rad">
+        <input type="radio" id="radio4" name="for_menu_rad">
+        <input type="radio" id="radio5" name="for_menu_rad">
+
+        <div class="menu_list">
+
+        <div class="menu_list_left">
+          <ul>
+            <label for="radio1"><li>부산민원120</li></label>
+            <label for="radio2"><li>부산소식</li></label>
+            <label for="radio3"><li>정보공개</li></label>
+            <label for="radio4"><li>부산소개</li></label>
+            <label for="radio5"><li>분야별정보</li></label>
+          </ul>
+        </div>
+
+        <div class="menu_list_right">
+
+          <div class="list_first">
+            <ul>
+
+              <li>
+                <div>민원신청
+                <i class="fa-solid fa-plus"></i>
+                <i class="fa-solid fa-minus"></i>
+                </div>
+                <ul class="invisible_menu">
+                  <li>민원신청</li>
+                  <li>부산민원120 이용안내</li>
+                  <li>이달의 주요민원</li>
+                  <li>교통불편 민원신청</li>
+                  <li>민원사례</li>
+                  <li>스마트 현장사진신고</li>
+                  <li>신고센터</li>
+                  <li>공익제보센터</li>
+                  <li>정부24</li>
+                </ul>
+              </li>
+
+              <li><div>제안신청<i class="fa-solid fa-plus plus"></i><i class="fa-solid fa-minus"></i></div>
+                <ul class="invisible_menu">
+                  <li>일반제안</li>
+                  <li>공모제안</li>
+                  <li>나의 제안</li>
+                </ul>
+              </li>
+
+              <li><div>시민참여<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i>
+                </div>
+                <ul class="invisible_menu">
+                  <li>설문조사</li>
+                  <li>나눔장터</li>
+                  <li>국민생각함</li>
+                  <li>모니터</li>
+                  <li>이벤트 통합안내</li>
+                  <li>행사/모집 신청</li>
+                  <li>시민게시판</li>
+                  <li>주민참여예산</li>
+                  <li>민생규제혁신과제</li>
+                  <li>칭찬합시다</li>
+                  <li>시민열린마루</li>
+                  <li>협치부산</li>
+                </ul>
+              </li>
+
+              <li><div>민원안내<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i>
+                </div>
+                <ul class="invisible_menu">
+                  <li>민원편람</li>
+                  <li>민원목록</li>
+                  <li>민원처리 안내</li>
+                  <li>여권안내</li>
+                  <li>편리한 민원서비스</li>
+                  <li>민원정보</li>
+                  <li>민원시책</li>
+                  <li>행정서비스현장</li>
+                </ul>
+              </li>
+
+              <li><div>120콜센터<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i>
+                </div>
+                <ul class="invisible_menu">
+                  <li>이용안내</li>
+                  <li>콜센터 소개</li>
+                </ul>
+              </li>
+
+            </ul>
+          </div>
+
+          <div class="list_second">
+            <ul class="invisible_menu">
+              <li><div>새소식<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i>
+                </div>
+                <ul class="invisible_menu">
+                  <li>통합 공지사항</li>
+                  <li>홍보게시판</li>
+                  <li>시저영상뉴스</li>
+                  <li>전자책</li>
+                  <li>공공앱</li>
+                </ul>
+              </li>
+              <li>부산시보</li>
+              <li><div>보도자료<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i>
+                </div><ul class="invisible_menu">
+                  <li>보도자료</li>
+                  <li>해명/설명 자료</li>
+                </ul></li>
+              <li><div>공고<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i>
+                </div>
+                <ul class="invisible_menu">
+                  <li>채용공고</li>
+                  <li>공무원 시험공고</li>
+                  <li>입찰공고</li>
+                  <li>부산시보 고시공고</li>
+                  <li>고시공고</li>
+                  <li>입법예고</li>
+                  <li>분묘개장공고</li>
+                </ul></li>
+              <li>부산시 공식SNS</li>
+              <li>
+                <div>시정사진<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i>
+                </div>
+                <ul class="invisible_menu">
+                  <li>시정관련 자료</li>
+                  <li>테마 갤러리</li>
+                  <li>상징</li>
+                </ul></li>
+            </ul>
+          </div>
+
+          <div class="list_third">
+            <ul>
+              <li>
+                <div>주요시책<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i>
+                </div>
+                <ul class="invisible_menu">
+                  <li>주요업무계획</li>
+                  <li>핵심정책</li>
+                  <li>2022년 달라지는 제도</li>
+                  <li>인구정책 브리핑</li>
+                </ul>
+              </li>
+              <li><div>정보공개<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i></div>
+                <ul class="invisible_menu">
+                  <li>정보공개제도</li>
+                  <li>결제문서</li>
+                  <li>정보공개 청구</li>
+                  <li>사전정보공표</li>
+                  <li>이 달의 정보공개</li>
+                  <li>공유재산</li>
+                  <li>용역보고서</li>
+                  <li>용역실명제</li>
+                  <li>참여정책사전공시</li>
+                  <li>인사통계/조직정보</li>
+                  <li>마을세무사</li>
+                </ul>
+              </li>
+              <li><div>예산<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i></div>
+              <ul class="invisible_menu">
+                  <li>세입세출예산서</li>
+                  <li>기금운용계획</li>
+                  <li>재정공시</li>
+                  <li>세입세출 운용</li>
+                  <li>신고 및 조회</li>
+                  <li>예산절감(낭비)사례</li>
+                  <li>보조금 내역 공개</li>
+                  <li>민간위탁</li>
+                  <li>공공기관 위탁/대행</li>
+                </ul></li>
+              <li><div>감사정보<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i></div>
+              <ul class="invisible_menu">
+                  <li>감사실시안내</li>
+                  <li>감사실시 결과</li>
+                  <li>감사반복 지적사례</li>
+                  <li>감사 제도</li>
+                  <li>공직윤리제도</li>
+                  <li>청렴게시판</li>
+                  <li>부패공직자 제재현황</li>
+                </ul>
+              </li>
+              <li><div>지방공기업<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i></div>
+              <ul class="invisible_menu">
+                  <li>지방공기업이란</li>
+                  <li>지방공기업 현황</li>
+                  <li>지방공기업 경영정보</li>
+                  <li>지방공기업 성별 임금공시</li>
+                </ul>
+              </li>
+              <li><div>계약정보<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i></div>
+              <ul class="invisible_menu">
+                  <li>계약현황</li>
+                  <li>수의계약현황</li>
+                  <li>하도급현황</li>
+                  <li>대가지급</li>
+                  <li>상수도사업본부 계약정보</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="list_fourth">
+            <ul>
+              <li><div>부산의 오늘<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i></div>
+              <ul class="invisible_menu">
+                  <li>도시비전과 목표</li>
+                  <li>기본현황</li>
+                  <li>행정구역/지도</li>
+                  <li>대가지급</li>
+                  <li>국제교류 및 자매도시</li>
+                </ul>
+              </li>
+              <li><div>부산의 상징<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i></div>
+              <ul class="invisible_menu">
+                  <li>지역상징</li>
+                  <li>기관상징</li>
+                  <li>부산체</li>
+                  <li>부산시민현장</li>
+                  <li>부산찬가</li>
+                  <li>부산시민의 날</li>
+                </ul>
+              </li>
+              <li><div>부산시청 안내<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i></div>
+               <ul class="invisible_menu">
+                  <li>시청사 안내</li>
+                  <li>전화번호 안내</li>
+                  <li>조직도</li>
+                  <li>시설운영 안내</li>
+                  <li>시청사 견학</li>
+                  <li>시청 전시실 대관</li>
+                  <li>공기업/출자/출연기관</li>
+                </ul>
+              </li>
+              <li><div>부산의 인물<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i></div>
+              <ul class="invisible_menu">
+                  <li><a href="./sub_page.html">향토수호(충신)</a></li>
+                  <li>독립운동가</li>
+                  <li>학자 및 교육자</li>
+                  <li>사회운동가</li>
+                  <li>기업인</li>
+                  <li>문화예술인</li>
+                  <li>부산광역시 문화상</li>
+                  <li>자랑스러운 시민상</li>
+                  <li>부산광역시 명예시민</li>
+                </ul>
+              </li>
+              <li><div>부산의 역사<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i></div>
+              <ul class="invisible_menu">
+                  <li>명칭유래</li>
+                  <li>시대별 부산역사</li>
+                  <li>문화재</li>
+                  <li>부산의 주요 경승지</li>
+                  <li>시정역사</li>
+                  <li>역대시장</li>
+                  <li>연혁</li>
+                  <li>향토사도서관</li>
+                  <li>부산역사문화대전</li>
+                  <li>항공사진으로 본 역사</li>
+                </ul>
+              </li>
+              <li><div>부산통계<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i></div>
+              <ul class="invisible_menu">
+                <li>통계로 보는 부산</li>
+                <li>시민공감지도</li>
+                <li>통계소식</li>
+                <li>통계자료실</li>
+                <li>통계의 이해</li>
+              </ul>
+              </li>
+              <li><div>시민행복지표<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i></div>
+              <ul class="invisible_menu">
+                <li>시민행복지표란?</li>                
+                <li>시민행복지표 소개</li>                
+                <li>시민행복지표 현황</li>                               
+              </ul>
+              </li>
+              <li><div>도시브랜드<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i></div>
+              <ul class="invisible_menu">
+                <li>도시브랜드</li>
+                <li>부산브랜드웹툰</li>
+                <li>부산기네스125선</li>
+                <li>소통 캐릭터</li>
+                <li>부산관광브랜드</li>
+              </ul>
+              </li>
+              <li><div>주민자치회<i class="fa-solid fa-plus"></i><i class="fa-solid fa-minus"></i></div>
+              <ul class="invisible_menu">
+                <li>추진배경 및 방향</li>
+                <li>설치/운영 및 체계도</li>
+                <li>주민자치회 현황</li>
+                <li>주민자치회 소식</li>
+                <li>우수사례</li>
+                <li>활동갤러리</li>
+                <li>주민자치위원회 구성</li>
+                <li>회의록</li>
+                <li>주민자치위원회 활동</li>
+                <li>운영프로그램</li>
+              </ul>
+              </li>
+            </ul>
+          </div>
+
+          <div class="list_fifth">
+            <ul>
+              <li>경제</li>
+              <li>일자리</li>
+              <li>사회복지</li>
+              <li>보건</li>
+              <li>안전</li>
+              <li>환경보호</li>
+              <li>해양농수산</li>
+              <li>문화체육관광</li>
+            </ul>
+          </div>
+
+        
+        </div> <!-- menu_list_right -->
+
+      </div> <!-- menu_list-->
+
+  </div> <!-- btn_menu_animation -->
+
+</div> <!-- for_shadow -->
+
+
+  <div class="search_icon">
+    <img src="./images_main/ico_search_b.png">
+  </div>
+
+  <div class="scroll_down_text">Scroll down</div>
+  <div class="scroll_down_animation"></div>
+
+  <video loop muted autoplay playsinline id="video">
+    <source src="./images_main/visual_mian01-00.mp4">
+    <source src="./images_main/visual_main01-01.mp4">
+    <source src="./images_main/visual_main01-02.mp4">
+  </video>
+
+<section class="for_1280px_size">
+<section class="icon_menu">
+
+  <div class="slider">
+
+   
+      <div class="icon_menu_slider_list" data-slick='{"slidesToShow": 3, "slidesToScroll": 1}'>
+      <div>
+          <img src="./images_main/ico_depart12.png">
+          <p>경제</p>
+        </div>
+        <div>
+          <img src="./images_main/ico_depart02.png">
+          <p>일자리·교육</p>
+        </div>
+        <div>
+          <img src="./images_main/ico_depart03.png">
+          <p>사회복지</p>
+        </div>
+        <div>
+          <img src="./images_main/ico_depart04.png">
+          <p>보건·건강</p>
+        </div>
+        <div>
+          <img src="./images_main/ico_depart05.png">
+          <p>도시·건축</p>
+        </div>
+        <div>
+          <img src="./images_main/ico_depart06.png">
+          <p>안전</p>
+        </div>
+        <div>
+          <img src="./images_main/ico_depart07.png">
+          <p>환경보호</p>
+        </div>
+        <div>
+          <img src="./images_main/ico_depart08.png">
+          <p>교통·물류</p>
+        </div>
+        <div>
+          <img src="./images_main/ico_depart13.png">
+          <p>해양농수산</p>
+        </div>
+        <div>
+          <img src="./images_main/ico_depart10.png">
+          <p>행정</p>
+        </div>
+        <div>
+          <img src="./images_main/ico_depart14.png">
+          <p>문화체육관광</p>
+        </div>
+    </div>
+  </div> 
+
+  </section>
+
+  <section class="icon_menu_for_tablet">
+
+  <div class="slider">
+
+    <div class="icon_menu_slider_list_for_tablet" data-slick='{"slidesToShow": 6, "slidesToScroll": 1}'>
+      <div>
+          <img src="./images_main/ico_depart12.png">
+          <p>경제</p>
+        </div>
+        <div>
+          <img src="./images_main/ico_depart02.png">
+          <p>일자리·교육</p>
+        </div>
+        <div>
+          <img src="./images_main/ico_depart03.png">
+          <p>사회복지</p>
+        </div>
+        <div>
+          <img src="./images_main/ico_depart04.png">
+          <p>보건·건강</p>
+        </div>
+        <div>
+          <img src="./images_main/ico_depart05.png">
+          <p>도시·건축</p>
+        </div>
+        <div>
+          <img src="./images_main/ico_depart06.png">
+          <p>안전</p>
+        </div>
+        <div>
+          <img src="./images_main/ico_depart07.png">
+          <p>환경보호</p>
+        </div>
+        <div>
+          <img src="./images_main/ico_depart08.png">
+          <p>교통·물류</p>
+        </div>
+        <div>
+          <img src="./images_main/ico_depart13.png">
+          <p>해양농수산</p>
+        </div>
+        <div>
+          <img src="./images_main/ico_depart10.png">
+          <p>행정</p>
+        </div>
+        <div>
+          <img src="./images_main/ico_depart14.png">
+          <p>문화체육관광</p>
+        </div>
+    </div>
+  </div> 
+
+  </section>
+
+  <section class="icon_menu_for_pc">
+    <div>
+      <div>
+          <img src="./images_main/ico_depart12.png">
+          <p>경제</p>
+        </div>
+        <div>
+          <img src="./images_main/ico_depart02.png">
+          <p>일자리·교육</p>
+        </div>
+        <div>
+          <img src="./images_main/ico_depart03.png">
+          <p>사회복지</p>
+        </div>
+        <div>
+          <img src="./images_main/ico_depart04.png">
+          <p>보건·건강</p>
+        </div>
+        <div>
+          <img src="./images_main/ico_depart05.png">
+          <p>도시·건축</p>
+        </div>
+        <div>
+          <img src="./images_main/ico_depart06.png">
+          <p>안전</p>
+        </div>
+        <div>
+          <img src="./images_main/ico_depart07.png">
+          <p>환경보호</p>
+        </div>
+        <div>
+          <img src="./images_main/ico_depart08.png">
+          <p>교통·물류</p>
+        </div>
+        <div>
+          <img src="./images_main/ico_depart13.png">
+          <p>해양농수산</p>
+        </div>
+        <div>
+          <img src="./images_main/ico_depart10.png">
+          <p>행정</p>
+        </div>
+        <div>
+          <img src="./images_main/ico_depart14.png">
+          <p>문화체육관광</p>
+        </div>
+    </div>
+  </section>
+
+  <section class="guide">
+    <div>
+    <p>안내</p>
+    <img src="./images_main/ico_bullet02.png">
+    </div>
+  </section>
+  
+  <section class="inform_menu">
+    <ul>
+      <li>주요 서비스<i class="fa-solid fa-plus"></i></li>
+      <li>핵심정책<i class="fa-solid fa-plus"></i></li>
+      <li>시민참여<i class="fa-solid fa-plus"></i></li>
+      <li>코로나19<i class="fa-solid fa-plus"></i></li>
+      <li>원아시아페스티벌<i class="fa-solid fa-plus"></i></li>
+    </ul>
+  
+  <section class="inform_menu_icon">
+
+  <div class="inform_slide_down_menu">
+
+    <div>
+        <img src="./images_main/ico_libraryportal.png">
+      <p>도서관포털</p>
+    </div>
+    <div>
+      <img src="./images_main/ico_openlib.png"><p>미래놀이터<br>들락날락</p>
+    </div>
+    <div>
+      <img src="./images_main/ico_childcare.png"><p>부산아이<br>다가치키움</p>
+    </div>
+    <div>
+      <img src="./images_main/ico_young.png"><p>부산청년플랫폼</p>
+    </div>
+    <div>
+      <img src="./images_main/ico_plus50.png"><p>50+부산포털</p>
+    </div>
+    <div>
+      <img src="./images_main/ico_etax.png"><p>지방세납부</p>
+    </div>
+    <div>
+      <img src="./images_main/ico_busandong100.png"><p>동백전</p>
+    </div>
+    <div>
+      <img src="./images_main/ico_buvicar.png"><p>부비카정보</p>
+    </div>
+
+  </div>
+
+  <div class="inform_slide_down_menu">
+    <div>
+      <img src="./images_main/ico_expo2030.png"><p>2030부산<br>세계박람회</p>
+    </div>
+    <div>
+      <img src="./images_main/ico_airplane.png"><p>가덕도<br>신공항</p>
+    </div>
+    <div>
+      <img src="./images_main/ico_15min.png"><p>15분도시</p>
+    </div>
+    <div>
+      <img src="./images_main/ico_megacity.png"><p>부울경 초광역<br>경제동맹</p>
+    </div>
+    <div>
+      <img src="./images_main/ico_ghbusan.png"><p>부산항(북항)<br>재개발</p>
+    </div>
+    <div>
+      <img src="./images_main/ico_tourism.png"><p>국제관광도시</p>
+    </div>
+    <div>
+      <img src="./images_main/ico_ecodelta.png"><p>에코델타시티</p>
+    </div>
+    <div>
+      <img src="./images_main/ico_manifesto.png"><p>민선8기<br>주요업무</p>
+    </div>
+  </div>
+
+  <div class="inform_slide_down_menu">
+    <div>
+      <img src="./images_main/ico_myminwon.png"><p>민원신청</p>
+    </div>
+    <div>
+      <img src="./images_main/ico_propse.png"><p>시민제안</p>
+    </div>
+    <div>
+      <img src="./images_main/ico_siminopen.png"><p>시민열린마루</p>
+    </div>
+    <div>
+      <img src="./images_main/ico_minwon.png"><p>협치부산</p>
+    </div>
+    <div>
+      <img src="./images_main/ico_bshotline.png"><p>신고센터</p>
+    </div>
+    <div>
+      <img src="./images_main/ico_etax.png"><p>공익제보</p>
+    </div>
+    <div>
+      <img src="./images_main/ico_woman.png"><p>성희롱상담</p>
+    </div>
+    <div>
+      <img src="./images_main/ico_yesan.png"><p>참여예산</p>
+    </div>
+  </div>
+
+  </section>
+</section>
+
+<div class="flex_box">
+<div class="flex_up">
+
+<section class="dynamicBusan">
+  <p>부산 시보</p>
+  <div class="dynamicBusan_flex">
+
+    <div>
+
+  <div><img src="./images_main/ico_dynamic_ko.png"></div>
+  <div><img src="./images_main/ico_dynamic_en.png"></div>
+
+  </div>
+
+  <div>
+
+  <div><img src="./images_main/ico_dynamic_jp.png"></div>
+  <div><img src="./images_main/ico_dynamic_cn.png"></div>
+
+  </div>
+
+  </div>
+</section>
+
+<section class="reservation">
+  <p>통합 예약</p>
+  <p>간편하게 예약하세요<br/>강좌/교육, 견학/체험, 대관/대여</p>
+  <i class="fa-regular fa-circle-right"></i>
+  <img src="./images_main/ico_calender.png">
+</section>
+
+</div>
+
+<div class="flex_down">
+
+<section class="visitBusan">
+  <p>관광</p>
+  <div class="visitBusan_flex">
+
+    <div>
+  <div><img src="./images_main/ico_visitbusan.png"></div>
+  <div><img src="./images_main/ico_dabom.png"></div>
+  </div>
+  
+  <div>
+  <div><img src="./images_main/ico_galmaet.png"></div>
+  <div><img src="./images_main/ico_medicalbusan.png"></div>
+  </div>
+  </div>
+
+</section>
+
+<section class="Park">
+  <p>부산광역시장<span> 박형준</span></p>
+  <ul>
+    <div>
+    <li>공약&매니페스토<i class="fa-solid fa-plus"></i></li>
+    <li>시정활동<i class="fa-solid fa-plus"></i></li>
+    </div>
+    <div>
+    <li>도시비전<i class="fa-solid fa-plus"></i></li>
+    <li>시민열린마루<i class="fa-solid fa-plus"></i></li>
+    </div>
+  </ul>
+</section>
+
+</div>
+
+</div>
+
+<p class="announce">알림<img src="./images_main/ico_bullet02.png"></p>
+
+<div class="notice">
+  <p>공지사항</p>
+  <p>더보기<i class="fa-solid fa-plus"></i></p>
+</div>
+
+<section class="announce_slider">
+<div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+          <p>실내 체육관 보조경기장 무료개방 일정 변동 알림</p>
+          <p>2022년 11월 실내체육관 보조경기장 무료개방 일정에 변동이 있어 알려 드립니다.
+행사(대관)가 있을시 무료개방은 제한되며, 일정은 수시로 변동 되오니 이용하기시 전에 반드시 무료개방 가능 여부를 확인하시고 이용하시기 바랍니다. 공지사항을 확인하지 않아 발생하는 피해는 책임지지 않습니다..</p>
+          <p>2022-11-25</p>
+        </div>
+
+        <div class="swiper-slide">
+          <p>우리들의 이야기로 어깨동구하자 "-2022 동구 청년정책네트워크> 참여자 모집</p>
+          <p>우리들의 이야기로 어깨동구하자 "-2022 동구 청년정책네트워크> 참여자를 모집하오니 많은 참여 부탁드립니다. ■ 행사개요 ∘ 일시 : 2022.12.3.(토) 14:00~18:00 ∘ 장소 : 풍소재 168, 1층(동구 영초윗길 20)
+∘ 내용 - 청년들간의 소통 - 구청장님과의 대화 - 2023 동구 청정넷 공개모집 ∘ 신청방법 : https://naver.me/5MCPqCgs 접속 또는 포스터 속 QR코드 접속하여 신청</p>
+          <p>2022-11-25</p>
+        </div>
+        <div class="swiper-slide">
+          <p>2022년 특별기획전 《神을 부르는 소리, 고대의 樂器》 연계 안내</p>
+          <p><갤러리 토크>
+            - 일 시 : 2022. 11. 25.(금) 15:00~16:00
+            - 장 소 : 1층 기획전시실 - 내 용 : 2022년 특별기획전 전시유물을 담당 학예연구사가 직접 소개
+            - 대 상 : 일반시민 10명 내외- 접 수 : 당일 현장 접수</p>
+          <p>2022-11-25</p>
+        </div>
+        <div class="swiper-slide">
+          <p>부산국가지질공원 장산 안내소 개소 및 운영 알림</p>
+          <p>백악기말 격렬했던 유문암질 화산 활동으로 분출된 화산재, 용암, 화쇄류암 등으로 구성되어있는 장산에서는 구과상유문암, 유문암질 응회암, 반상유문암 등의 다양한 화산암들과 장산폭포, 너덜겅, 인셀베르그 등의 특이지형을 관찰할 수 있습니다. 이러한 장산의 뛰어난 자연 및 지질환경 교육 및 홍보, 현장해설을 위해 부산국가지질공원 장산안내소를 2022년 12월 1일부터 운영함을 알려드리오니, 시민 여러분의  많은 이용 바랍니다.</p>
+          <p>2022-11-24</p>
+        </div>
+        <div class="swiper-slide">
+          <p>코로나19 동절기 추가접종 <집중접종기간> 운영 알림</p>
+          <p>□ 집중 접종기간(소방) 개요 
+              ○ (대 상) 소방청 및 시도소방본부 소속 전 직원 (기초접종 완료자)
+              - (권 고) 면역저하자, 50대이상, 기저질환자, 보건의료인 
+              - (허 용) 18세이상 49세까지 (10.27.~)
+              * 기초접종 미 완료자는 기초접종 완료 후 접종 권고 
+          </p>
+          <p>2022-11-24</p>
+        </div>
+        <div class="swiper-slide">
+          <p>(부산진구) 2022년 청년프로그램 지원사업 "청년문화놀이터 아트플레이" 12월 프로그램 참여자 모집(선착순)</p>
+          <p>2022년 청년 프로그램 지원사업 "청년문화놀이터_아트플레이"에서 인테리어화 그리기 문화예술 교육프로그램을 진행합니다.
+
+아크릴화, 백드롭페인팅 등 나만의 공간에 어울리는 아크릴화를 직접 그려보세요. 
+
+뜻있는 청년들의 많은 관심과 참여 바랍니다. 
+
+ </p>
+          <p>2022-11-24</p>
+</div>
+      </div>
+      <div class="swiper-button-next for_color_right"></div>
+      <div class="swiper-button-prev for_color_left"></div>
+    </div>
+
+</section>
+
+<section class="gosi">
+  <div>
+<div>
+  <p>고시공고</p>
+  <p>더보기<i class="fa-solid fa-plus"></i></p>
+</div>
+<div>
+  <p>채용정보</p>
+  <p>더보기<i class="fa-solid fa-plus"></i></p>
+</div>
+<div>
+  <p>시험공고</p>
+  <p>더보기<i class="fa-solid fa-plus"></i></p>
+</div>
+</div>
+</section>
+
+<p class="communicate">소통<img src="./images_main/ico_bullet02.png"></p>
+
+<section class="communicate_flex">
+
+<section class="communicate_flex_left">
+
+<p>부산시의 모든 소식을 알려드립니다.</p>
+<section class="communicate_list">
+  <div>
+    <li><img src="./images_main/ico_mic.png">
+    </li>보도자료<i class="fa-solid fa-plus"></i></div>
+  <div><li><img src="./images_main/ico_note.png"></li>부산시보<i class="fa-solid fa-plus"></i></div>
+  <div><li><img src="./images_main/ico_busantube.png"></li>부산튜브<i class="fa-solid fa-plus"></i></div>
+  <div><li><img src="./images_main/ico_facebook.png"></li>페이스북<i class="fa-solid fa-plus"></i></div>
+  <div><li><img src="./images_main/sns04.png"></li>블로그<i class="fa-solid fa-plus"></i></div>
+  <div><li><img src="./images_main/ico_bugi_w.png"></li>소통캐릭터 부기<i class="fa-solid fa-plus"></i></div>
+  <div><li><img src="./images_main/ico_expo2030_photoshop.png"></li>엑스포소식<i class="fa-solid fa-plus"></i></div>
+</section>
+
+<section class="communicate_list_link">
+<img src="./images_main/communicate_img_01.jpg">
+</section>
+
+</section> <!-- communicate_flex_left -->
+
+<section class="communicate_flex_right">
+
+ <section class="communicate_list_picture">
+  <div class="swiper mySwiper7">
+  <div class="swiper-wrapper">
+
+    <div class="swiper-slide"> 
+      <div>
+      <p>보도<br>자료</p>
+      <p>부산시, [2022 지방시대 엑스포]<br>최종보고회 개최!</p>
+      </div>
+      <li>
+        <img src="./images_main/card_img01.jpg">
+      </li>
+    </div>
+
+    <div class="swiper-slide">
+        <div>
+        <p>보도<br>시보</p>
+        <p>부산시, [대한민국 엑스포 in 부산]<br>11월 10일 벡스코에서 개최!</p>
+        </div>
+        <li>
+          <img src="./images_main/card_img02.png">
+        </li>
+    </div>
+
+    <div class="swiper-slide">
+    <!-- <div class="best_world"> -->
+      <p>
+        <img src="./images_main/ico_facebook_gray.svg">
+      </p>
+      <!-- <img src="./images_main/card_img03.jpg"> -->
+    <!-- </div> -->
+    </div>
+
+    <div class="swiper-slide">
+    <!-- <div class="winner"> -->
+      <p>
+        엑스포<br/>소식
+      </p>
+      <!-- <img src="./images_main/expo.bugi.jpg"> -->
+    <!-- </div> -->
+    </div>
+
+    
+  </div>
+  <div class="swiper-pagination"></div>
+  </div>
+ </section>
+
+</section> <!-- communicate_flex_right -->
+
+ </section> <!-- communicate_flex-->
+
+ <!-- <section class="communicate_list_picture_for_tablet">
+  <div class="swiper mySwiper5">
+    <div class="swiper-wrapper">
+
+        <div class="swiper-slide"> 
+
+          <div>
+
+            <div>
+            <p>보도<br>자료</p>
+            <p>부산시, [2022 지방시대 엑스포]<br>최종보고회 개최!</p>
+            </div>
+
+            <li>
+              <img src="./images_main/card_img01.jpg"> 
+            </li>
+          </div>
+
+         
+
+        </div>
+
+        <div class="swiper-slide">
+
+            <div>
+            <p>보도<br>시보</p>
+            <p>부산시, [대한민국 엑스포 in 부산]<br>11월 10일 벡스코에서 개최!</p>
+            </div>
+           
+            <li><img src="./images_main/card_img02.png"></li>
+            
+        </div>
+
+        <div class="best_world swiper-slide"><img src="./images_main/card_img03.jpg"></div>
+        <div class="winner swiper-slide"><img src="./images_main/card_img04.jpg"></div>
+
+    </div>
+
+    <div class="swiper-pagination"></div>
+    </div>
+ </section> -->
+
+ <section class="culture_art">
+  <div>
+    <p>문화/예술</p>
+    <img src="./images_main/ico_bullet02.png">
+  </div>
+ </section>
+
+ <p class="today_show">오늘의 공연</p>
+
+ <section class="today_show_slider">
+<div class="swiper mySwiper2">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="./images_main/art01.gif"></div>
+        <div class="swiper-slide"><img src="./images_main/art02.gif"></div>
+        <div class="swiper-slide"><img src="./images_main/art03.gif"></div>
+        <div class="swiper-slide"><img src="./images_main/art04.gif"></div>
+        <div class="swiper-slide"><img src="./images_main/art05.gif"></div>
+        <div class="swiper-slide"><img src="./images_main/art06.gif"></div>
+        <div class="swiper-slide"><img src="./images_main/art07.gif"></div>
+        <div class="swiper-slide"><img src="./images_main/art08.gif"></div>
+        <div class="swiper-slide"><img src="./images_main/art09.gif"></div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+</div>
+</section>
+
+<section class="today_show_slider_for_tablet">
+<div class="swiper mySwiper6">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="./images_main/art01.gif"></div>
+        <div class="swiper-slide"><img src="./images_main/art02.gif"></div>
+        <div class="swiper-slide"><img src="./images_main/art03.gif"></div>
+        <div class="swiper-slide"><img src="./images_main/art04.gif"></div>
+        <div class="swiper-slide"><img src="./images_main/art05.gif"></div>
+        <div class="swiper-slide"><img src="./images_main/art06.gif"></div>
+        <div class="swiper-slide"><img src="./images_main/art07.gif"></div>
+        <div class="swiper-slide"><img src="./images_main/art08.gif"></div>
+        <div class="swiper-slide"><img src="./images_main/art09.gif"></div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+</div>
+</section>
+
+<p class="today_exhibition">오늘의 전시</p>
+
+
+<section class="exhibition_slider">
+ <div class="swiper mySwiper3">
+  <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="./images_main/art10.gif"></div>
+        <div class="swiper-slide"><img src="./images_main/art11.gif"></div>
+        <div class="swiper-slide"><img src="./images_main/art12.gif"></div>
+        <div class="swiper-slide"><img src="./images_main/art13.gif"></div>
+        <div class="swiper-slide"><img src="./images_main/art14.gif"></div>
+        <div class="swiper-slide"><img src="./images_main/art15.gif"></div>
+        <div class="swiper-slide"><img src="./images_main/art16.gif"></div>
+        <div class="swiper-slide"><img src="./images_main/art17.gif"></div>
+        <div class="swiper-slide"><img src="./images_main/art18.gif"></div>
+  </div>
+  <div class="swiper-pagination"></div>
+</div>
+</section>
+
+<section class="banner">
+  <div>
+    <p>배너</p>
+    <img src="./images_main/ico_bullet02.png">
+  </div>
+ </section>
+
+<section class="banner_slider">
+  <div class="swiper mySwiper4">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="./images_main/banner01.jpg"></div>
+        <div class="swiper-slide"><img src="./images_main/banner02.jpg"></div>
+        <div class="swiper-slide"><img src="./images_main/banner03.jpg"></div>
+        <div class="swiper-slide"><img src="./images_main/banner04.jpg"></div>
+        <div class="swiper-slide"><img src="./images_main/banner05.jpg"></div>
+        <div class="swiper-slide"><img src="./images_main/banner06.jpg"></div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+  </div>
+</section>
+
+  <!-- <section class="banner_for_tablet">
+    <div><img src="./images_main/banner01.jpg"></div>
+    <div><img src="./images_main/banner02.jpg"></div>
+    <div><img src="./images_main/banner03.jpg"></div>
+    <div><img src="./images_main/banner04.jpg"></div>
+  </section> -->
+
+  <section class="banner_text">
+    <div><img src="./images_main/ico_img.png"><p>부산시 알림배너</p></div>
+    </section>
+
+  <section class="footer">
+
+    <ul class="site_inform">
+
+        <li class="business_site">
+          <p>사업소 사이트</p>
+          <i class="fa-solid fa-chevron-down"></i>
+          <ul>
+            <li>건설본부</li>
+            <li>건설안전시험사업소</li>
+            <li>국제수산물유통시설관리사업소</li>
+            <li>금련산청소년수련원</li>
+            <li>교통서비스센터</li>
+            <li>낙동강관리본부</li>
+            <li>낙동강하구에코센터</li>
+            <li>남항관리사업소</li>
+            <li>농업기술센터</li>
+            <li>반여농산물도매시장관리사업소</li>
+            <li>보건환경연구원</li>
+            <li>부산근현대역사관</li>
+            <li>부산도서관</li>
+            <li>부산시립박물관</li>
+          </ul>
+        </li>
+
+        <li class="related_site">
+          <p>관련 사이트</p>
+          <i class="fa-solid fa-chevron-down"></i>
+          <ul>
+            <li>국제자매도시</li>
+            <li>부산소재 공공기관</li>
+            <li>부산광역시의회</li>
+            <li>시 관련 홈페이지</li>
+            <li>시·도 홈페이지</li>
+            <li>유관기관 및 타기관</li>
+            <li>자치구·군</li>
+            <li>자치구·군 의회</li>
+            <li>지방공기업</li>
+            <li>출자·출연기관</li>
+          </ul>
+        </li>
+    </ul> <!-- site_inform-->
+
+    <section class="footer_menu">
+      <div>약관</div>
+      <div>홈페이지 저작권 보호정책</div>
+      <div>개인정보 처리방침</div>
+      <div>행정서비스현장</div>
+      <div>뷰어다운로드</div>
+      <div>홈페이지 모니터</div>
+    </section>
+  </section>
+
+  <section class="busan_logo">
+    <img src="./images_main/부산광역시.png">
+  </section>
+
+  <section class="footer_address">
+    <div>(우 47545) 부산광역시 연제구 중앙대로 1001(연산동)</div>
+    <div class="address_inform">
+      <p>시청 찾아오시는길</p>
+      <p>주차안내</p>
+      <p>이용안내</p>
+    </div>
+    <div>본 홈페이지에 게시된 이메일 주소가 자동 수집되는 것을 거부하며,이를 위반시 개인정보 보호법에 의해 처벌됨을 유념하시기 바랍니다.</div>
+    <div>Copyright © Busan Metropolitan City. All rights reserved.</div>
+  </section>
+
+  <section class="footer_sns_icon">
+    <img src="./images_main/sns01.png">
+    <img src="./images_main/sns02.png">
+    <img src="./images_main/sns03.png">
+    <img src="./images_main/sns04.png">
+    <img src="./images_main/sns05.jpg">
+    <img src="./images_main/sns06.png">
+    <img src="./images_main/sns07.jpg">
+    <img src="./images_main/sns08.png">
+  </section>
+
+  <section class="calling">
+    <div>
+      <p>부산시 120 콜센터</p>
+      <p>(지역번호 051)</p>
+    </div>
+    <div>051-120</div>
+    <div>평일 08:30 ~ 18:30 야간․공휴일 당직실 전환</div>
+    <div><img src="./images_main/footer_wa.png"></div>
+  </section>
+
+  <div class="top_button">
+    <a href = '#video'>
+    <div><img src="./images_main/top_btn_line.png"></div>
+    <div>TOP</div>
+    </a>
+  </div>
+
+  </section>
+</body>
+
+</html>
