@@ -6,28 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>부산광역시</title>
   <script src="https://kit.fontawesome.com/eae775b921.js"></script>
-  <script src="./js/jquery-3.6.1.min.js"></script>
-  
-  <script src="./js/slick.min.js"></script> 
-  <script src="./js/slick.js"></script>
-  <link rel="stylesheet" href="./css/slick-theme.css">
-  <link rel="stylesheet" href="./css/slick.css">
- 
-
-  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"/>
   <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-  
-  
-  <script src="./js/jquery.scrollTo.min.js"></script>
-
-  <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
- <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.3/jquery.scrollTo.js"></script>
+  <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 </head>
 <script>
@@ -60,7 +44,6 @@
           $(this).find('.fa-plus').toggle();
           $(this).find('.fa-minus').toggle();
           $(this).next().toggle('300');
-          
         });
       
         const header = $('header');
@@ -105,7 +88,7 @@
 
            if(window.matchMedia("all and (min-width: 769px)").matches) {
             language_p.removeClass('mousewheelColor');
-           language_i.removeClass('mousewheelColor');
+            language_i.removeClass('mousewheelColor');
             $('.language_circle_black').css('display','none')
             $('.language_circle_white').css('display','block')
 
@@ -187,9 +170,13 @@
 
         if (window.matchMedia("all and (min-width: 321px) and (max-width: 600px)").matches) {
           slide_down_first.delay(200).animate({height:400},300)
+          $('.language_circle_black').css('display','none')
+          $('.language_circle_white').css('display','none')
         }
         if (window.matchMedia("all and (min-width: 601px) and (max-width: 768px)").matches) {
           slide_down_first.animate({height:230},300)
+          $('.language_circle_black').css('display','none')
+          $('.language_circle_white').css('display','none')
         }
         if (window.matchMedia("all and (min-width: 769px)").matches) {
           slide_down_first.animate({height:120},300)
@@ -397,29 +384,22 @@
         }
 
 
-
-
-
         if (window.matchMedia("all and (min-width: 601px) and (max-width: 1280px)").matches) {
           document.querySelector('.banner_slider .swiper').classList.remove('swiper','mySwiper4')
           document.querySelector('.banner_slider .swiper-wrapper').classList.remove('swiper-wrapper')
         }
   
     
-
-
       $('.header_menu > ul > li').mouseover
       (function(){
        
-        $('.header_menu_hover').delay(100).slideDown()
+        $('.header_menu_hover').delay(60).slideDown()
 
-          if (window.matchMedia("all and (min-width: 1281px)").matches) {
+          if (window.matchMedia("all and (min-width: 769px)").matches) {
             $('.for_1280px_header_background').css('backgroundColor','white')
           }
 
-          header.addClass('header_css');
           menu.addClass('mousewheelColor');
-          // language.addClass('mousewheelColor');
           $('.header_menu ul li').css('color','rgb(51,51,51)')
 
           $('.login img:nth-child(1)').css('display','none')
@@ -440,9 +420,10 @@
       $('.header_menu_hover > ul').mouseleave(function(){
         $('.header_menu_hover').slideUp()
 
+          $('.for_1280px_header_background').css('backgroundColor','')
+        
           header.removeClass('header_css');
           menu.removeClass('mousewheelColor');
-          // language.removeClass('mousewheelColor');
           $('.header_menu ul li').css('color','white')
           
           $('.login img:nth-child(1)').css('display','block')
@@ -453,14 +434,37 @@
           $('.sign_up img:nth-child(2)').css('display','none')
           $('.sign_up p').css('color','white')
 
-          //  $('.language img:nth-child(1)').css('display','block')
-          // $('.language img:nth-child(2)').css('display','none')
-
            $('.language img:nth-child(1)').css('display','block')
           $('.language img:nth-child(2)').css('display','none')
           $('.language p').css('color','white')
           $('.language i').css('color','white')
-      })
+      
+          if($(window).scrollTop() >= 45) {
+            $('.for_1280px_header_background').css('backgroundColor','white')
+
+
+
+
+             menu.addClass('mousewheelColor');
+          $('.header_menu ul li').css('color','rgb(51,51,51)')
+
+          $('.login img:nth-child(1)').css('display','none')
+          $('.login img:nth-child(2)').css('display','block')
+          $('.login p').css('color','rgb(51,51,51)')
+
+          $('.sign_up img:nth-child(1)').css('display','none')
+          $('.sign_up img:nth-child(2)').css('display','block')
+          $('.sign_up p').css('color','rgb(51,51,51')
+
+          $('.language img:nth-child(1)').css('display','none')
+          $('.language img:nth-child(2)').css('display','block')
+          $('.language p').css('color','rgb(51,51,51)')
+          $('.language i').css('color','rgb(51,51,51)')
+
+
+
+          }
+        })
     
     
 
@@ -481,6 +485,9 @@
           $('.sign_up img:nth-child(2)').css('display','block')
           $('.sign_up p').css('color','rgb(51,51,51')
 
+          $('.language p').css('color','rgb(51,51,51')
+          $('.language i').css('color','rgb(51,51,51')
+
         }
       
         else if($(window).scrollTop() < 45) 
@@ -499,6 +506,9 @@
           $('.sign_up img:nth-child(1)').css('display','block')
           $('.sign_up img:nth-child(2)').css('display','none')
           $('.sign_up p').css('color','white')
+
+          $('.language p').css('color','white')
+          $('.language i').css('color','white')
 
           }
       
@@ -542,6 +552,10 @@
 </script>
 
 <style>
+
+  @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+
   .communicate_list_click_css {
     background-color: rgb(229, 0, 72);
     color: white;
@@ -872,26 +886,25 @@
   .guide {
     width: 100%;
     height: 50px;
-    /* background-color: yellow; */
     margin-top: 50px;
   }
   .guide div {
     width: 100px;
     height: 30px;
-    /* background-color: wheat; */
     margin: 0 auto;
     position: relative;
   }
   .guide div p {
-    font-size: 20px;
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 40px;
     font-weight: bold;
     text-align: center;
   }
   .guide div img {
     position: absolute;
-    top: -20px;
-    left: 30px;
-    width: 50px;
+    top: -13px;
+    left: 23px;
+    width: 70px;
     height: 30px;
   }
 
@@ -914,12 +927,53 @@
     font-size: 14px;
     line-height: 40px;
     padding-left: 20px;
-    border: 1px solid black;
+    /* border: 1px solid; */
     box-sizing: border-box;
     overflow: hidden;
-    z-index: 10;
     margin-bottom: 10px;
+    position: relative;
+    z-index: 10;
   }
+    .inform_menu ul li:before{
+    content: "";
+    height: 550%;
+    width: 200%;
+    position: absolute;
+    background: linear-gradient(
+        #fd004c,
+        #fe9000,
+        #fff020,
+        #3edf4b,
+        #3363ff,
+        #b102b7,
+        #fd004c);
+    left: -50%;
+    top: -230%;
+    animation: spin 2.5s infinite linear;
+    z-index: -2;
+}
+.inform_menu ul li:after{
+     content: " ";
+    position: absolute;
+    background-color: white;
+    height: 94%;
+    width: 99%;
+    top: 3%;
+    left: 0.5%;
+    border-radius: 20px;
+    font-family: 'Poppins',sans-serif;
+    color: #ffffff;
+    font-size: 20px;
+    letter-spacing: 6px;
+    display: grid;  
+    place-items: center;
+    z-index: -1;
+}
+@keyframes spin{
+    100%{
+        transform: rotate(-360deg);
+    }
+}
   .inform_menu ul li:last-child {
     width: 40%;
   }
@@ -966,11 +1020,13 @@
     overflow: hidden;
   }
   .for_border_bottom_css {
-  border-bottom: 2px solid black;
+  border: 1px solid black;
+  border-top: none;
+  border-radius: 10px 10px;
   box-sizing: border-box;
   }
-  .inform_menu_click_css {
-    background-color:rgb(229, 0, 72);
+  .inform_menu ul li.inform_menu_click_css:after {
+    background-color: lemonchiffon;
     color: white;
   }
 
@@ -1136,14 +1192,15 @@
     margin-top: 80px;
     text-align: center;
     position: relative;
-    font-size: 25px;
     color: rgb(100, 100, 100);
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 40px;
   }
   .announce img {
     position: absolute;
-    top: -16px;
-    left: 10px;
-    width: 50px;
+    top: -15px;
+    left: -3px;
+    width: 70px;
     height: 30px;
   }
 
@@ -1152,10 +1209,10 @@
     margin: 0 auto;
     margin-top: 20px;
     margin-bottom: 70px;
-    background-color: yellow;
   }
   .notice p:first-child {
-    font-size: 20px;
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 26px;
     float: left;
   }
   .notice p:last-child {
@@ -1176,13 +1233,12 @@
     box-shadow: 15px 15px 50px 1px rgb(51 51 51 / 50%);
     border-radius: 20px;
     background: none;
+    padding-top: 5px;
       }
   .announce_slider .swiper-slide {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    /* border: 1px solid black;
-    box-sizing: border-box; */
   }
   .announce_slider .swiper-slide p {
     width: 80%;
@@ -1201,7 +1257,6 @@
   .announce_slider .swiper-slide p:nth-child(2) {
     width: 80%;
     height: 61px;
-    /* background-color: turquoise; */
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -1229,12 +1284,10 @@
   .gosi {
     width: 96%;
     margin: 0 auto;
-    /* background-color: turquoise; */
     margin-top: 50px;
   }
   .gosi div div {
     height: 60px;
-    /* background-color: tomato; */
     border: 1px solid #ccc;
     box-sizing: border-box;
     margin-bottom: 20px;
@@ -1263,20 +1316,23 @@
     width: 50px;
     margin: 0 auto;
     margin-top: 100px;
-    /* background-color: wheat; */
     text-align: center;
     position: relative;
-    font-size: 25px;
     color: rgb(100, 100, 100);
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 40px;
   }
   .communicate img {
     position: absolute;
-    top: -16px;
-    left: 10px;
-    width: 50px;
+    top: -18px;
+    left: -10px;
+    width: 70px;
     height: 30px;
   }
-
+  
+  .communicate_flex_left > p {
+    font-family: 'Nanum Myeongjo', serif;
+  }
   .communicate_list {
     width: 96%;
     margin: 0 auto;
@@ -1412,50 +1468,38 @@
     background-color: rgb(229, 0, 72);
   }
 
-
-  
-   /* .best_world , .winner {
-    width: 90%;
-    height: 400px;
-    margin: 0 auto;
-    border-radius: 20px;
-    overflow: hidden;
-  }
-  .best_world img, .winner img {
-    width: 100%;
-    height: 100%;
-  } */
-
   .culture_art {
     margin-top: -50px;
     text-align: center;
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 40px;
   }
   .culture_art div {
-    width: 100px;
+    width: 200px;
     height: 30px;
     margin: 0 auto;
     position: relative;
-    /* background-color: wheat; */
   }
   .culture_art div img {
     position: absolute;
-    left: 45px;
-    top: -17px;
-    width: 50px;
-    height: 30px;
+    left: 74px;
+    top: -20px;
+    width: 100px;
+    height: 40px;
   }
 
   .today_show {
     margin-top: 30px;
     text-align: left;
     padding-left: 20px;
-    font-size: 18px;
+    font-size: 26px;
     margin-bottom: 20px;
+    font-family: 'Nanum Myeongjo', serif;
   }
 
 
   .mySwiper2 {
-    /* margin-top: 20px; */
+    margin-top: 40px;
     height: 672px;
   }
   .today_show_slider .swiper-slide {
@@ -1475,8 +1519,10 @@
 
 
 .today_exhibition {
-  margin-top: 30px;
+  margin-top: 100px;
   text-align: left;
+  font-family: 'Nanum Myeongjo', serif;
+  font-size: 26px;
 }
 
 .exhibition_slider .swiper-pagination-bullet {
@@ -1512,21 +1558,22 @@
     margin-top: 100px;
     text-align: center;
     margin-bottom: 20px;
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 40px;
+    margin-bottom: 40px;
   }
   .banner div {
     width: 100px;
     height: 30px;
     margin: 0 auto;
     position: relative;
-    /* background-color: wheat; */
-    font-size: 20px;
     font-weight: bold;
   }
   .banner div img {
     position: absolute;
-    left: 35px;
-    top: -17px;
-    width: 50px;
+    left: 22px;
+    top: -10px;
+    width: 70px;
     height: 30px;
   }
 
@@ -1603,7 +1650,6 @@
     width: 80%;
     margin: 0 auto;
     margin-top: 50px;
-    /* background-color: violet; */
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -1614,12 +1660,14 @@
     box-sizing: border-box;
     margin-bottom: 20px;
   }
+  .footer_menu div:last-child {
+    border: none;
+  }
 
   .busan_logo {
     width: 150px;
     height: 50px;
     margin: 0 auto;
-    /* background-color: yellow; */
     margin-top: 30px;
   }
   .busan_logo img {
@@ -1638,12 +1686,10 @@
   }
   .footer_address .address_inform {
     display: flex;
-    /* background-color: turquoise; */
     justify-content: space-evenly;
     margin-top: 15px;
   }
   .footer_address div:nth-child(3) {
-    /* background-color: orange; */
     width: 90%;
     margin: 0 auto;
     text-align: center;
@@ -1659,7 +1705,6 @@
   .footer_sns_icon {
     width: 90%;
     margin: 0 auto;
-    /* background-color: yellow; */
     text-align: center;
     margin-top: 30px;
   }
@@ -1674,7 +1719,6 @@
     width: 50%;
     height: 60px;
     float: left;
-    /* background-color: darkseagreen; */
     padding-right: 5px;
     box-sizing: border-box;
   }
@@ -1686,7 +1730,6 @@
     width: 50%;
     height: 60px;
     float: left;
-    /* background-color: lightgreen; */
     font-size: 35px;
     line-height: 35px;
     padding-left: 5px;
@@ -1726,8 +1769,6 @@
   line-height: 60px;
  }
 
-
-
  .icon_menu_for_tablet {
     display: none;
   }
@@ -1754,7 +1795,6 @@
   display: none;
 }
 
-
 .header_menu, .header_menu_hover {
     display: none;
   }
@@ -1763,17 +1803,9 @@
   display: none;
 }
 
-
 .communicate_list_link {
     display: none;
   }
-
-
-
-
-
-
-
 
 @media all and (min-width:1281px) {
 
@@ -1792,12 +1824,6 @@
   }
   
 }
-
-
-
-
-
-
 
 @media all and (min-width:769px) and (max-width:1280px) {
 
@@ -1994,6 +2020,7 @@
     padding-left: 10px;
     box-sizing: border-box;
     line-height: 40px;
+    position: relative;
   }
   .inform_menu ul li:last-child {
     width: 20%;
@@ -2219,7 +2246,7 @@
 
 
 
-    .communicate_list_picture {
+  .communicate_list_picture {
     width: 96%;
     margin: 0 auto;
     margin-top: 20px;
@@ -2411,6 +2438,10 @@
 
 
 @media all and (min-width:601px) and (max-width:768px) { 
+
+  .language img {
+    display: none;
+  }
 
   .icon_menu_for_tablet {
     display: block;
@@ -2713,7 +2744,9 @@
     display: none;
   }
 
-
+   .footer_menu div:nth-child(5) {
+    border: none;
+  }
 }
 
 
@@ -2741,8 +2774,7 @@
  
       <div class="language">
         <img src="./images_main/ico_global_w.png" class="language_circle_white">
-        <img src="./images_main/ico_global_b.png"
-class="language_circle_black" style="display:none;">
+        <img src="./images_main/ico_global_b.png" class="language_circle_black" style="display:none;">
         <p>Kor</p>
         <i class="fa-solid fa-angle-down"></i>
       </div>
@@ -3679,47 +3711,6 @@ class="language_circle_black" style="display:none;">
 
  </section> <!-- communicate_flex-->
 
- <!-- <section class="communicate_list_picture_for_tablet">
-  <div class="swiper mySwiper5">
-    <div class="swiper-wrapper">
-
-        <div class="swiper-slide"> 
-
-          <div>
-
-            <div>
-            <p>보도<br>자료</p>
-            <p>부산시, [2022 지방시대 엑스포]<br>최종보고회 개최!</p>
-            </div>
-
-            <li>
-              <img src="./images_main/card_img01.jpg"> 
-            </li>
-          </div>
-
-         
-
-        </div>
-
-        <div class="swiper-slide">
-
-            <div>
-            <p>보도<br>시보</p>
-            <p>부산시, [대한민국 엑스포 in 부산]<br>11월 10일 벡스코에서 개최!</p>
-            </div>
-           
-            <li><img src="./images_main/card_img02.png"></li>
-            
-        </div>
-
-        <div class="best_world swiper-slide"><img src="./images_main/card_img03.jpg"></div>
-        <div class="winner swiper-slide"><img src="./images_main/card_img04.jpg"></div>
-
-    </div>
-
-    <div class="swiper-pagination"></div>
-    </div>
- </section> -->
 
  <section class="culture_art">
   <div>
@@ -3912,10 +3903,8 @@ class="language_circle_black" style="display:none;">
   </section>
 
   <div class="top_button">
-    <a href = '#video'>
     <div><img src="./images_main/top_btn_line.png"></div>
     <div>TOP</div>
-    </a>
   </div>
 
   </section>
